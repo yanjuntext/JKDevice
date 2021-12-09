@@ -1,0 +1,375 @@
+package com.tutk.io
+
+import com.tutk.IOTC.*
+import com.tutk.IOTC.camera.getString
+import com.tutk.IOTC.status.*
+import com.tutk.bean.*
+import java.util.*
+
+/**
+ * @Author: wangyj
+ * @CreateDate: 2021/12/3
+ * @Description:数据解析
+ */
+
+/**
+ *解析获取移动侦测
+ * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GETSTREAMCTRL_REQ]
+ * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GETSTREAMCTRL_RESP]
+ */
+fun ByteArray?.parseGetMotionDetect(): MotionDetect? {
+    if (this == null || this.size < 8) return null
+    val motion = this.littleInt(4)
+    return when {
+        motion == 0 -> MotionDetect.OFF
+        motion in 1..35 -> MotionDetect.LOW
+        motion in 36..65 -> MotionDetect.MIDDLE
+        motion in 66..95 -> MotionDetect.HIGH
+        motion >= 96 -> MotionDetect.HIGHEST
+        else -> null
+    }
+}
+
+/**
+ *解析设置移动侦测
+ * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SETMOTIONDETECT_REQ]
+ * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SETMOTIONDETECT_RESP]
+ */
+fun ByteArray?.parseSetMotionDetect(): TSetMotionDetect? {
+    if (this == null || size < 4) return null
+    return TSetMotionDetect(littleInt(0) == 0)
+}
+
+
+/**
+ * 设备信息/TF卡信息
+ * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_DEVINFO_RESP]
+ */
+fun ByteArray?.parseDeviceInfo(): TDeviceInfo? {
+    if (this == null || size < 48) return null
+    val mode = 16.byteArray()
+    val vender = 16.byteArray()
+    System.arraycopy(this, 0, mode, 0, mode.size)
+    System.arraycopy(this, 16, vender, 0, vender.size)
+    val version = littleInt(32)
+    val sdcardState = littleInt(36)
+    val total = littleInt(40)
+    val free = littleInt(44)
+
+    val state = when (sdcardState) {
+        SDCardStatus.ERROR.value -> SDCardStatus.ERROR
+        SDCardStatus.FULL.value -> SDCardStatus.FULL
+        SDCardStatus.INSERT.value -> SDCardStatus.INSERT
+        SDCardStatus.RECORDING.value -> SDCardStatus.RECORDING
+        else -> SDCardStatus.NONE
+    }
+
+    return TDeviceInfo(
+        mode.getString(),
+        vender.getString(),
+        version.toVersion(),
+        state,
+        total,
+        free
+    )
+}
+
+internal fun Int.toVersion(): String {
+    val one = (this ushr 24) and 0xff
+    val two = (this ushr 16) and 0xff
+    val three = (this ushr 8) and 0xff
+    val four = (this) and 0xff
+    return "${one}.${two}.${three}.${four}"
+}
+
+/**
+ *解析 设置密码
+ * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SETPASSWORD_RESP]
+ */
+fun ByteArray?.parseResetPassword() {}
+
+/**
+ *解析 扫描WIFI
+ * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_LISTWIFIAP_RESP]
+ */
+fun ByteArray?.parseScanWifi(): TScanWifi {
+    Liotc.d("parseScanWifi", "size[${this?.size}]")
+    if (this == null || this.size < 40) return TScanWifi(0, mutableListOf())
+    var total = this.littleInt(0)
+    Liotc.d("parseScanWifi", "total[$total]")
+    val list = mutableListOf<TWifiInfo>()
+    val offset = 4
+    val eachSize = 36
+    val size = total * eachSize + offset
+    Liotc.d("parseScanWifi", "total length[$size]")
+    if (this.size != size) {
+        total = (this.size - offset) / eachSize
+    }
+    Liotc.d("parseScanWifi", "effective total[$total]")
+
+    if (total > 0) {
+        (0 until total).forEach { index ->
+            val ssid = 32.byteArray()
+            val start = index * eachSize + offset
+            System.arraycopy(this, start, ssid, 0, ssid.size)
+            val mode = this[start + ssid.size].toInt()
+            val enctype = this[start + ssid.size + 1].toInt()
+            val signal = this[start + ssid.size + 2].toInt()
+            val status = this[start + ssid.size + 3].toInt()
+            list.add(TWifiInfo(ssid.getString(), mode, enctype, signal, getWifiStatus(status)))
+        }
+    }
+    return TScanWifi(total, list)
+}
+
+internal fun getWifiStatus(status: Int) = when (status) {
+    WifiStatus.CONNECTED.value -> WifiStatus.CONNECTED
+    WifiStatus.WRONG_PASSWORD.value -> WifiStatus.WRONG_PASSWORD
+    WifiStatus.WEAK_SIGNAL.value -> WifiStatus.WEAK_SIGNAL
+    WifiStatus.READTY.value -> WifiStatus.READTY
+    else -> WifiStatus.NONE
+}
+
+/**
+ *解析 获取录像模式
+ * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GETRECORD_RESP]
+ */
+fun ByteArray?.parseGetRecordMode(): TRecordMode {
+    if (this == null || this.size < 8) return TRecordMode(-1, null)
+    val result = this.littleInt(0)
+    val mode = littleInt(4)
+    val recordMode = when (mode) {
+        RecordMode.OFF.value -> RecordMode.OFF
+        RecordMode.FULL_TIME.value -> RecordMode.FULL_TIME
+        RecordMode.ALARM.value -> RecordMode.ALARM
+        else -> null
+    }
+    return TRecordMode(result, recordMode)
+}
+
+/**
+ * 解析录像模式  支持定时录像
+ * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_SCHEDULE_REOCRD_SEC_RESP]
+ */
+fun ByteArray?.parseRecordModeWithTime(): TRecordModeWithTime? {
+    if (this == null || size < 12) return null
+    val type = this[0].toInt()
+    val mode = this[1].toInt()
+    val limitTime = this[2].toInt()
+    val scheduleIndex = this[3].toInt()
+
+    val sTime = littleInt(4)
+    val eTime = littleInt(8)
+    val recordMode = when (mode) {
+        RecordMode.OFF.value -> RecordMode.OFF
+        RecordMode.ALARM.value -> RecordMode.ALARM
+        RecordMode.FULL_TIME.value -> {
+            if (eTime - sTime != 86400) {
+                RecordMode.TIMING
+            } else {
+                RecordMode.FULL_TIME
+            }
+        }
+        else -> RecordMode.OFF
+    }
+    return TRecordModeWithTime(type, recordMode, limitTime, scheduleIndex, sTime, eTime)
+}
+
+
+/**
+ * 解析录像质量
+ * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_RECORD_SETTING_REQ]
+ * @param type
+ * @param cmd
+ * @param quality 录像质量
+ * @param cycle 循环录像
+ */
+fun ByteArray?.parseRecordQuality(): TRecordQuality? {
+    if (this == null || size < 7) return null
+    val type = littleInt(0)
+    val cmd = this[4].toInt()
+    val quality = this[5].toInt()
+    val cycle = this[6].toInt() == 1
+    val recordQuality =
+        if (quality == RecordQuality.HD.value) RecordQuality.HD else RecordQuality.SD
+    return TRecordQuality(type, cmd, recordQuality, cycle)
+}
+
+/**
+ * 解析录像事件
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_LISTEVENT_REQ]
+ */
+fun ByteArray?.parseRecordVideoEvent(): TRecordVideoInfo? {
+    if (this == null || size < 12) return null
+    val channel = littleInt(0)
+    val total = littleInt(4)
+    val index = this[5].toInt()
+    val end: Boolean = this[6].toInt() == 1
+    var count = this[7].toInt()
+    Liotc.d("parseRecordVideoEvent", "total[$total],index=$index,end=$end,count=$count")
+    val offset = 12
+    val eachSize = 12
+
+    if ((size - offset) / eachSize != count) {
+        count = (size - offset) / eachSize
+    }
+    Liotc.d("parseRecordVideoEvent", "count[$count]")
+    val list = mutableListOf<TEvent>()
+    val calendar = Calendar.getInstance()
+    (0 until count).forEach {
+        val start = it * eachSize + offset
+
+        val year = littleShort(start).toInt()
+        val month = this[start + 2].toInt()
+        val day = this[start + 3].toInt()
+        val wDay = this[start + 4].toInt()
+        val hour = this[start + 5].toInt()
+        val minute = this[start + 6].toInt()
+        val second = this[start + 7].toInt()
+        calendar.set(year, month - 1, day, hour, minute, second)
+
+        val buf = ByteArray(8)
+        System.arraycopy(this,start,buf,0,buf.size)
+
+        val event = this[start + 8].toInt()
+        val status = this[start + 9].toInt()
+
+        if (event == EventMode.ALL.value
+            || event == AVIOCTRLDEFs.AVIOCTRL_EVENT_MOTIONDECT
+            || event == AVIOCTRLDEFs.AVIOCTRL_EVENT_VIDEOLOST
+            || event == AVIOCTRLDEFs.AVIOCTRL_EVENT_IOALARM
+            || event == AVIOCTRLDEFs.AVIOCTRL_EVENT_MOTIONPASS
+            || event == AVIOCTRLDEFs.AVIOCTRL_EVENT_VIDEORESUME
+            || event == AVIOCTRLDEFs.AVIOCTRL_EVENT_IOALARMPASS
+            || event == AVIOCTRLDEFs.AVIOCTRL_EVENT_EXPT_REBOOT
+            || event == AVIOCTRLDEFs.AVIOCTRL_EVENT_SDFAULT
+        ) {
+            list.add(TEvent(buf,calendar.timeInMillis, event, status))
+        }
+    }
+    return TRecordVideoInfo(channel, total, index, end, count, list)
+}
+
+/**
+ * 解析设备时区 获取/设置
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_TIMEZONE_RESP]
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_TIMEZONE_RESP]
+ */
+fun ByteArray?.parseTimeZone(): TTimeZone? {
+    if (this == null || size < 4) return null
+    val cbSize = littleInt(0)
+    Liotc.d("parseTimeZone", "size=${size},cbSize=$cbSize")
+    if (size < cbSize) return null
+    val supportTimeZone = littleInt(4) == 1
+    val gmtDiff = littleInt(8)
+    return TTimeZone(cbSize, supportTimeZone, gmtDiff)
+}
+
+/**
+ * 解析 指示灯 状态
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_THIRDPART_SETTING_RESP]
+ */
+fun ByteArray?.parseLedStatus(): TLedStatus? {
+    if (this == null || size < 12) return null
+    val type = littleInt(0)
+    val result = littleInt(4)
+    val status = littleInt(8)
+    return TLedStatus(type, result, status == 1)
+}
+
+/**
+ * 解析视频状态
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_CAMERA_RESP]
+ */
+fun ByteArray?.parseCameraVideoStatus(): TCameraStatus? {
+    if (this == null || size < 5) return null
+    val cMode = this[0].toInt()
+    val value = this[4].toInt() and 0xFF
+    val mode = when (cMode) {
+        CameraVideoMode.BRIGHT.status -> CameraVideoMode.BRIGHT
+        CameraVideoMode.CONTRAST.status -> CameraVideoMode.CONTRAST
+        CameraVideoMode.SATURATION.status -> CameraVideoMode.SATURATION
+        else -> CameraVideoMode.CHROMA
+    }
+    return TCameraStatus(mode, value)
+}
+
+/**
+ * 解析 夜视灯状态
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_IRLED_RESP]
+ * 0 白天 1 夜视 2 自动
+ */
+fun ByteArray?.parseIrLedStatus(): TIRLedStatus? {
+    if (this == null || size < 3) return null
+    val type = this[0].toInt()
+    val auto = this[1].toInt() == 1
+    val status = this[2].toInt() == 1
+    return TIRLedStatus(
+        type,
+        if (auto) IrLedStatus.AUTO else if (status) IrLedStatus.OPEN else IrLedStatus.OFF
+    )
+}
+
+/**
+ * 解析视频镜像
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_VIDEOMODE_RESP]
+ */
+fun ByteArray?.parseGetVideoMirror(): TGetVideoMirror? {
+    if (this == null || this.size < 8) return null
+    val channel = littleInt(0)
+    val mode = this[4].toInt()
+    val mirrorMode = when (mode) {
+        VideoMirrorMode.MIRROR_UP.value -> VideoMirrorMode.MIRROR_UP
+        VideoMirrorMode.MIRROR_LEFT.value -> VideoMirrorMode.MIRROR_LEFT
+        VideoMirrorMode.MIRROR_ALL.value -> VideoMirrorMode.MIRROR_ALL
+        else -> VideoMirrorMode.MIRROR_NORMAL
+    }
+    return TGetVideoMirror(channel, mirrorMode)
+}
+
+/**
+ * 解析 设置视频镜像
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_VIDEOMODE_RESP]
+ * */
+fun ByteArray?.parseSetVideoMirror():TSetVideoMirror?{
+    if(this == null || size < 8) return null
+    return TSetVideoMirror(littleInt(0),this[4].toInt() == 0)
+}
+
+/**
+ * 解析 格式化SDCard
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_FORMATEXTSTORAGE_RESP]
+ */
+fun ByteArray?.parseFormatSdCard():TFormatSdCard?{
+    if(this == null || size < 8) return null
+    val storage = littleInt(0)
+    return TFormatSdCard(storage,this[4].toInt() == 0)
+}
+
+/**
+ * 解析 视频回放
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_RECORD_PLAYCONTROL_RESP]
+ */
+fun ByteArray?.parsePlayBack():TPlayback?{
+    if(this == null || size < 12) return null
+    val type = littleInt(0)
+    val channel = littleInt(4)
+    val time = littleInt(8)
+
+    val status = when(type){
+        PlaybackStatus.PAUSE.status->PlaybackStatus.PAUSE
+        PlaybackStatus.STOP.status->PlaybackStatus.STOP
+        PlaybackStatus.STEPFORWARD.status->PlaybackStatus.STEPFORWARD
+        PlaybackStatus.STEPBACKWARD.status->PlaybackStatus.STEPBACKWARD
+        PlaybackStatus.FORWARD.status->PlaybackStatus.FORWARD
+        PlaybackStatus.BACKWARD.status->PlaybackStatus.BACKWARD
+        PlaybackStatus.SEEKTIME.status->PlaybackStatus.SEEKTIME
+        PlaybackStatus.END.status->PlaybackStatus.END
+        PlaybackStatus.START.status->PlaybackStatus.START
+        PlaybackStatus.PLAYING.status->PlaybackStatus.PLAYING
+        PlaybackStatus.ERROR.status->PlaybackStatus.ERROR
+        else->null
+    }
+    return TPlayback(status,channel,time,type)
+}
+
