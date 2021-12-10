@@ -36,7 +36,7 @@ public class VideoDecoder {
 
     private native void nativeDestroy();
 
-    public native void consumeNalUnitsFromDirectBuffer(ByteBuffer nalUnits, int numBytes, long packetPTS);
+    public native int consumeNalUnitsFromDirectBuffer(ByteBuffer nalUnits, int numBytes, long packetPTS);
 
     public native boolean isFrameReady();
 
