@@ -51,7 +51,15 @@
 -keep class com.tutk.IOTC.listener.**
 
 -keep class com.tutk.IOTC.Packet
--keep class com.tutk.IOTC.camera.*{*;}
+-keep class com.tutk.IOTC.camera.AVChannel{
+  #保持该类下所有的共有内容不被混淆
+   public *;
+}
+-keep class com.tutk.IOTC.audio.RecvAudioJob{
+    #保持该类下所有的共有内容不被混淆
+    public *;
+
+}
 
 
 #---------------------------------1.实体类---------------------------------
