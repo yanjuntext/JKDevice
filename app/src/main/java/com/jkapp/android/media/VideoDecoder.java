@@ -47,7 +47,9 @@ public class VideoDecoder {
     public native int getOutputByteSize();
 
     public native long decodeFrameToDirectBuffer(ByteBuffer buffer);
+    public native int decode(ByteBuffer nalUnits, int numBytes, long packetPTS, ByteBuffer outBuffer);
 
+    public native void releaseCache();
 //    //mutile coder
 //    private native int nativeInitCreateCoderV2(int colorFormat, Context context); //多设备
 //    private native void nativeReleaseCoderV2(int codeIndex);

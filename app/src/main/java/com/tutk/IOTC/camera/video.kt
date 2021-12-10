@@ -447,7 +447,7 @@ class DecodeVideoJob(
         var isWaitIFrame = false
         var llastFrameSize = -1L
         var lcurrentFrameSize = -1L
-
+        var videoDecodeResult = -1
         runJob = GlobalScope.launch(Dispatchers.Main) {
             flow {
                 while (isRunning && isActive()) {
@@ -550,33 +550,28 @@ class DecodeVideoJob(
                                                 mVideoBuffer?.put(frmData, 0, avFrameSize)
                                             }
                                             mVideoBuffer?.flip()
-                                            mVideoDecoder?.consumeNalUnitsFromDirectBuffer(
-                                                mVideoBuffer,
-                                                avFrameSize,
-                                                10
-                                            )
+                                            mVideoOutBuffer?.clear()
+                                            videoDecodeResult = mVideoDecoder?.decode(mVideoBuffer,avFrameSize,10,mVideoOutBuffer)?:-1
+//                                            mVideoDecoder?.consumeNalUnitsFromDirectBuffer(
+//                                                mVideoBuffer,
+//                                                avFrameSize,
+//                                                10
+//                                            )
 
 
-                                            if (mVideoDecoder?.isFrameReady == true) {
+//                                            if (mVideoDecoder?.isFrameReady == true) {
                                                 out_width[0] = mVideoDecoder?.width ?: 0
                                                 out_height[0] = mVideoDecoder?.height ?: 0
-                                            }
+//                                            }
                                             out_size[0] = out_width[0] * out_height[0] * 2
 
                                             d("out_size[${out_size[0]}],out_width[${out_width[0]}],out_height[${out_height[0]}]")
 
-                                            if (out_size[0] > 0 && out_height[0] > 0
-                                                && out_width[0] > 0 && mVideoDecoder?.isFrameReady == true
-                                            ) {
+                                            if (out_size[0] > 0 && out_height[0] > 0 && out_width[0] > 0 && videoDecodeResult>=0) {
                                                 videoWidth = out_width[0]
                                                 videoHeight = out_height[0]
 
-                                                mVideoOutBuffer?.clear()
-                                                mVideoOutBuffer?.let { outbuffer ->
-                                                    mVideoDecoder?.decodeFrameToDirectBuffer(
-                                                        outbuffer
-                                                    )
-                                                }
+
 
                                                 d("llastFrameSize[$llastFrameSize],lcurrentFrameSize[$lcurrentFrameSize],llastFrameSize[$llastFrameSize]")
 
