@@ -60,7 +60,7 @@ android {
 
     afterEvaluate {
         publishing {
-            def versionName = "1.0.8" // 当前版本依赖库版本号，这个jitpack不会使用到，只是我们开发者自己查看
+            def versionName = "1.0.10" // 当前版本依赖库版本号，这个jitpack不会使用到，只是我们开发者自己查看
             publications {
                 // Creates a Maven publication called "release".
                 release(MavenPublication) {
@@ -96,9 +96,9 @@ dependencies {
     //协程
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+//    testImplementation 'junit:junit:4.13.2'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 task generateSourcesJar(type: Jar) {
     if (project.hasProperty("kotlin")) {

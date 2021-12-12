@@ -28,6 +28,7 @@ const val IOTC_CONNECT_ING = 9999
 
 open class Camera(val uid: String, var psw: String, var viewAccount: String = "admin") :
     IAVChannelListener {
+
     private val TAG = "IOTCamera"
 
     companion object {

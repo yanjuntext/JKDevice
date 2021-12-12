@@ -22,6 +22,10 @@ import java.nio.ByteBuffer
  * @Description: 视频处理类相关
  */
 
+
+
+private fun Int.dp() = 10
+
 /**视频数据*/
 data class RecvVideoInfo(
     val eventType: Int,
@@ -77,7 +81,7 @@ class RecvVideoJob(
             return
         }
 
-        runJob = GlobalScope.launch(Dispatchers.IO) {
+        runJob = GlobalScope.launch(Dispatchers.Main) {
             flow {
                 while (isRunning && isActive() && (mSID < 0 || getAvIndex() < 0)) {
                     delay(100)
