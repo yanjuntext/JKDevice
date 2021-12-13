@@ -653,12 +653,13 @@ class Monitor @JvmOverloads constructor(
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
         Liotc.d(
             "Monitor",
-            "surfaceChanged [screen[$nScreenWidth,$nScreenWidth]],[surface[$width,$height]],measured[$measuredWidth,$measuredHeight]"
+            "surfaceChanged [screen[$nScreenWidth,$nScreenHeight]],[surface[$width,$height]],measured[$measuredWidth,$measuredHeight]"
         )
         synchronized(this) {
             nScreenWidth = measuredWidth
             nScreenHeight = measuredHeight
             mRectMonitor.set(0, 0, width, height)
+
             val cHeight = nScreenWidth * 9 / 16
             if (cHeight > nScreenHeight) {
                 //如果正常的高度 大于设置的高度,则以高度为基准,并且居中处理
@@ -670,39 +671,6 @@ class Monitor @JvmOverloads constructor(
                 mRectCanvas.set(0, space, nScreenWidth, cHeight + space)
             }
 
-//            if (layoutOrientation == Camera.LANDS_ORIENTATION) {
-//                mRectCanvas.set(0, 0, width, height)
-//            } else {
-//                mRectCanvas.set(0, 0, nScreenWidth, nScreenHeight)
-//            }
-
-//            if (mCurVideoWidth == 0 || mCurVideoHeight == 0) {
-//                if (layoutOrientation == Camera.LANDS_ORIENTATION) {
-//                    mRectCanvas.right = 4 * height / 3
-//                    mRectCanvas.offset((width - mRectCanvas.right) / 2, 0)
-//                } else {
-//                    mRectCanvas.bottom = 3 * width / 4
-//                    mRectCanvas.offset(0, (height - mRectCanvas.bottom) / 2)
-//                }
-//            } else {
-//                if (layoutOrientation == Camera.LANDS_ORIENTATION) {
-//
-//                    mRectCanvas.right = mRectMonitor.right
-//                    mRectCanvas.offset(0, 0)
-//                } else {
-//                    val ratio = mCurVideoWidth.toDouble() / mCurVideoHeight
-//                    mRectCanvas.bottom = (mRectCanvas.right / ratio).toInt()
-//                    mRectCanvas.offset(0, (mRectMonitor.bottom - mRectCanvas.bottom) / 2)
-//
-//                    //使图片居中
-//                    val rmRight = mRectMonitor.right
-//                    val rcRight = mRectCanvas.right
-//
-//                    val offsetX = (rmRight - rcRight) / 2
-//                    mRectCanvas.set(offsetX, 0, mRectCanvas.width() + offsetX, mRectCanvas.bottom)
-//                }
-//            }
-
             vLeft = mRectCanvas.left
             vTop = mRectCanvas.top
             vRight = mRectCanvas.right
@@ -712,21 +680,6 @@ class Monitor @JvmOverloads constructor(
 
             Liotc.d("Monitor", "_setFullScreen surfaceChanged[$isFullScreen]")
 
-
-//            parseMidPoint(
-//                mMidPoint,
-//                vLeft.toFloat(),
-//                vTop.toFloat(),
-//                vRight.toFloat(),
-//                vBottom.toFloat()
-//            )
-//            parseMidPoint(
-//                mMidPointForCanvas,
-//                vLeft.toFloat(),
-//                vTop.toFloat(),
-//                vRight.toFloat(),
-//                vBottom.toFloat()
-//            )
         }
     }
 
@@ -750,9 +703,7 @@ class Monitor @JvmOverloads constructor(
             nScreenHeight = measuredHeight
             mBitmapWidth = bmp?.width ?: 0
             mBitmapHeight = bmp?.height ?: 0
-            if ((bmp?.width ?: 0) > 0 && (bmp?.height ?: 0) > 0 &&
-                (nScreenHeight != mCurVideoHeight || nScreenWidth != mCurVideoWidth)
-            ) {
+            if ((bmp?.width ?: 0) > 0 && (bmp?.height ?: 0) > 0 && (nScreenHeight != mCurVideoHeight || nScreenWidth != mCurVideoWidth)) {
                 Liotc.d(
                     "Monitor",
                     "screen[${nScreenWidth},${nScreenHeight}],video[${mCurVideoWidth},${mCurVideoHeight}]"
