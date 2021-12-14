@@ -109,6 +109,7 @@ class RecvAudioJob(
                 if (isRunning && isActive() && (avChannel?.SID ?: -1) >= 0 && (avChannel?.mAvIndex
                         ?: -1) >= 0
                 ) {
+                    d("IOTYPE_USER_IPCAM_AUDIOSTART [${avChannel?.mAvIndex}]")
                     avChannel?.IOCtrlQueue?.Enqueue(
                         avChannel.mAvIndex,
                         AVIOCTRLDEFs.IOTYPE_USER_IPCAM_AUDIOSTART,
@@ -120,6 +121,7 @@ class RecvAudioJob(
                 while (isRunning && isActive() && (avChannel?.audioPlayStatus == true || LocalRecordHelper.recording)) {
                     while ((avChannel?.audioPlayStatus == true || LocalRecordHelper.recording) && isActive()) {
                         if ((avChannel?.SID ?: -1) >= 0 && (avChannel?.mAvIndex ?: -1) >= 0) {
+                            d("get audio [${avChannel?.mAvIndex}]")
                             nReadSize = AVAPIs.avRecvAudioData(
                                 avChannel?.mAvIndex ?: -1,
                                 recvBuf,
@@ -362,6 +364,7 @@ class RecvAudioJob(
                 }
                 d("stop 1")
                 avChannel?.mAvIndex?.let { index ->
+                    d("avClientCleanAudioBuf [$index]")
                     AVAPIs.avClientCleanAudioBuf(index)
                     avChannel.IOCtrlQueue?.Enqueue(
                         index,
@@ -369,6 +372,7 @@ class RecvAudioJob(
                         0.littleByteArray()
 //                        Packet.intToByteArray_Little(0)
                     )
+                    d("IOTYPE_USER_IPCAM_AUDIOSTOP [$index]")
                 }
                 d("stop 2")
                 //关闭双向语音
