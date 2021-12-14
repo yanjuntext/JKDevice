@@ -865,6 +865,7 @@ internal object AudioTrackHelper {
     private var mAudioRecord: AudioRecord? = null
 
     fun initAudioTrack(sampleRateHz: Int, channel: Int, databits: Int, codec_id: Int): Boolean {
+        Liotc.d("RecvAudioJob","initAudioTrack")
         mAudioTrack?.stop()
         mAudioTrack?.release()
 
@@ -905,6 +906,7 @@ internal object AudioTrackHelper {
     }
 
     fun playAudio(data: Any?, offset: Int, size: Int) {
+        Liotc.d("RecvAudioJob","playAudio [${mAudioTrack == null}],[$size]")
         when (data) {
             is ByteArray -> {
                 if (data.size >= offset + size) {
@@ -923,6 +925,7 @@ internal object AudioTrackHelper {
 
     //释放单向语音播放资源
     fun unInitAudioTrack() {
+        Liotc.d("RecvAudioJob","unInitAudioTrack")
         mAudioTrack?.flush()
         mAudioTrack?.stop()
         mAudioTrack?.release()
