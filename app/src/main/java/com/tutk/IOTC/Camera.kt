@@ -916,8 +916,7 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
         while (iterator.hasNext()) {
             val avChannel = iterator.next()
             if (avChannel.mChannel == channel) {
-                //开启录像要开启音频接收
-                avChannel.setAudioTrackStatus(context, avChannel.audioPlayStatus, true)
+
                 LocalRecordHelper.startRecord(
                     context,
                     file,

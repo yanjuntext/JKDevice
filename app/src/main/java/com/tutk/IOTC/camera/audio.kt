@@ -802,12 +802,16 @@ internal object AudioProcessHelper {
 
     private var mAudioProcess: AudioProcess? = null
 
+    private var initDecode = false
+    private var initEncode = false
+
     fun initDecode(codeId: Int, samplerate: Int, databits: Int, channel: Int) {
 
 
         if (mAudioProcess == null) {
             mAudioProcess = AudioProcess()
         }
+        initDecode = true
         mAudioProcess?.mDecode?.init(codeId, samplerate, databits, channel)
     }
 
@@ -819,7 +823,10 @@ internal object AudioProcessHelper {
     }
 
     fun unDecode() {
-        mAudioProcess?.mDecode?.unInit()
+        if (initDecode) {
+            mAudioProcess?.mDecode?.unInit()
+        }
+        initDecode = false
     }
 
     fun initEncode(codeId: Int, samplerate: Int, databits: Int, channel: Int) {
@@ -827,6 +834,7 @@ internal object AudioProcessHelper {
         if (mAudioProcess == null) {
             mAudioProcess = AudioProcess()
         }
+        initEncode = true
         mAudioProcess?.mEncode?.init(codeId, samplerate, databits, channel)
     }
 
@@ -838,7 +846,10 @@ internal object AudioProcessHelper {
     }
 
     fun unEncode() {
-        mAudioProcess?.mEncode?.unInit()
+        if (initEncode) {
+            mAudioProcess?.mEncode?.unInit()
+        }
+        initEncode = false
     }
 
 }

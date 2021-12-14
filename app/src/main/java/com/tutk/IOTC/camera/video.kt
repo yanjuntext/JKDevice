@@ -844,6 +844,10 @@ internal object LocalRecordHelper {
                         Packet.intToByteArray_Little(0)
                     )
                 }
+                //开启录像要开启音频接收
+                mAvChannel?.get()?.let { avChannel->
+                    avChannel.setAudioTrackStatus(mContext?.get(), avChannel.audioPlayStatus, true)
+                }
                 delay(500)
                 if (recording && mRecordJob?.isActive == true) {
                     d(TAG, "startRecord width[$width],height[$height] 1")
@@ -952,6 +956,12 @@ internal object LocalRecordHelper {
         runJob?.cancel()
         runJob = null
         d(TAG, "stopRecord 222")
+
+        //开启录像要开启音频接收
+        mAvChannel?.get()?.let { avChannel->
+            avChannel.setAudioTrackStatus(mContext?.get(), avChannel.audioPlayStatus, false)
+        }
+
         mAvChannel?.get()?.iavChannelStatus?.onAVChannelRecordStatus(
             RecordStatus.RECORD_STOP,
             fileName,
