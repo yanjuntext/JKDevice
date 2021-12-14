@@ -278,6 +278,7 @@ class RecvAudioJob(
                                                 nReadSize,
                                                 decodeOutPutBuffer
                                             )?.let { decode ->
+                                                d("decode size[$decode]，[${avChannel?.audioPlayStatus}]")
                                                 if (decode > 0) {
                                                     //录像 录制音频
 //                                                    if (avChannel?.recording == true) {
@@ -817,6 +818,7 @@ internal object AudioProcessHelper {
 
     fun decode(data: ByteArray?, size: Int, outData: ByteArray?): Int? {
         if (data == null || outData == null || data.size < size) {
+            Liotc.d("AudioProcessHelper", "decode: return [${data == null}],[${outData == null}],[${data?.size}],[$size]")
             return null
         }
         return mAudioProcess?.mDecode?.decode(data, size, outData)
