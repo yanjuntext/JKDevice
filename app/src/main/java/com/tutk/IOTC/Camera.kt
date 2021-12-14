@@ -872,7 +872,7 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
         while (iterator.hasNext()) {
             val avChannel = iterator.next()
             if (avChannel.mChannel == channel) {
-                avChannel.setAudioTrackStatus(context, status)
+                avChannel.setAudioTrackStatus(context, status,LocalRecordHelper.recording)
                 break
             }
         }

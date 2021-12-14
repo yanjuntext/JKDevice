@@ -117,7 +117,7 @@ class RecvAudioJob(
                     )
                 }
 
-                while (isRunning && isActive()) {
+                while (isRunning && isActive() && (avChannel?.audioPlayStatus == true || LocalRecordHelper.recording) ) {
                     while ((avChannel?.audioPlayStatus == true || LocalRecordHelper.recording) && isActive()) {
                         if ((avChannel?.SID ?: -1) >= 0 && (avChannel?.mAvIndex ?: -1) >= 0) {
                             nReadSize = AVAPIs.avRecvAudioData(
