@@ -253,7 +253,7 @@ class AVChannel(
             mRecvAudioJob?.start(context, playMode.value)
         }
         if(!status && !recording){
-            mRecvVideoJob?.isRunning = false
+            mRecvAudioJob?.isRunning = false
         }
     }
 

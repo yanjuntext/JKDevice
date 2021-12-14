@@ -327,7 +327,7 @@ class RecvVideoJob(
 
                     }
                 }
-                d(TAG,"recvvideo destroy")
+                d(TAG,"recvvideo destroy [$mSID],[${getAvIndex()}]")
                 avChannel?.VideoFrameQueue?.removeAll()
                 if (mSID >= 0 && getAvIndex() >= 0) {
                     avChannel?.IOCtrlQueue?.Enqueue(
