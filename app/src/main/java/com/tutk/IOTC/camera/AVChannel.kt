@@ -216,6 +216,8 @@ class AVChannel(
         mAudioFrame = null
     }
 
+    internal fun audioPlayerIsEmpty() = mAudioPlayer == null
+
     //播放双向语音:播放音频
     internal fun putPlayData(data: ByteArray?, size: Int, time: Long) {
         if (mAudioFrame == null) {
