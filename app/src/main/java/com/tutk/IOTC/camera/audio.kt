@@ -117,7 +117,7 @@ class RecvAudioJob(
                     )
                 }
 
-                while (isRunning && isActive() && (avChannel?.audioPlayStatus == true || LocalRecordHelper.recording) ) {
+                while (isRunning && isActive() && (avChannel?.audioPlayStatus == true || LocalRecordHelper.recording)) {
                     while ((avChannel?.audioPlayStatus == true || LocalRecordHelper.recording) && isActive()) {
                         if ((avChannel?.SID ?: -1) >= 0 && (avChannel?.mAvIndex ?: -1) >= 0) {
                             nReadSize = AVAPIs.avRecvAudioData(
@@ -384,6 +384,7 @@ class RecvAudioJob(
                 //释放解码器
                 AudioProcessHelper.unDecode()
                 d("stop 5")
+                isRunning = false
             }.flowOn(Dispatchers.IO)
                 .collect {
 
@@ -436,7 +437,7 @@ class SendAudioJob(
         cam_index: Byte = 0,
         online_num: Byte = 0,
         timestamp: Int = System.currentTimeMillis().toInt()
-    ) :ByteArray{
+    ): ByteArray {
         val result = ByteArray(16)
         val codec: ByteArray = Packet.shortToByteArray_little(codec_id)
         System.arraycopy(codec, 0, result, 0, 2)
@@ -448,10 +449,10 @@ class SendAudioJob(
         return result
     }
 
-    private fun startAudioInfo(index:Int):ByteArray{
+    private fun startAudioInfo(index: Int): ByteArray {
         val data = ByteArray(8)
         val ch = index.littleByteArray()
-        System.arraycopy(ch,0,data,0,4)
+        System.arraycopy(ch, 0, data, 0, 4)
         return data
     }
 
@@ -603,7 +604,10 @@ class SendAudioJob(
                                             val length =
                                                 AudioProcessHelper.encode(takeAll, outG711Buf)
 
-                                            val frameInfo = getAudioInfo(AVFrame.MEDIA_CODEC_AUDIO_G711A.toShort(),flag.toByte())
+                                            val frameInfo = getAudioInfo(
+                                                AVFrame.MEDIA_CODEC_AUDIO_G711A.toShort(),
+                                                flag.toByte()
+                                            )
 
 //                                                AVIOCTRLDEFs.SFrameInfo.parseContent(
 //                                                AVFrame.MEDIA_CODEC_AUDIO_G711A.toShort(),
@@ -622,7 +626,10 @@ class SendAudioJob(
                                             )
                                         }
                                         else -> {
-                                            val frameInfo =getAudioInfo(AVFrame.MEDIA_CODEC_AUDIO_PCM.toShort(),flag.toByte())
+                                            val frameInfo = getAudioInfo(
+                                                AVFrame.MEDIA_CODEC_AUDIO_PCM.toShort(),
+                                                flag.toByte()
+                                            )
 //                                                AVIOCTRLDEFs.SFrameInfo.parseContent(
 //                                                AVFrame.MEDIA_CODEC_AUDIO_PCM.toShort(),
 //                                                flag.toByte(),
@@ -650,7 +657,10 @@ class SendAudioJob(
                                         d("readShortAudioRecord size[$size]")
                                         if (size > 0) {
                                             PCMA.linear2alaw(inG711Buf, 0, outG711Buf, size)
-                                            val frameInfo =getAudioInfo(AVFrame.MEDIA_CODEC_AUDIO_G711A.toShort(),flag.toByte())
+                                            val frameInfo = getAudioInfo(
+                                                AVFrame.MEDIA_CODEC_AUDIO_G711A.toShort(),
+                                                flag.toByte()
+                                            )
 
 //                                                AVIOCTRLDEFs.SFrameInfo.parseContent(
 //                                                AVFrame.MEDIA_CODEC_AUDIO_G711A.toShort(),
@@ -672,7 +682,10 @@ class SendAudioJob(
                                         val size = AudioTrackHelper.readAudioRecord(pcmBuf)
                                         d("readShortAudioRecord size[$size] ---")
                                         if (size > 0) {
-                                            val frameInfo = getAudioInfo(AVFrame.MEDIA_CODEC_AUDIO_PCM.toShort(),flag.toByte())
+                                            val frameInfo = getAudioInfo(
+                                                AVFrame.MEDIA_CODEC_AUDIO_PCM.toShort(),
+                                                flag.toByte()
+                                            )
 //                                                AVIOCTRLDEFs.SFrameInfo.parseContent(
 //                                                AVFrame.MEDIA_CODEC_AUDIO_PCM.toShort(),
 //                                                flag.toByte(),
