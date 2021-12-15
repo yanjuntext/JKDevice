@@ -104,11 +104,14 @@ internal class SendFileJob(
 
             flow {
 
-                while (isRunning && isActive() && ((avChannel?.SID
-                        ?: -1) < 0 || (avChannel?.mAvIndex ?: -1) < 0)
+                while (isRunning && isActive()
+                    && ((avChannel?.SID ?: -1) < 0
+                            || (avChannel?.mAvIndex ?: -1) < 0
+                            || avChannel?.SID == IOTC_CONNECT_ING)
                 ) {
-                    delay(100L)
+                    delay(100)
                 }
+
                 val status = St_RDT_Status()
                 var nRead = 0
                 val RDT_ID = RDTAPIs.RDT_Create(avChannel?.SID ?: -1, SEND_WAIT_TIME, 3)
@@ -288,11 +291,14 @@ internal class SendFileJob(
 
             flow {
 
-                while (isRunning && isActive() && ((avChannel?.SID
-                        ?: -1) < 0 || (avChannel?.mAvIndex ?: -1) < 0)
+                while (isRunning && isActive()
+                    && ((avChannel?.SID ?: -1) < 0
+                            || (avChannel?.mAvIndex ?: -1) < 0
+                            || avChannel?.SID == IOTC_CONNECT_ING)
                 ) {
-                    delay(100L)
+                    delay(100)
                 }
+
                 val status = St_RDT_Status()
                 var nRead = 0
                 val RDT_ID = RDTAPIs.RDT_Create(avChannel?.SID ?: -1, SEND_WAIT_TIME, 3)
@@ -542,11 +548,14 @@ internal class DownFileJob(
                 val recvRDTCommand = ByteArray(STRUCT_SIZE)
                 val sendRDTCommand = ByteArray(STRUCT_SIZE)
 
-                while (isRunning && isActive() && ((avChannel?.SID
-                        ?: -1) < 0 || (avChannel?.mAvIndex ?: -1) < 0)
+                while (isRunning && isActive()
+                    && ((avChannel?.SID ?: -1) < 0
+                            || (avChannel?.mAvIndex ?: -1) < 0
+                            || avChannel?.SID == IOTC_CONNECT_ING)
                 ) {
                     delay(100)
                 }
+
                 var rdt_id = -1
                 var total = 0L
                 var readTotal = 0L

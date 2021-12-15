@@ -242,6 +242,16 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
     private val mSupportStreamList = mutableListOf<TSupportStream>()
     private var mTTimeZone: TTimeZone? = null
 
+    /**
+     * 重连间隔  ms
+     * if[mReconnectTime] is 0,means not to reconnect automatically
+     */
+    private var mReconnectTime = 10000L
+
+    fun setReconnectTime(reconnectTime:Long){
+        mReconnectTime = reconnectTime
+    }
+
     /*----------------------------------通道命令------------------------------------------*/
     fun registerSessionChannelCallback(callback: OnSessionChannelCallback?) {
         callback ?: return
@@ -475,6 +485,19 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
         mSID = -1
 
     }
+    //stopThread startConnectJob uid[JTM8YNGRY361ESUP111A]   uid[JTM8YNGRY361ESUP111A]
+    //2021-12-15 10:35:21.809 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: reconnect
+    //2021-12-15 10:35:21.814 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: stopConnectJob time[0]   uid[JTM8YNGRY361ESUP111A]
+    //2021-12-15 10:35:21.816 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: emir [9999]   uid[JTM8YNGRY361ESUP111A]
+    //2021-12-15 10:35:21.817 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: disconnect   uid[JTM8YNGRY361ESUP111A]
+    //2021-12-15 10:35:21.817 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: emir [-1]   uid[JTM8YNGRY361ESUP111A]
+    //2021-12-15 10:35:22.369 32003-32030/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: ===ThreadConnectDev retonline ing[0],devid[JTM8YNGRY361ESUP111A]   uid[JTM8YNGRY361ESUP111A]
+    //2021-12-15 10:35:22.371 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: emir [1]   uid[JTM8YNGRY361ESUP111A]
+    //
+    //    --------- beginning of system
+    //2021-12-15 10:35:22.624 32003-32030/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: ===ThreadConnectDev retonline id[-90],devid[JTM8YNGRY361ESUP111A]   uid[JTM8YNGRY361ESUP111A]
+    //2021-12-15 10:35:22.626 32003-32030/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: reconnect [10000],[-1]
+    //2021-12-15 10:35:22.628 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: emir [8]   uid[JTM8YNGRY361ESUP111A]
 
     fun connect(channel: Int, account: String = "admin") {
         _connect()
@@ -485,6 +508,7 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
     }
 
     fun reconnect(channel: Int, account: String = "admin") {
+        Liotc.d("startConnectJob","reconnect")
         disconnect()
         connect(channel, account)
     }
@@ -517,7 +541,7 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
             }
             AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GETSUPPORTSTREAM_RESP -> {
                 mSupportStreamList.clear()
-                if (data == null || data.size < 4 || channel != Camera.DEFAULT_AV_CHANNEL) return
+                if (data == null || data.size < 4 || channel != DEFAULT_AV_CHANNEL) return
                 if (channel == DEFAULT_AV_CHANNEL && isMultiStreamSupport(channel)) {
                     var num = data.littleInt(0)
                     val offset = 4
@@ -630,10 +654,10 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
             flow {
                 delay(500L)
                 val stSInfoEx = St_SInfoEx()
-                var ret = 0
+                var ret = -1
                 var isReconnect = false
                 while (connecting && connectJob?.isActive == true) {
-
+                    ret = -1
                     if (first) {
                         while (mSID < 0 && connectJob?.isActive == true) {
                             if (isActive() && !isReconnect) {
@@ -685,11 +709,13 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
                                     if (isActive()) {
                                         emit(CONNECTION_STATE_UNSUPPORTED)
                                     }
+                                    break
                                 }
                                 else -> {
                                     if (isActive()) {
                                         emit(CONNECTION_STATE_CONNECT_FAILED)
                                     }
+                                    break
                                 }
                             }
                         }
@@ -728,15 +754,27 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
                                     emit(CONNECTION_STATE_TIMEOUT)
                                 }
                                 mSID = -1
+                                setAvChannelSid(mSID)
                             } else {
                                 if (isActive()) {
                                     emit(CONNECTION_STATE_CONNECT_FAILED)
                                 }
                                 mSID = -1
+                                setAvChannelSid(mSID)
                             }
                         }
                     }
+
+                    if(ret < 0 && mReconnectTime >= 1000 && connecting && connectJob?.isActive == true){
+                        Liotc.d("startConnectJob","reconnect [$mReconnectTime],[$ret]")
+                        delay(mReconnectTime)
+                        if(connecting && connectJob?.isActive == true){
+                            emit(IOTC_CONNECT_ING)
+                        }
+                        break
+                    }
                 }
+
                 //关闭
 //                if (nGSID >= 0) {
 //                    IOTCAPIs.IOTC_Connect_Stop_BySID(nGSID)
@@ -747,10 +785,16 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
                 }
             }.flowOn(Dispatchers.IO)
                 .collect {
-                    if (it == -1) {
-                        d("startConnectJob", "disconnect")
-                    } else {
-                        broadCameraSessionStatus(it)
+                    when(it){
+                        IOTC_CONNECT_ING->{
+                            reconnect(DEFAULT_AV_CHANNEL)
+                        }
+                        -1->{
+                            d("startConnectJob", "disconnect")
+                        }
+                        else->{
+                            broadCameraSessionStatus(it)
+                        }
                     }
                     d("startConnectJob", "emir [$it]")
                 }

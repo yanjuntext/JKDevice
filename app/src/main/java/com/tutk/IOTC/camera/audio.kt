@@ -81,7 +81,7 @@ class RecvAudioJob(
         runJob = GlobalScope.launch(Dispatchers.Main) {
             flow<Int> {
                 while (isRunning && isActive() && ((avChannel?.SID
-                        ?: -1) < 0 || (avChannel?.mAvIndex ?: -1) < 0)
+                        ?: -1) < 0 || (avChannel?.mAvIndex ?: -1) < 0 || avChannel?.SID == IOTC_CONNECT_ING)
                 ) {
                     delay(100)
                 }
@@ -494,6 +494,15 @@ class SendAudioJob(
         }
         runJob = GlobalScope.launch(Dispatchers.Main) {
             flow {
+
+                while (isRunning && isActive()
+                    && ((avChannel?.SID ?: -1) < 0
+                            || (avChannel?.mAvIndex ?: -1) < 0
+                            || avChannel?.SID == IOTC_CONNECT_ING)
+                ) {
+                    delay(100)
+                }
+
                 while (isRunning && isActive()) {
                     d("send audio session sid[${avChannel?.SID}]")
                     //获取空闲的信道

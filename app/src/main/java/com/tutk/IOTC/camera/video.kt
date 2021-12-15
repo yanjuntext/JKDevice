@@ -83,7 +83,7 @@ class RecvVideoJob(
 
         runJob = GlobalScope.launch(Dispatchers.Main) {
             flow {
-                while (isRunning && isActive() && (mSID < 0 || getAvIndex() < 0)) {
+                while (isRunning && isActive() && (mSID < 0 || getAvIndex() < 0 || mSID == IOTC_CONNECT_ING)) {
                     delay(100)
                 }
 

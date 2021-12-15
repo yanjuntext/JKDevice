@@ -47,19 +47,23 @@ class StartJob(
                     while (isRunning && runJob?.isActive == true) {
                         if (mSID == IOTC_CONNECT_ING) {
                             connectingIndex++
+                            d(TAG, "StartJob mSID[$mSID],connectingIndex = [${connectingIndex}]")
                             if (connectingIndex > 50) {
                                 emit(Camera.CONNECTION_STATE_CONNECT_FAILED)
-                                break
+//                                break
+                                connectingIndex = 0
                             }
                             delay(1000L)
                             continue
                         }
 
                         if (mSID < 0) {
+                            d(TAG, "StartJob mSID[$mSID],[${offlineIndex}]")
                             offlineIndex++
                             if (offlineIndex > 20) {
                                 emit(Camera.CONNECTION_STATE_CONNECT_FAILED)
-                                break
+//                                break
+                                offlineIndex = 0
                             }
                             delay(1000L)
                             continue
@@ -175,6 +179,8 @@ class RecvIOJob(
         mSID = sid
     }
 
+    private fun isActive() = runJob?.isActive == true
+
     fun start() {
         if (runJob?.isActive == true) {
             e(TAG, "runJob is Running ")
@@ -185,11 +191,19 @@ class RecvIOJob(
 
         runJob = GlobalScope.launch(Dispatchers.Main) {
             flow {
-                while (isRunning && (mSID < 0 || (avChannel?.mAvIndex
-                        ?: -1) < 0) && runJob?.isActive == true
+                while (isRunning && isActive()
+                    && ((avChannel?.SID ?: -1) < 0
+                            || (avChannel?.mAvIndex ?: -1) < 0
+                            || avChannel?.SID == IOTC_CONNECT_ING)
                 ) {
                     delay(1000L)
                 }
+
+//                while (isRunning && (mSID < 0 || (avChannel?.mAvIndex
+//                        ?: -1) < 0) && runJob?.isActive == true
+//                ) {
+//                    delay(1000L)
+//                }
                 while (isRunning && runJob?.isActive == true) {
                     avChannel?.let { avChannel ->
                         if (mSID >= 0 && (avChannel.mAvIndex >= 0)) {
