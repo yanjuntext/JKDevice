@@ -1117,5 +1117,5 @@ fun ByteArray.getString():String{
             sb.append(it.toInt().toChar())
         }
     }
-    return sb.toString()
+    return sb.toString()?:""
 }

@@ -131,6 +131,27 @@ internal fun getWifiStatus(status: Int) = when (status) {
 }
 
 /**
+ * 当前连接WIFI的信息
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GETWIFI_RESP]
+ */
+fun ByteArray?.parseGetWifi(): TWifiInfo? {
+    if (this == null || size < 68) return null
+    val ssid = ByteArray(32)
+    val pwd = ByteArray(32)
+    System.arraycopy(this, 0, ssid, 0, ssid.size)
+    System.arraycopy(this, 32, pwd, 0, pwd.size)
+    return TWifiInfo(
+        ssid.getString(),
+        this[64].toInt(),
+        this[65].toInt(),
+        this[66].toInt(),
+        getWifiStatus(this[67].toInt()),
+        pwd.getString()
+    )
+}
+
+
+/**
  *解析 获取录像模式
  * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GETRECORD_RESP]
  */
@@ -229,7 +250,7 @@ fun ByteArray?.parseRecordVideoEvent(): TRecordVideoInfo? {
         calendar.set(year, month - 1, day, hour, minute, second)
 
         val buf = ByteArray(8)
-        System.arraycopy(this,start,buf,0,buf.size)
+        System.arraycopy(this, start, buf, 0, buf.size)
 
         val event = this[start + 8].toInt()
         val status = this[start + 9].toInt()
@@ -244,7 +265,7 @@ fun ByteArray?.parseRecordVideoEvent(): TRecordVideoInfo? {
             || event == AVIOCTRLDEFs.AVIOCTRL_EVENT_EXPT_REBOOT
             || event == AVIOCTRLDEFs.AVIOCTRL_EVENT_SDFAULT
         ) {
-            list.add(TEvent(buf,calendar.timeInMillis, event, status))
+            list.add(TEvent(buf, calendar.timeInMillis, event, status))
         }
     }
     return TRecordVideoInfo(channel, total, index, end, count, list)
@@ -263,6 +284,11 @@ fun ByteArray?.parseTimeZone(): TTimeZone? {
     val supportTimeZone = littleInt(4) == 1
     val gmtDiff = littleInt(8)
     return TTimeZone(cbSize, supportTimeZone, gmtDiff)
+}
+
+fun ByteArray?.parseSyncTime():TSyncTime?{
+    if(this == null || size < 8) return null
+    return TSyncTime(littleInt(0) == 0)
 }
 
 /**
@@ -331,45 +357,45 @@ fun ByteArray?.parseGetVideoMirror(): TGetVideoMirror? {
  * 解析 设置视频镜像
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_VIDEOMODE_RESP]
  * */
-fun ByteArray?.parseSetVideoMirror():TSetVideoMirror?{
-    if(this == null || size < 8) return null
-    return TSetVideoMirror(littleInt(0),this[4].toInt() == 0)
+fun ByteArray?.parseSetVideoMirror(): TSetVideoMirror? {
+    if (this == null || size < 8) return null
+    return TSetVideoMirror(littleInt(0), this[4].toInt() == 0)
 }
 
 /**
  * 解析 格式化SDCard
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_FORMATEXTSTORAGE_RESP]
  */
-fun ByteArray?.parseFormatSdCard():TFormatSdCard?{
-    if(this == null || size < 8) return null
+fun ByteArray?.parseFormatSdCard(): TFormatSdCard? {
+    if (this == null || size < 8) return null
     val storage = littleInt(0)
-    return TFormatSdCard(storage,this[4].toInt() == 0)
+    return TFormatSdCard(storage, this[4].toInt() == 0)
 }
 
 /**
  * 解析 视频回放
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_RECORD_PLAYCONTROL_RESP]
  */
-fun ByteArray?.parsePlayBack():TPlayback?{
-    if(this == null || size < 12) return null
+fun ByteArray?.parsePlayBack(): TPlayback? {
+    if (this == null || size < 12) return null
     val type = littleInt(0)
     val channel = littleInt(4)
     val time = littleInt(8)
 
-    val status = when(type){
-        PlaybackStatus.PAUSE.status->PlaybackStatus.PAUSE
-        PlaybackStatus.STOP.status->PlaybackStatus.STOP
-        PlaybackStatus.STEPFORWARD.status->PlaybackStatus.STEPFORWARD
-        PlaybackStatus.STEPBACKWARD.status->PlaybackStatus.STEPBACKWARD
-        PlaybackStatus.FORWARD.status->PlaybackStatus.FORWARD
-        PlaybackStatus.BACKWARD.status->PlaybackStatus.BACKWARD
-        PlaybackStatus.SEEKTIME.status->PlaybackStatus.SEEKTIME
-        PlaybackStatus.END.status->PlaybackStatus.END
-        PlaybackStatus.START.status->PlaybackStatus.START
-        PlaybackStatus.PLAYING.status->PlaybackStatus.PLAYING
-        PlaybackStatus.ERROR.status->PlaybackStatus.ERROR
-        else->null
+    val status = when (type) {
+        PlaybackStatus.PAUSE.status -> PlaybackStatus.PAUSE
+        PlaybackStatus.STOP.status -> PlaybackStatus.STOP
+        PlaybackStatus.STEPFORWARD.status -> PlaybackStatus.STEPFORWARD
+        PlaybackStatus.STEPBACKWARD.status -> PlaybackStatus.STEPBACKWARD
+        PlaybackStatus.FORWARD.status -> PlaybackStatus.FORWARD
+        PlaybackStatus.BACKWARD.status -> PlaybackStatus.BACKWARD
+        PlaybackStatus.SEEKTIME.status -> PlaybackStatus.SEEKTIME
+        PlaybackStatus.END.status -> PlaybackStatus.END
+        PlaybackStatus.START.status -> PlaybackStatus.START
+        PlaybackStatus.PLAYING.status -> PlaybackStatus.PLAYING
+        PlaybackStatus.ERROR.status -> PlaybackStatus.ERROR
+        else -> null
     }
-    return TPlayback(status,channel,time,type)
+    return TPlayback(status, channel, time, type)
 }
 

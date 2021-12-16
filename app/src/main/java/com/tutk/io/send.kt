@@ -214,6 +214,21 @@ fun Camera?.scanWifi(channel: Int = Camera.DEFAULT_AV_CHANNEL, must: Boolean = f
 }
 
 /**
+ * 获取当前连接的wifi信息
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GETWIFI_REQ]
+ */
+fun Camera?.getWifi(channel: Int = Camera.DEFAULT_AV_CHANNEL, must: Boolean = false): Boolean {
+    return if (canSend() || must) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GETWIFI_REQ,
+            AVIOCTRLDEFs.scanWifi()
+        )
+        true
+    } else false
+}
+
+/**
  * 设置WIFI
  * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SETWIFI_REQ]
  * @param ssid wifi 名称
@@ -467,7 +482,7 @@ fun Camera?.setTimeZone(
 }
 
 /**
- * 设置时间
+ * 设置时间 设备自己判断是否同步时区，如果设备时间和设置时间偏差较大，设备可能会同步时区
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_TIME_REQ]
  */
 fun Camera?.setTime(channel: Int = Camera.DEFAULT_AV_CHANNEL, must: Boolean = false): Boolean {
@@ -479,6 +494,30 @@ fun Camera?.setTime(channel: Int = Camera.DEFAULT_AV_CHANNEL, must: Boolean = fa
         )
         true
     } else false
+}
+
+/**
+ * 同步 时间和时区
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_TIME_SYNC_REQ]
+ */
+fun Camera?.syncTime(channel: Int = Camera.DEFAULT_AV_CHANNEL,must: Boolean = false):Boolean{
+    val instance = Calendar.getInstance()
+    val time = instance.timeInMillis
+    return syncTime(channel,time,TimeZone.getDefault().getOffset(time)/1000,must)
+}
+/**
+ * 同步 时间和时区
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_TIME_SYNC_REQ]
+ */
+fun Camera?.syncTime(channel: Int = Camera.DEFAULT_AV_CHANNEL,timeInMillis:Long,diffTime:Int,must: Boolean = false):Boolean{
+    return if(canSend() || must){
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_TIME_SYNC_REQ,
+            AVIOCTRLDEFs.syncTime(timeInMillis, diffTime)
+        )
+        true
+    }else false
 }
 
 /**

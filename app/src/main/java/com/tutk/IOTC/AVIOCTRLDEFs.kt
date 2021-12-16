@@ -252,6 +252,9 @@ object AVIOCTRLDEFs {
     const val IOTYPE_USER_IPCAM_SET_TIMEZONE_REQ = 0x3B0
     const val IOTYPE_USER_IPCAM_SET_TIMEZONE_RESP = 0x3B1
 
+    const val IOTYPE_USER_IPCAM_SET_TIME_SYNC_REQ = 0x0816
+    const val IOTYPE_USER_IPCAM_SET_TIME_SYNC_RESP = 0x0817
+
     const val IOTYPE_USER_IPCAM_SET_TIME_REQ = 0x2052
     const val IOTYPE_USER_IPCAM_SET_TIME_RESP = 0x2053
 
@@ -450,6 +453,8 @@ object AVIOCTRLDEFs {
     const val startSOUND_END = 2
     const val startSOUND_ERROR = 3
 
+
+
     private fun initByteArray(size: Int) = ByteArray(size)
 
     /**收到第一条IFrame时回复*/
@@ -586,6 +591,12 @@ object AVIOCTRLDEFs {
      * [IOTYPE_USER_IPCAM_LISTWIFIAP_REQ]
      */
     fun scanWifi() = 4.byteArray()
+
+    /**
+     * 获取当前连接的wifi信息
+     * [IOTYPE_USER_IPCAM_GETWIFI_REQ]
+     */
+    fun getWifi() = initByteArray(4)
 
     /**
      *设置WIFI
@@ -804,6 +815,34 @@ object AVIOCTRLDEFs {
         System.arraycopy(timeSecond0Zone, 0, data, 0, timeSecond0Zone.size)
         val _diffZoneMinute = diffZoneMinute.littleByteArray()
         System.arraycopy(_diffZoneMinute, 0, data, 4, _diffZoneMinute.size)
+        return data
+    }
+
+    /**
+     * 同步时间和时区
+     * [IOTYPE_USER_IPCAM_SET_TIME_SYNC_REQ]
+     * @param timeInMillis 时间
+     * @param diffTime 时区偏移量  （S）
+     */
+    fun syncTime(timeInMillis:Long,diffTime:Int):ByteArray{
+        val data = initByteArray(12)
+        val instance = Calendar.getInstance()
+        instance.timeInMillis = timeInMillis
+        val year = instance.get(Calendar.YEAR).toShort().littleByteArray()
+        System.arraycopy(year,0,data,0,year.size)
+        val month = instance.get(Calendar.MONTH) +1
+        data[2] = month.toByte()
+        val day = instance.get(Calendar.DAY_OF_MONTH)
+        data[3] = month.toByte()
+        val hour = instance.get(Calendar.HOUR_OF_DAY)
+        data[4] = month.toByte()
+        val minute = instance.get(Calendar.MINUTE)
+        data[5] = month.toByte()
+        val second = instance.get(Calendar.SECOND)
+        data[6] = month.toByte()
+        data[7] = 1
+        val _diffTime = diffTime.littleByteArray()
+        System.arraycopy(_diffTime,0,data,8,_diffTime.size)
         return data
     }
 

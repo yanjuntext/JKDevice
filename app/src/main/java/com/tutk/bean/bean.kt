@@ -59,7 +59,8 @@ data class TWifiInfo(
     val mode: Int,
     val enctype: Int,
     val signal: Int,
-    val status: WifiStatus
+    val status: WifiStatus,
+    val pwd:String? = null
 )
 
 /**
@@ -136,6 +137,12 @@ data class TEvent(val buf: ByteArray, val time: Long, val event: Int, val status
  * @param gmtDiff 当前时区与零时区偏移事件 the difference between GMT in hours
  */
 data class TTimeZone(var size: Int, var supportTimeZone: Boolean, var gmtDiff: Int)
+
+/**
+ * 同步时间、时区
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_TIME_SYNC_RESP]
+ */
+data class TSyncTime(val result: Boolean)
 
 /**
  * 设备推送地址
