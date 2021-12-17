@@ -833,13 +833,13 @@ object AVIOCTRLDEFs {
         val month = instance.get(Calendar.MONTH) +1
         data[2] = month.toByte()
         val day = instance.get(Calendar.DAY_OF_MONTH)
-        data[3] = month.toByte()
+        data[3] = day.toByte()
         val hour = instance.get(Calendar.HOUR_OF_DAY)
-        data[4] = month.toByte()
+        data[4] = hour.toByte()
         val minute = instance.get(Calendar.MINUTE)
-        data[5] = month.toByte()
+        data[5] = minute.toByte()
         val second = instance.get(Calendar.SECOND)
-        data[6] = month.toByte()
+        data[6] = second.toByte()
         data[7] = 1
         val _diffTime = diffTime.littleByteArray()
         System.arraycopy(_diffTime,0,data,8,_diffTime.size)

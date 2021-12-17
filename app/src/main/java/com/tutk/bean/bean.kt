@@ -12,6 +12,8 @@ import com.tutk.IOTC.status.*
 
 open class TBean(val cmd: Int, val result: Int)
 
+data class TResponseBean(val resule: Boolean)
+
 /**
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GETSUPPORTSTREAM_RESP]
  */

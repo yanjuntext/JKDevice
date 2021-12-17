@@ -464,7 +464,7 @@ fun Camera?.getTimeZone(channel: Int = Camera.DEFAULT_AV_CHANNEL, must: Boolean 
 /**
  * 设置设备时区
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_TIMEZONE_REQ]
- * @param gmtDiff 当前时区与零时区偏移事件 the difference between GMT in hours
+ * @param gmtDiff 当前时区与零时区偏移分钟 the difference between GMT in hours
  */
 fun Camera?.setTimeZone(
     channel: Int = Camera.DEFAULT_AV_CHANNEL,

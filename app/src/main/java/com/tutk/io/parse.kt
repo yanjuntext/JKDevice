@@ -86,7 +86,10 @@ internal fun Int.toVersion(): String {
  *解析 设置密码
  * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SETPASSWORD_RESP]
  */
-fun ByteArray?.parseResetPassword() {}
+fun ByteArray?.parseResetPassword():TResponseBean? {
+    if(this == null || size < 4) return null
+    return TResponseBean(littleInt(0) == 0)
+}
 
 /**
  *解析 扫描WIFI
