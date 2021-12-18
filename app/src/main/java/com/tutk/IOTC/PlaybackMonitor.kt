@@ -264,10 +264,10 @@ class PlaybackMonitor @JvmOverloads constructor(
         }
     }
 
-    fun seekTo(percent:Int){
-        if (mAvChannel >= 0 ) {
+    fun seekTo(percent: Int) {
+        if (mAvChannel >= 0) {
             mRecordEvent?.let {
-                mCamera.playbackSeekToPercent(time = it,percent = percent)
+                mCamera.playbackSeekToPercent(time = it, percent = percent)
             }
         }
     }
@@ -281,12 +281,13 @@ class PlaybackMonitor @JvmOverloads constructor(
             mRecordEvent?.let {
                 mCamera.playback(type = PlaybackStatus.STOP, time = it)
             }
-            if(isRecording){
+            if (isRecording) {
                 stopRecord()
             }
             setAudioTrackStatus(false)
             stopShow()
             releaseAudio()
+            mCamera?.stop(mAvChannel)
         }
     }
 
@@ -468,7 +469,7 @@ class PlaybackMonitor @JvmOverloads constructor(
         releaseAudio()
         unAttachCamera()
         unRegisterAVChannelRecordStatus()
-
+        mOnPlaybackCallback = null
     }
 
 
@@ -904,7 +905,7 @@ class PlaybackMonitor @JvmOverloads constructor(
                             isRunning = false
                             mPlaybackStatus = PlaybackStatus.PAUSE
                             stopPlayTime()
-                            if(isRecording){
+                            if (isRecording) {
                                 stopRecord()
                             }
                         }
