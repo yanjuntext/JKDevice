@@ -86,8 +86,8 @@ internal fun Int.toVersion(): String {
  *解析 设置密码
  * [com.tutk.IOTC.AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SETPASSWORD_RESP]
  */
-fun ByteArray?.parseResetPassword():TResponseBean? {
-    if(this == null || size < 4) return null
+fun ByteArray?.parseResetPassword(): TResponseBean? {
+    if (this == null || size < 4) return null
     return TResponseBean(littleInt(0) == 0)
 }
 
@@ -153,6 +153,15 @@ fun ByteArray?.parseGetWifi(): TWifiInfo? {
     )
 }
 
+/**
+ * 解析 设置WIFI
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SETWIFI_RESP]
+ */
+fun ByteArray?.parseSetWifi(): TResponseBean? {
+    if (this == null || size < 8) return null
+    return TResponseBean(littleInt(0) == 0)
+}
+
 
 /**
  *解析 获取录像模式
@@ -169,6 +178,15 @@ fun ByteArray?.parseGetRecordMode(): TRecordMode {
         else -> null
     }
     return TRecordMode(result, recordMode)
+}
+
+/**
+ * 解析 设置录像模式
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SETRECORD_RESP]
+ */
+fun ByteArray?.parseSetRecordMode(): TResponseBean? {
+    if (this == null || size < 8) return null
+    return TResponseBean(littleInt(0) == 0)
 }
 
 /**
@@ -227,9 +245,9 @@ fun ByteArray?.parseRecordVideoEvent(): TRecordVideoInfo? {
     if (this == null || size < 12) return null
     val channel = littleInt(0)
     val total = littleInt(4)
-    val index = this[5].toInt()
-    val end: Boolean = this[6].toInt() == 1
-    var count = this[7].toInt()
+    val index = this[8].toInt()
+    val end: Boolean = this[9].toInt() == 1
+    var count = this[10].toInt()
     Liotc.d("parseRecordVideoEvent", "total[$total],index=$index,end=$end,count=$count")
     val offset = 12
     val eachSize = 12
@@ -289,8 +307,8 @@ fun ByteArray?.parseTimeZone(): TTimeZone? {
     return TTimeZone(cbSize, supportTimeZone, gmtDiff)
 }
 
-fun ByteArray?.parseSyncTime():TSyncTime?{
-    if(this == null || size < 8) return null
+fun ByteArray?.parseSyncTime(): TSyncTime? {
+    if (this == null || size < 8) return null
     return TSyncTime(littleInt(0) == 0)
 }
 
