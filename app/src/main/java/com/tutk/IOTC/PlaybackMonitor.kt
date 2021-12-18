@@ -48,13 +48,12 @@ class PlaybackMonitor @JvmOverloads constructor(
 ) : SurfaceView(context, attr, defStyle), LifecycleObserver, SurfaceHolder.Callback, OnIOCallback,
     OnSessionChannelCallback, OnFrameCallback {
 
+    private val TAG = PlaybackMonitor::class.java.simpleName
 
     private var mPlayMode: PlayMode = PlayMode.PLAY_BACK
     private var mVoiceType: VoiceType = VoiceType.ONE_WAY_VOICE
 
     private val DEFAULT_MAX_ZOOM_SCALE = 3.0F
-    private val FLING_MIN_DISTANCE = 100
-    private val FLING_MIN_VELOCITY = 0
 
 
     private val NONE = 0
@@ -469,6 +468,7 @@ class PlaybackMonitor @JvmOverloads constructor(
         releaseAudio()
         unAttachCamera()
         unRegisterAVChannelRecordStatus()
+        stopPlayTime()
         mOnPlaybackCallback = null
     }
 
