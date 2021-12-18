@@ -257,7 +257,8 @@ fun ByteArray?.parseRecordVideoEvent(): TRecordVideoInfo? {
     }
     Liotc.d("parseRecordVideoEvent", "count[$count]")
     val list = mutableListOf<TEvent>()
-    val calendar = Calendar.getInstance()
+    //设备返回的时间是零时区的时间
+    val calendar = Calendar.getInstance(TimeZone.getTimeZone("gmt"))
     (0 until count).forEach {
         val start = it * eachSize + offset
 
