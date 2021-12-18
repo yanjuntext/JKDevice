@@ -839,6 +839,7 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
 
         if (channel == null) {
             channel = AVChannel(avChannel, viewAccount, viewPasswd, uid, this)
+            channel.setSid(mSID)
             mAVChannels.add(channel)
         }
         channel.start()
