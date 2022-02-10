@@ -222,3 +222,13 @@ data class TFormatSdCard(val storage: Int, val result: Boolean)
  */
 data class TPlayback(val type: PlaybackStatus?, val channel: Int, val time: Int,val iType:Int)
 
+/**
+ * 解析推送地址
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_PUSHSERVER_ADDR_SETTING_RESP]
+ * @param get 是否是获取
+ * @param result 是否成功
+ * @param ip  IP地址 ru:47.90.57.61
+ * @param port 端口号  8080
+ * @param path PW_Server/server.php
+ */
+data class TPushUrl(val get:Boolean,val result:Boolean,val ip:String?,val port:Int,val path:String?,var url:String?)

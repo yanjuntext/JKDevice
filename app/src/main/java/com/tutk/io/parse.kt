@@ -420,4 +420,26 @@ fun ByteArray?.parsePlayBack(): TPlayback? {
     }
     return TPlayback(status, channel, time, type)
 }
+/**
+ * 解析推送地址
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_PUSHSERVER_ADDR_SETTING_RESP]
+ * @param get 是否是获取
+ * @param result 是否成功
+ * @param ip  IP地址 ru:47.90.57.61
+ * @param port 端口号  8080
+ * @param path PW_Server/server.php
+ */
+fun ByteArray?.parsePush(): TPushUrl? {
+    if (this == null || size < 56) return null
+    val get = littleInt(0) == 0
+    val result = littleInt(4) == 0
+    val ip = ByteArray(24)
+    System.arraycopy(this, 8, ip, 0, ip.size)
+    val port = littleInt(32)
+    val path = ByteArray(20)
+    System.arraycopy(this, 36, path, 0, path.size)
+    val _ip = ip.getString()
+    val _path = path.getString()
+    return TPushUrl(get, result, ip.getString(), port, path.getString(), "${_ip}:${port}/${_path}")
+}
 
