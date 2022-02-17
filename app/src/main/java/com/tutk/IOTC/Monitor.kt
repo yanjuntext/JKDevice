@@ -41,7 +41,8 @@ class Monitor @JvmOverloads constructor(
     context: Context,
     attr: AttributeSet?,
     defStyle: Int = 0
-) : SurfaceView(context, attr, defStyle), LifecycleObserver, SurfaceHolder.Callback, OnIOCallback,OnSessionChannelCallback,OnFrameCallback{
+) : SurfaceView(context, attr, defStyle), LifecycleObserver, SurfaceHolder.Callback, OnIOCallback,
+    OnSessionChannelCallback, OnFrameCallback {
 
 
     private var mPlayMode: PlayMode = PlayMode.PLAY_LIVE
@@ -114,6 +115,10 @@ class Monitor @JvmOverloads constructor(
 
     var isRecording = false
 
+    /**宽高比例*/
+    private var widthRation = 16
+    private var heightRation = 9
+
 
     init {
         mSurHolder = holder
@@ -179,14 +184,14 @@ class Monitor @JvmOverloads constructor(
         if (nScreenWidth != 0 && nScreenHeight != 0) {
             Liotc.d("Monitor", "_setFullScreen 2")
             isFullScreen = false
-            val cHeight = nScreenWidth * 9 / 16
+            val cHeight = nScreenWidth * heightRation / widthRation
             if (cHeight >= nScreenHeight) {
                 val ratio = cHeight * 1.0f / nScreenHeight
                 val space = (cHeight - nScreenHeight) / 2
                 mCurrentScale = ratio
                 mRectCanvas.set(0, -space, nScreenWidth, cHeight - space)
             } else {
-                val cWidth = nScreenHeight * 16 / 9
+                val cWidth = nScreenHeight * widthRation / heightRation
                 val ratio = cWidth * 1.0f / nScreenWidth
                 val space = (cWidth - nScreenWidth) / 2
                 mCurrentScale = ratio
@@ -203,9 +208,9 @@ class Monitor @JvmOverloads constructor(
     /**缩放至原始大小*/
     private fun scaleToOrigin() {
         if (nScreenWidth != 0 && nScreenHeight != 0) {
-            val cHeight = nScreenWidth * 9 / 16
+            val cHeight = nScreenWidth * heightRation / widthRation
             if (cHeight >= nScreenHeight) {
-                val cWidth = nScreenHeight * 16 / 9
+                val cWidth = nScreenHeight * widthRation / heightRation
                 val space = (nScreenWidth - cWidth) / 2
                 mRectCanvas.set(space, 0, cWidth + space, nScreenHeight)
             } else {
@@ -231,9 +236,10 @@ class Monitor @JvmOverloads constructor(
         mCamera?.setPlayMode(mAvChannel, mPlayMode)
         mCamera?.setVoiceType(mAvChannel, mVoiceType)
         registerAVChannelRecordStatus(mAVChannelRecordStatus)
-        Liotc.d("Monitor","attachCamera")
+        Liotc.d("Monitor", "attachCamera")
         renderJob()
     }
+
 
     /**解绑Camera*/
     fun unAttachCamera() {
@@ -247,6 +253,14 @@ class Monitor @JvmOverloads constructor(
         isRunning = false
         mRenderJob?.cancel()
         mRenderJob = null
+    }
+
+    /**
+     * 设置宽高比例
+     */
+    fun setWidthHeightRation(widthRation: Int, heightRation: Int) {
+        this.widthRation = widthRation
+        this.heightRation = heightRation
     }
 
     /**
@@ -352,10 +366,10 @@ class Monitor @JvmOverloads constructor(
 
     private fun renderJob() {
         if (isRunning && mRenderJob?.isActive == true) {
-            Liotc.d("Monitor","renderJob is Running return [$isRunning],[${mRenderJob?.isActive}]")
+            Liotc.d("Monitor", "renderJob is Running return [$isRunning],[${mRenderJob?.isActive}]")
             return
         }
-        Liotc.d("Monitor","renderJob running")
+        Liotc.d("Monitor", "renderJob running")
         isRunning = true
         mRenderJob = GlobalScope.launch(Dispatchers.IO) {
 
@@ -363,14 +377,17 @@ class Monitor @JvmOverloads constructor(
             mPaint.isDither = true
 
             while (isRunning && mRenderJob?.isActive == true) {
-                Liotc.d("Monitor","renderJob -----[${mLastZoomTime != null}],[${mLastFrame?.isRecycled == false}]")
+                Liotc.d(
+                    "Monitor",
+                    "renderJob -----[${mLastZoomTime != null}],[${mLastFrame?.isRecycled == false}]"
+                )
                 if (mLastFrame != null && mLastFrame?.isRecycled == false) {
                     try {
                         videoCanvas = mSurHolder?.lockCanvas()
                         videoCanvas?.let { canvas ->
                             canvas.drawColor(Color.BLACK)
                             mLastFrame?.let { bitmap ->
-                                Liotc.d("Monitor","drawBitmap")
+                                Liotc.d("Monitor", "drawBitmap")
                                 canvas.drawBitmap(bitmap, null, mRectCanvas, mPaint)
                             }
                         }
@@ -385,7 +402,7 @@ class Monitor @JvmOverloads constructor(
                 }
                 delay(33L)
             }
-            Liotc.d("Monitor","renderJob end")
+            Liotc.d("Monitor", "renderJob end")
             isRunning = false
         }
     }
@@ -469,7 +486,7 @@ class Monitor @JvmOverloads constructor(
                     }
 
                     if (nScreenWidth != 0 && nScreenHeight != 0) {
-                        val cHeight = nScreenWidth * 9 / 16
+                        val cHeight = nScreenWidth * heightRation / widthRation
                         var left = mRectCanvas.left
                         var top = mRectCanvas.top
                         var right = mRectCanvas.right
@@ -660,10 +677,10 @@ class Monitor @JvmOverloads constructor(
             nScreenHeight = measuredHeight
             mRectMonitor.set(0, 0, width, height)
 
-            val cHeight = nScreenWidth * 9 / 16
+            val cHeight = nScreenWidth * heightRation / widthRation
             if (cHeight > nScreenHeight) {
                 //如果正常的高度 大于设置的高度,则以高度为基准,并且居中处理
-                val cWidth = nScreenHeight * 16 / 9
+                val cWidth = nScreenHeight * widthRation / heightRation
                 val space = (nScreenWidth - cWidth) / 2
                 mRectCanvas.set(space, 0, cWidth + space, nScreenHeight)
             } else {
@@ -687,15 +704,18 @@ class Monitor @JvmOverloads constructor(
     }
 
     override fun receiveFrameData(camera: Camera?, avChannel: Int, bmp: Bitmap?) {
-        if(avChannel != mAvChannel){
-            Liotc.d("Monitor","receiveFrameData error [$avChannel],[$mAvChannel],[${bmp == null}]")
+        if (avChannel != mAvChannel) {
+            Liotc.d("Monitor", "receiveFrameData error [$avChannel],[$mAvChannel],[${bmp == null}]")
         }
         if (avChannel == mAvChannel) {
-            Liotc.d("Monitor","receiveFrameData success [$avChannel],[$mAvChannel],[${bmp == null}]")
+            Liotc.d(
+                "Monitor",
+                "receiveFrameData success [$avChannel],[$mAvChannel],[${bmp == null}]"
+            )
             mLastFrame = bmp
 
-            if(mRenderJob == null || mRenderJob?.isActive != true || !isRunning){
-                Liotc.d("Monitor","restart render job")
+            if (mRenderJob == null || mRenderJob?.isActive != true || !isRunning) {
+                Liotc.d("Monitor", "restart render job")
                 renderJob()
             }
 
@@ -703,7 +723,9 @@ class Monitor @JvmOverloads constructor(
             nScreenHeight = measuredHeight
             mBitmapWidth = bmp?.width ?: 0
             mBitmapHeight = bmp?.height ?: 0
-            if ((bmp?.width ?: 0) > 0 && (bmp?.height ?: 0) > 0 && (nScreenHeight != mCurVideoHeight || nScreenWidth != mCurVideoWidth)) {
+            if ((bmp?.width ?: 0) > 0 && (bmp?.height
+                    ?: 0) > 0 && (nScreenHeight != mCurVideoHeight || nScreenWidth != mCurVideoWidth)
+            ) {
                 Liotc.d(
                     "Monitor",
                     "screen[${nScreenWidth},${nScreenHeight}],video[${mCurVideoWidth},${mCurVideoHeight}]"
@@ -713,10 +735,10 @@ class Monitor @JvmOverloads constructor(
                 mCurVideoWidth = nScreenWidth
                 mCurVideoHeight = nScreenHeight
 
-                val cHeight = nScreenWidth * 9 / 16
+                val cHeight = nScreenWidth * heightRation / widthRation
                 if (cHeight > nScreenHeight) {
                     //如果正常的高度 大于设置的高度,则以高度为基准,并且居中处理
-                    val cWidth = nScreenHeight * 16 / 9
+                    val cWidth = nScreenHeight * widthRation / heightRation
                     val space = (nScreenWidth - cWidth) / 2
                     mRectCanvas.set(space, 0, cWidth + space, nScreenHeight)
                 } else {
