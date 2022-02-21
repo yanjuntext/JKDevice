@@ -133,6 +133,7 @@ class MonitorVer @JvmOverloads constructor(
     /**是否在播放*/
     private var isShowing = false
 
+    var isPlaying = false
 
 
     init {
@@ -315,6 +316,7 @@ class MonitorVer @JvmOverloads constructor(
     }
 
     fun stopShow() {
+        isPlaying = false
         isShowing = false
         mCamera?.stopShow(mAvChannel)
     }
@@ -412,7 +414,6 @@ class MonitorVer @JvmOverloads constructor(
                 )
                 if (mLastFrame != null && mLastFrame?.isRecycled == false) {
                     try {
-
                         videoCanvas = mSurHolder?.lockCanvas()
                         videoCanvas?.rotate(
                             90f,
@@ -875,6 +876,7 @@ class MonitorVer @JvmOverloads constructor(
             AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GETAUDIOOUTFORMAT_RESP -> {
                 Liotc.d("Monitor", " Audio Codec resp ")
                 if (isShowing) {
+                    isPlaying = true
                     mCamera?.startShow(context, mAvChannel)
                 }
 //                renderJob()
@@ -937,11 +939,9 @@ class MonitorVer @JvmOverloads constructor(
     fun takePhoto() = rotationBitmap(mLastFrame)
 
     //拍照并保存到文件
-    fun takePhoto(path: String, name: String): File? {
+    fun takePhoto(path: String, name: String, urlPath: String? = null): File? {
 //        val bitmap = mLastFrame ?: return null
         val bitmap = rotationBitmap(mLastFrame) ?: return null
-
-
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             //读写权限
@@ -981,7 +981,15 @@ class MonitorVer @JvmOverloads constructor(
                 put(MediaStore.Images.Media.DISPLAY_NAME, name)
                 put(MediaStore.Images.Media.MIME_TYPE, "image/*")
                 put(MediaStore.Images.Media.TITLE, name)
-                put(MediaStore.Images.Media.RELATIVE_PATH, "${Environment.DIRECTORY_DCIM}/")
+                if (urlPath.isNullOrEmpty()) {
+                    put(MediaStore.Images.Media.RELATIVE_PATH, "${Environment.DIRECTORY_DCIM}/")
+                } else {
+                    put(
+                        MediaStore.Images.Media.RELATIVE_PATH,
+                        "${Environment.DIRECTORY_DCIM}/$urlPath/"
+                    )
+                }
+
             }
 
             contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, value)
@@ -1035,9 +1043,9 @@ class MonitorVer @JvmOverloads constructor(
     }
 
     private fun rotationBitmap(origin: Bitmap?): Bitmap? {
-        Liotc.d("Monitor","rotationBitmap 1")
+        Liotc.d("Monitor", "rotationBitmap 1")
         origin ?: return null
-        Liotc.d("Monitor","rotationBitmap 2")
+        Liotc.d("Monitor", "rotationBitmap 2")
         val width: Int = origin.width
         val height: Int = origin.height
         val matrix = Matrix()
@@ -1047,7 +1055,7 @@ class MonitorVer @JvmOverloads constructor(
 //        if (newBM == origin) {
 //            return newBM
 //        }
-        Liotc.d("Monitor","rotationBitmap 3")
+        Liotc.d("Monitor", "rotationBitmap 3")
         return newBM
     }
 
