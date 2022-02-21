@@ -156,7 +156,7 @@ class AVChannel(
     }
 
     /**视频直播*/
-    internal fun startShow(context: Context?) {
+    internal fun startShow(context: Context?,ratation:Int = 0) {
 
         if (mRecvVideoJob == null) {
             mRecvVideoJob = RecvVideoJob(this, iavChannelStatus = iavChannelStatus)

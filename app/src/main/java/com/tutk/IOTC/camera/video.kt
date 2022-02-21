@@ -409,6 +409,12 @@ class DecodeVideoJob(
 
     private fun isActive() = runJob?.isActive == true
 
+    private var ratation = 0
+
+    fun setRatation(ratation:Int){
+        this.ratation = ratation
+    }
+
     fun start(context: Context?) {
 
         if (context == null) {
@@ -600,6 +606,7 @@ class DecodeVideoJob(
                                                 }
 
                                                 if (videoWidth > 0 && videoHeight > 0) {
+
                                                     bmp = Bitmap.createBitmap(
                                                         videoWidth,
                                                         videoHeight,
