@@ -454,7 +454,6 @@ object AVIOCTRLDEFs {
     const val startSOUND_ERROR = 3
 
 
-
     private fun initByteArray(size: Int) = ByteArray(size)
 
     /**收到第一条IFrame时回复*/
@@ -824,13 +823,13 @@ object AVIOCTRLDEFs {
      * @param timeInMillis 时间
      * @param diffTime 时区偏移量  （S）
      */
-    fun syncTime(timeInMillis:Long,diffTime:Int):ByteArray{
+    fun syncTime(timeInMillis: Long, diffTime: Int): ByteArray {
         val data = initByteArray(12)
         val instance = Calendar.getInstance()
         instance.timeInMillis = timeInMillis
         val year = instance.get(Calendar.YEAR).toShort().littleByteArray()
-        System.arraycopy(year,0,data,0,year.size)
-        val month = instance.get(Calendar.MONTH) +1
+        System.arraycopy(year, 0, data, 0, year.size)
+        val month = instance.get(Calendar.MONTH) + 1
         data[2] = month.toByte()
         val day = instance.get(Calendar.DAY_OF_MONTH)
         data[3] = day.toByte()
@@ -842,7 +841,7 @@ object AVIOCTRLDEFs {
         data[6] = second.toByte()
         data[7] = 1
         val _diffTime = diffTime.littleByteArray()
-        System.arraycopy(_diffTime,0,data,8,_diffTime.size)
+        System.arraycopy(_diffTime, 0, data, 8, _diffTime.size)
         return data
     }
 
@@ -978,22 +977,45 @@ object AVIOCTRLDEFs {
      * @param time 回放视频的日期 回放的具体录像
      * @param percent 百分比
      */
-    fun playback(type: PlaybackStatus, time: ByteArray,percent:Int): ByteArray {
+    fun playback(type: PlaybackStatus, time: ByteArray, percent: Int): ByteArray {
         val data = initByteArray(24)
         val channel = 0.littleByteArray()
         val _type = type.status.littleByteArray()
         val param = 0.littleByteArray()
 
-        System.arraycopy(channel,0,data,0,channel.size)
-        System.arraycopy(_type,0,data,4,_type.size)
-        System.arraycopy(param,0,data,8,param.size)
-        System.arraycopy(time,0,data,12,time.size)
-        if(type == PlaybackStatus.SEEKTIME){
+        System.arraycopy(channel, 0, data, 0, channel.size)
+        System.arraycopy(_type, 0, data, 4, _type.size)
+        System.arraycopy(param, 0, data, 8, param.size)
+        System.arraycopy(time, 0, data, 12, time.size)
+        if (type == PlaybackStatus.SEEKTIME) {
             val _percent = percent.littleByteArray()
-            System.arraycopy(_percent,0,data,20,_percent.size)
+            System.arraycopy(_percent, 0, data, 20, _percent.size)
         }
         return data
     }
+
+    /**
+     * 喂食计划
+     * [com.tutk.io.getFeedPlan]
+     * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
+     */
+    fun feedPlan(time: Int): ByteArray {
+        val data = initByteArray(32)
+
+        data[0] = 0x02
+        data[1] = 0x00
+        data[2] = 5
+
+        val HEAD: Short = 0xFFFF.toShort()
+        val _head = HEAD.littleByteArray()
+        System.arraycopy(_head, 0, data, 4, _head.size)
+        data[5] = 0x02
+        data[6] = 0x01
+        data[7] = time.toByte()
+
+        return data
+    }
+
 }
 
 fun Int.byteArray() = ByteArray(this)

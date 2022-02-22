@@ -500,24 +500,30 @@ fun Camera?.setTime(channel: Int = Camera.DEFAULT_AV_CHANNEL, must: Boolean = fa
  * 同步 时间和时区
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_TIME_SYNC_REQ]
  */
-fun Camera?.syncTime(channel: Int = Camera.DEFAULT_AV_CHANNEL,must: Boolean = false):Boolean{
+fun Camera?.syncTime(channel: Int = Camera.DEFAULT_AV_CHANNEL, must: Boolean = false): Boolean {
     val instance = Calendar.getInstance()
     val time = instance.timeInMillis
-    return syncTime(channel,time,TimeZone.getDefault().getOffset(time)/1000,must)
+    return syncTime(channel, time, TimeZone.getDefault().getOffset(time) / 1000, must)
 }
+
 /**
  * 同步 时间和时区
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_TIME_SYNC_REQ]
  */
-fun Camera?.syncTime(channel: Int = Camera.DEFAULT_AV_CHANNEL,timeInMillis:Long,diffTime:Int,must: Boolean = false):Boolean{
-    return if(canSend() || must){
+fun Camera?.syncTime(
+    channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    timeInMillis: Long,
+    diffTime: Int,
+    must: Boolean = false
+): Boolean {
+    return if (canSend() || must) {
         this?.sendIOCtrl(
             channel,
             AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_TIME_SYNC_REQ,
             AVIOCTRLDEFs.syncTime(timeInMillis, diffTime)
         )
         true
-    }else false
+    } else false
 }
 
 /**
@@ -807,6 +813,24 @@ fun Camera?.getEventList(
 
 }
 
+/**
+ * 获取喂食计划
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
+ *  一次性返回8餐
+ */
+fun Camera?.getFeedPlan(
+    channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    time: Int = 0, must: Boolean = false
+): Boolean {
+    return if (canSend() || must) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ,
+            AVIOCTRLDEFs.feedPlan(time)
+        )
+        true
+    } else false
+}
 
 
 

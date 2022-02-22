@@ -62,7 +62,7 @@ data class TWifiInfo(
     val enctype: Int,
     val signal: Int,
     val status: WifiStatus,
-    val pwd:String? = null
+    val pwd: String? = null
 )
 
 /**
@@ -220,7 +220,7 @@ data class TFormatSdCard(val storage: Int, val result: Boolean)
  * if [type]==[PlaybackStatus.SEEKTIME] time is Percent 50%=50
  * @param iType //if [type] is NULL
  */
-data class TPlayback(val type: PlaybackStatus?, val channel: Int, val time: Int,val iType:Int)
+data class TPlayback(val type: PlaybackStatus?, val channel: Int, val time: Int, val iType: Int)
 
 /**
  * 解析推送地址
@@ -231,4 +231,32 @@ data class TPlayback(val type: PlaybackStatus?, val channel: Int, val time: Int,
  * @param port 端口号  8080
  * @param path PW_Server/server.php
  */
-data class TPushUrl(val get:Boolean,val result:Boolean,val ip:String?,val port:Int,val path:String?,var url:String?)
+data class TPushUrl(
+    val get: Boolean,
+    val result: Boolean,
+    val ip: String?,
+    val port: Int,
+    val path: String?,
+    var url: String?
+)
+
+/**
+ * 解析喂食计划
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_RESP]
+ * @param index id
+ * @param week 喂食星期
+ * @param hour 喂食小时
+ * @param min 喂食分钟
+ * @param num 喂食份数
+ * @param isEnable 是否喂食
+ * @param musicIndex 喂食音频
+ */
+data class TFeedPlan(
+    val index: Int,
+    val week: Int,
+    val hour: Int,
+    val min: Int,
+    val num: Int,
+    val isEnable: Boolean,
+    val musicIndex: Int
+)
