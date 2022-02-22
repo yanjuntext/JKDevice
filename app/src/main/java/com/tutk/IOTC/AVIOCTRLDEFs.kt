@@ -1016,6 +1016,75 @@ object AVIOCTRLDEFs {
         return data
     }
 
+    /**
+     * 修改喂食计划
+     * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
+     * @param year  年
+     * @param month 月
+     * @param day 日或星期
+     * @param hour 计划小时
+     * @param min 计划分钟
+     * @param num 喂食份数
+     * @param feedType 喂食类型 1：自动喂食
+     * @param id 喂食计划ID
+     * @param enable 开关
+     * @param musicIndex 喂食音频
+     */
+    fun editFeedPlan(
+        year: Int,
+        month: Int,
+        day: Int,
+        hour: Int,
+        min: Int,
+        num: Int,
+        feedType: Int,
+        id: Int,
+        enable: Int,
+        musicIndex: Int
+    ): ByteArray {
+        val data = initByteArray(32)
+        val cmd: Short = 1
+        System.arraycopy(cmd.littleByteArray(), 0, data, 0, 2)
+        data[2] = 14
+        val info =
+            getFeedPlanData(year, month, day, hour, min, num, feedType, id, enable, musicIndex)
+        System.arraycopy(info, 0, data, 4, info.size)
+        return data
+    }
+
+    /**
+     * 喂食计划 喂食信息
+     */
+    private fun getFeedPlanData(
+        year: Int,
+        month: Int,
+        day: Int,
+        hour: Int,
+        min: Int,
+        num: Int,
+        feedType: Int,
+        id: Int,
+        enable: Int,
+        musicIndex: Int
+    ): ByteArray {
+        val data = initByteArray(14)
+        val head: Short = -1
+        val _num = num.toShort()
+        System.arraycopy(head.littleByteArray(), 0, data, 0, 2)
+        data[2] = 1
+        data[3] = 10
+        data[4] = year.toByte()
+        data[5] = month.toByte()
+        data[6] = day.toByte()
+        data[7] = hour.toByte()
+        data[8] = min.toByte()
+        System.arraycopy(_num.littleByteArray(), 0, data, 9, 2)
+        data[11] = ((feedType shl 4) or enable).toByte()
+        data[12] = id.toByte()
+        data[13] = musicIndex.toByte()
+        return data
+    }
+
 }
 
 fun Int.byteArray() = ByteArray(this)

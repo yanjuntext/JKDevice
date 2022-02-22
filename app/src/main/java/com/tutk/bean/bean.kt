@@ -243,6 +243,15 @@ data class TPushUrl(
 /**
  * 解析喂食计划
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_RESP]
+ * @param result 结果
+ * @param isGet 是否是获取
+ * @param list 喂食计划
+ */
+data class TFeedPlanInfo(val result: Boolean, val isGet: Boolean, val list: ArrayList<TFeedPlan>)
+
+/**
+ * 解析喂食计划 喂食计划详细信息
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_RESP]
  * @param index id
  * @param week 喂食星期
  * @param hour 喂食小时

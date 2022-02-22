@@ -832,6 +832,32 @@ fun Camera?.getFeedPlan(
     } else false
 }
 
+/**
+ * 修改喂食计划
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
+ */
+fun Camera?.editFeedPlan(
+    channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    year: Int = 0xa5, month: Int = 0xa7, day: Int = 0x7f,
+    hour: Int, min: Int, num: Int, id: Int, enable:Boolean,musicIndex: Int
+): Boolean {
+    return if (canSend()) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ,
+            AVIOCTRLDEFs.editFeedPlan(year,month,day,hour,min,num,1,id,if(enable) 1 else 0,musicIndex)
+        )
+        true
+    } else false
+}
+/**
+ * 删除喂食计划
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
+ */
+fun Camera?.deleteFeedPlan(channel: Int = Camera.DEFAULT_AV_CHANNEL, id:Int):Boolean{
+    return editFeedPlan(channel,hour = 0,min = 0,num = 0,id = id,enable = false,musicIndex = 0)
+}
+
 
 
 

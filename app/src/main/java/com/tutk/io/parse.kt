@@ -449,13 +449,13 @@ fun ByteArray?.parsePush(): TPushUrl? {
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_RESP]
  * @param total 一共几餐
  */
-fun ByteArray?.parseFeedPlan(total: Int = 8): MutableList<TFeedPlan> {
+fun ByteArray?.parseFeedPlan(total: Int = 8): TFeedPlanInfo? {
     val list = mutableListOf<TFeedPlan>()
-    if (this == null) return list
+    if (this == null) return null
     val result = this[0].toInt()
     val dataSize = this[4].toInt()
     Liotc.d("parseFeedPlan", "result=$result,size=$dataSize")
-    if (dataSize > this.size) return list
+    if (dataSize > this.size) return null
 
     val cmdType = this[10].toInt()
     val cmdSize = this[11]
@@ -464,25 +464,37 @@ fun ByteArray?.parseFeedPlan(total: Int = 8): MutableList<TFeedPlan> {
     val time = this.littleInt(12)
     val size = cmdSize + 4
     if (cmdType == AVIOCTRLDEFs.TTY_CMD_GET_TIMING_REQ && cmdSize > 0) {
-        (0 until total).forEach { index->
+        (0 until total).forEach { index ->
             val start = index * size + offset
-            if(start > this.size || start + size > this.size) return@forEach
-            val week = this[start + 6].toInt()
+            if (start > this.size || start + size > this.size) return@forEach
+            var week = this[start + 6].toInt()
 
-            val hour = this[start + 7].toInt()
+            if (week < 0) week = 0
 
-            val min = this[start + 8].toInt()
+            var hour = this[start + 7].toInt()
 
-            val num = this.littleShort(start + 9)
+            if (hour < 0 || hour >= 24) hour = 0
+
+            var min = this[start + 8].toInt()
+            if (min < 0 || min >= 60) min = 0
+
+            var num = this.littleShort(start + 9)
+            if (num < 0) num = 0
 
             val enable = (this[start + 11].toInt() and 0x01) == 1
             val id = this[start + 12].toInt()
             val musicIndex = this[start + 13].toInt()
-            val plan = TFeedPlan(id, week, hour, min, num = num.toInt(), enable, musicIndex)
-            Liotc.d("parseFeedPlan", "plan=$plan")
-            list.add(plan)
+            if (id > 0) {
+                val plan = TFeedPlan(id, week, hour, min, num = num.toInt(), enable, musicIndex)
+                Liotc.d("parseFeedPlan", "plan=$plan")
+                list.add(plan)
+            }
         }
     }
-    return list
+    return TFeedPlanInfo(
+        result == 0,
+        cmdType == AVIOCTRLDEFs.TTY_CMD_GET_TIMING_REQ,
+        list as ArrayList<TFeedPlan>
+    )
 }
 
