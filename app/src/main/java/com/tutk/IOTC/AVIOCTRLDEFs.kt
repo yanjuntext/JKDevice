@@ -1084,6 +1084,17 @@ object AVIOCTRLDEFs {
         data[13] = musicIndex.toByte()
         return data
     }
+    /**
+     * 获取设备版本号、检查设备是否可以升级
+     * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ]
+     * [com.tutk.io.getDeviceVersionInfo]
+     */
+    fun getDeviceVersionInfo(type: Int):ByteArray{
+        val data = initByteArray(8)
+        val littleByteArray = type.littleByteArray()
+        System.arraycopy(littleByteArray,0,data,0,4)
+        return data
+    }
 
 }
 

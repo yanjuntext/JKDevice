@@ -877,6 +877,7 @@ fun Camera?.deleteFeedPlan(channel: Int = Camera.DEFAULT_AV_CHANNEL, id: Int): B
         musicIndex = 0
     )
 }
+
 /**
  * 手动喂食
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
@@ -903,6 +904,40 @@ fun Camera?.manualFeed(channel: Int = Camera.DEFAULT_AV_CHANNEL, num: Int): Bool
                 1,
                 10
             )
+        )
+        true
+    } else false
+}
+
+/**
+ * 获取设备版本号、检查设备是否可以升级
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ]
+ */
+fun Camera?.getDeviceVersionInfo(
+    channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    must: Boolean = false
+): Boolean {
+    return if (canSend() || must) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ,
+            AVIOCTRLDEFs.getDeviceVersionInfo(AVIOCTRLDEFs.UPGRADE_ONLINE_TYPE_CHECK)
+        )
+        true
+    } else false
+}
+
+/**
+ * 开始升级
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ]
+ * @param type [com.tutk.bean.TDeviceVersionInfo.result]
+ */
+fun Camera?.upgrade(channel: Int = Camera.DEFAULT_AV_CHANNEL,type:Int = AVIOCTRLDEFs.UPGRADE_ONLINE_TYPE_SYS):Boolean{
+    return if (canSend()) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ,
+            AVIOCTRLDEFs.getDeviceVersionInfo(type)
         )
         true
     } else false

@@ -485,19 +485,6 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
         mSID = -1
 
     }
-    //stopThread startConnectJob uid[JTM8YNGRY361ESUP111A]   uid[JTM8YNGRY361ESUP111A]
-    //2021-12-15 10:35:21.809 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: reconnect
-    //2021-12-15 10:35:21.814 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: stopConnectJob time[0]   uid[JTM8YNGRY361ESUP111A]
-    //2021-12-15 10:35:21.816 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: emir [9999]   uid[JTM8YNGRY361ESUP111A]
-    //2021-12-15 10:35:21.817 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: disconnect   uid[JTM8YNGRY361ESUP111A]
-    //2021-12-15 10:35:21.817 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: emir [-1]   uid[JTM8YNGRY361ESUP111A]
-    //2021-12-15 10:35:22.369 32003-32030/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: ===ThreadConnectDev retonline ing[0],devid[JTM8YNGRY361ESUP111A]   uid[JTM8YNGRY361ESUP111A]
-    //2021-12-15 10:35:22.371 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: emir [1]   uid[JTM8YNGRY361ESUP111A]
-    //
-    //    --------- beginning of system
-    //2021-12-15 10:35:22.624 32003-32030/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: ===ThreadConnectDev retonline id[-90],devid[JTM8YNGRY361ESUP111A]   uid[JTM8YNGRY361ESUP111A]
-    //2021-12-15 10:35:22.626 32003-32030/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: reconnect [10000],[-1]
-    //2021-12-15 10:35:22.628 32003-32003/com.tutk.tutkkotlin D/IOTCamera: startConnectJob: emir [8]   uid[JTM8YNGRY361ESUP111A]
 
     fun connect(channel: Int, account: String = "admin") {
         _connect()

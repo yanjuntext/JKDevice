@@ -498,3 +498,38 @@ fun ByteArray?.parseFeedPlan(total: Int = 8): TFeedPlanInfo? {
     )
 }
 
+/**
+ * 解析设备版本号
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_RESP]
+ */
+fun ByteArray?.parseDeviceVersionInfo(): TDeviceVersionInfo? {
+    if (this == null || this.size < 72) return null
+    //固件版本号
+    val system = ByteArray(16)
+    //UI版本号
+    val ui = ByteArray(16)
+
+    val systemLatest = ByteArray(16)
+
+    val uiLatest = ByteArray(16)
+
+    val type = this.littleInt(0)
+    val result = this.littleInt(4)
+
+
+    System.arraycopy(this, 8, ui, 0, 16)
+    System.arraycopy(this, 24, system, 0, 16)
+    System.arraycopy(this, 40, uiLatest, 0, 16)
+    System.arraycopy(this, 56, systemLatest, 0, 16)
+
+    return TDeviceVersionInfo(
+        type,
+        result,
+        systemVersion = system.getString(),
+        uiVersion = ui.getString(),
+        systemVersionLatest = systemLatest.getString(),
+        uiVersionLatest = uiLatest.getString()
+    )
+
+}
+

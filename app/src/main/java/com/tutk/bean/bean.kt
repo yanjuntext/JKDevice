@@ -269,3 +269,22 @@ data class TFeedPlan(
     val isEnable: Boolean,
     val musicIndex: Int
 )
+
+/**
+ * 解析设备版本号
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_RESP]
+ *  @param type 0:仅检查check  1:仅升级system 2:仅升级ui 3:升级system and ui  7:仅升级mcu
+ *  @param result 1：系统版本可以升级   2：UI（单片机）版本可以升级  3:系统和单片机都可以升级
+ *  @param systemVersion 系统版本
+ *  @param uiVersion ui(单片机)版本
+ *  @param systemVersionLatest 最新系统版本
+ *  @param uiVersionLatest 最新UI版本或MCU版本
+ */
+data class TDeviceVersionInfo(
+    val type: Int,
+    val result: Int,
+    val systemVersion: String,
+    val uiVersion: String,
+    val systemVersionLatest: String,
+    val uiVersionLatest: String
+)
