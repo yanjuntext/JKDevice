@@ -982,11 +982,11 @@ class MonitorVer @JvmOverloads constructor(
                 put(MediaStore.Images.Media.MIME_TYPE, "image/*")
                 put(MediaStore.Images.Media.TITLE, name)
                 if (urlPath.isNullOrEmpty()) {
-                    put(MediaStore.Images.Media.RELATIVE_PATH, "${Environment.DIRECTORY_DCIM}/")
+                    put(MediaStore.Images.Media.RELATIVE_PATH, "${Environment.DIRECTORY_PICTURES}/")
                 } else {
                     put(
                         MediaStore.Images.Media.RELATIVE_PATH,
-                        "${Environment.DIRECTORY_DCIM}/$urlPath/"
+                        "${Environment.DIRECTORY_PICTURES}/$urlPath/"
                     )
                 }
 

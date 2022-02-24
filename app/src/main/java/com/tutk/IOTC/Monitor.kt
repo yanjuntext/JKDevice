@@ -892,7 +892,7 @@ class Monitor @JvmOverloads constructor(
                 put(MediaStore.Images.Media.DISPLAY_NAME, name)
                 put(MediaStore.Images.Media.MIME_TYPE, "image/*")
                 put(MediaStore.Images.Media.TITLE, name)
-                put(MediaStore.Images.Media.RELATIVE_PATH, "${Environment.DIRECTORY_DCIM}/")
+                put(MediaStore.Images.Media.RELATIVE_PATH, "${Environment.DIRECTORY_PICTURES}/")
             }
             contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, value)
                 ?.let { uri ->

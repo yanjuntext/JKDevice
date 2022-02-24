@@ -839,23 +839,73 @@ fun Camera?.getFeedPlan(
 fun Camera?.editFeedPlan(
     channel: Int = Camera.DEFAULT_AV_CHANNEL,
     year: Int = 0xa5, month: Int = 0xa7, day: Int = 0x7f,
-    hour: Int, min: Int, num: Int, id: Int, enable:Boolean,musicIndex: Int
+    hour: Int, min: Int, num: Int, id: Int, enable: Boolean, musicIndex: Int
 ): Boolean {
     return if (canSend()) {
         this?.sendIOCtrl(
             channel,
             AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ,
-            AVIOCTRLDEFs.editFeedPlan(year,month,day,hour,min,num,1,id,if(enable) 1 else 0,musicIndex)
+            AVIOCTRLDEFs.editFeedPlan(
+                year,
+                month,
+                day,
+                hour,
+                min,
+                num,
+                1,
+                id,
+                if (enable) 1 else 0,
+                musicIndex
+            )
         )
         true
     } else false
 }
+
 /**
  * 删除喂食计划
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
  */
-fun Camera?.deleteFeedPlan(channel: Int = Camera.DEFAULT_AV_CHANNEL, id:Int):Boolean{
-    return editFeedPlan(channel,hour = 0,min = 0,num = 0,id = id,enable = false,musicIndex = 0)
+fun Camera?.deleteFeedPlan(channel: Int = Camera.DEFAULT_AV_CHANNEL, id: Int): Boolean {
+    return editFeedPlan(
+        channel,
+        hour = 0,
+        min = 0,
+        num = 0,
+        id = id,
+        enable = false,
+        musicIndex = 0
+    )
+}
+/**
+ * 手动喂食
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
+ */
+fun Camera?.manualFeed(channel: Int = Camera.DEFAULT_AV_CHANNEL, num: Int): Boolean {
+    return if (canSend()) {
+        val calender = Calendar.getInstance()
+        val hour = calender.get(Calendar.HOUR_OF_DAY)
+        val min = calender.get(Calendar.MINUTE)
+
+        val instance = Calendar.getInstance(TimeZone.getTimeZone("gmt"))
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ,
+            AVIOCTRLDEFs.editFeedPlan(
+                instance.get(Calendar.YEAR) - 1960,
+                instance.get(Calendar.MONTH) + 1,
+                0x7f,
+                hour,
+                min,
+                num,
+                0,
+                0,
+                1,
+                10
+            )
+        )
+        true
+    } else false
 }
 
 

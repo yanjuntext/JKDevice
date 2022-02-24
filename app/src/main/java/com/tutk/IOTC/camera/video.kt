@@ -10,7 +10,6 @@ import com.tutk.IOTC.listener.OnResultCallback
 import com.tutk.IOTC.status.PlayMode
 import com.tutk.IOTC.status.RecordStatus
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.lang.ref.WeakReference
@@ -21,7 +20,6 @@ import java.nio.ByteBuffer
  * @CreateDate: 2021/11/20
  * @Description: 视频处理类相关
  */
-
 
 
 private fun Int.dp() = 10
@@ -327,7 +325,7 @@ class RecvVideoJob(
 
                     }
                 }
-                d(TAG,"recvvideo destroy [$mSID],[${getAvIndex()}]")
+                d(TAG, "recvvideo destroy [$mSID],[${getAvIndex()}]")
                 avChannel?.VideoFrameQueue?.removeAll()
                 if (mSID >= 0 && getAvIndex() >= 0) {
                     avChannel?.IOCtrlQueue?.Enqueue(
@@ -411,7 +409,7 @@ class DecodeVideoJob(
 
     private var ratation = 0
 
-    fun setRatation(ratation:Int){
+    fun setRatation(ratation: Int) {
         this.ratation = ratation
     }
 
@@ -561,7 +559,12 @@ class DecodeVideoJob(
                                             }
                                             mVideoBuffer?.flip()
                                             mVideoOutBuffer?.clear()
-                                            videoDecodeResult = mVideoDecoder?.decode(mVideoBuffer,avFrameSize,10,mVideoOutBuffer)?:-1
+                                            videoDecodeResult = mVideoDecoder?.decode(
+                                                mVideoBuffer,
+                                                avFrameSize,
+                                                10,
+                                                mVideoOutBuffer
+                                            ) ?: -1
 //                                            mVideoDecoder?.consumeNalUnitsFromDirectBuffer(
 //                                                mVideoBuffer,
 //                                                avFrameSize,
@@ -570,14 +573,14 @@ class DecodeVideoJob(
 
 
 //                                            if (mVideoDecoder?.isFrameReady == true) {
-                                                out_width[0] = mVideoDecoder?.width ?: 0
-                                                out_height[0] = mVideoDecoder?.height ?: 0
+                                            out_width[0] = mVideoDecoder?.width ?: 0
+                                            out_height[0] = mVideoDecoder?.height ?: 0
 //                                            }
                                             out_size[0] = out_width[0] * out_height[0] * 2
 
                                             d("out_size[${out_size[0]}],out_width[${out_width[0]}],out_height[${out_height[0]}]")
 
-                                            if (out_size[0] > 0 && out_height[0] > 0 && out_width[0] > 0 && videoDecodeResult>=0) {
+                                            if (out_size[0] > 0 && out_height[0] > 0 && out_width[0] > 0 && videoDecodeResult >= 0) {
                                                 videoWidth = out_width[0]
                                                 videoHeight = out_height[0]
 
@@ -825,6 +828,7 @@ internal object LocalRecordHelper {
             onResultCallback?.onResult(RecordStatus.HAD_RECORDING)
             return
         }
+        d(TAG, "startRecord [$width，$height]")
         val codeId = when (mAvChannel?.get()?.codeId) {
             AVFrame.MEDIA_CODEC_VIDEO_H264 -> AVFrame.MEDIA_CODEC_VIDEO_H264
             AVFrame.MEDIA_CODEC_VIDEO_H265 -> AVFrame.MEDIA_CODEC_VIDEO_H265
@@ -852,7 +856,7 @@ internal object LocalRecordHelper {
                     )
                 }
                 //开启录像要开启音频接收
-                mAvChannel?.get()?.let { avChannel->
+                mAvChannel?.get()?.let { avChannel ->
                     avChannel.setAudioTrackStatus(mContext?.get(), avChannel.audioPlayStatus, true)
                 }
                 delay(500)
@@ -965,7 +969,7 @@ internal object LocalRecordHelper {
         d(TAG, "stopRecord 222")
 
         //开启录像要开启音频接收
-        mAvChannel?.get()?.let { avChannel->
+        mAvChannel?.get()?.let { avChannel ->
             avChannel.setAudioTrackStatus(mContext?.get(), avChannel.audioPlayStatus, false)
         }
 
