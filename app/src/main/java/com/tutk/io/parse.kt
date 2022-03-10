@@ -590,6 +590,45 @@ fun ByteArray?.parseFeedPlan2(): TFeedPlanInfo2? {
     return TFeedPlanInfo2(result, isGet, list = list as ArrayList<TFeedPlan2>)
 }
 
+/**
+ * 解析事件记录 设备主动推送过来的
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_DEVICE_USER_EVENT_REPORT]
+ */
+fun ByteArray?.parseEventReport(): TEventReport? {
+    if (this == null) return null
+
+    return try {
+        val time = this.littleInt(8)
+        val eventType = this.littleInt(16)
+        val _id = ByteArray(16)
+        System.arraycopy(this, 20, _id, 0, 16)
+        val _devName = ByteArray(16)
+        System.arraycopy(this, 36, _devName, 0, 16)
+        val _picName = ByteArray(32)
+        System.arraycopy(this, 50, _picName, 0, 32)
+
+        val feedType = this[84].toInt()
+
+        val alarmReson = this[85].toInt()
+
+        val feedWeight = this.littleShort(86)
+
+        TEventReport(
+            time.toLong(),
+            eventType,
+            _id.getUtfString(),
+            _devName.getUtfString(),
+            _picName.getUtfString(),
+            feedType,
+            alarmReson,
+            feedWeight.toInt()
+        )
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
+    }
+
+}
 
 
 

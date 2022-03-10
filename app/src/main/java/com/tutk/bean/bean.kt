@@ -326,3 +326,18 @@ data class TDeviceVersionInfo(
     val systemVersionLatest: String,
     val uiVersionLatest: String
 )
+
+/**
+ * 解析事件记录
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_DEVICE_USER_EVENT_REPORT]
+ */
+data class TEventReport(
+    val time: Long,
+    val eventType: Int,
+    val id: String,
+    val devName: String,
+    val picName: String,
+    val feedType: Int,
+    val alarmReson: Int,
+    val feedWeight: Int
+)
