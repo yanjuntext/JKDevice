@@ -4,13 +4,11 @@ import android.content.Context
 import android.net.Uri
 import com.tutk.IOTC.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.InputStream
-import java.lang.StringBuilder
 import java.lang.ref.WeakReference
 
 /**
@@ -1118,4 +1116,45 @@ fun ByteArray.getString():String{
         }
     }
     return sb.toString()?:""
+}
+
+fun ByteArray.getUtfString():String{
+    val sb = StringBuilder()
+    var size = 0
+    run outside@{
+        this.forEachIndexed { index, byte ->
+            if(byte.toInt() == 0x0){
+                size = index
+                return@outside
+            }
+            sb.append(byte.toInt().toChar())
+        }
+    }
+    if(size == 0){
+        return String(this)
+    }
+    return try {
+        val value = String(this,0,size,Charsets.UTF_8)
+        value.nonValidXMLCharacters()
+    }catch (e:Exception){
+        e.printStackTrace()
+        sb.toString()
+    }
+}
+
+/**去除无效字符串*/
+fun String?.nonValidXMLCharacters():String{
+    if(this.isNullOrEmpty()) return ""
+    val sb = StringBuilder()
+    this.forEach {current->
+        // here; it should not happen.
+        if (current.toInt() == 0x9 || current.toInt() == 0xA || current.toInt() == 0xD
+            || current.toInt() in 0x20..0xD7FF
+            || current.toInt() in 0xE000..0xFFFD
+            || current.toInt() in 0x10000..0x10FFFF
+        ) {
+            sb.append(current)
+        }
+    }
+    return sb.toString()
 }

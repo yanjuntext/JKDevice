@@ -2,6 +2,7 @@ package com.tutk.io
 
 import com.tutk.IOTC.*
 import com.tutk.IOTC.camera.getString
+import com.tutk.IOTC.camera.getUtfString
 import com.tutk.IOTC.status.*
 import com.tutk.bean.*
 import java.util.*
@@ -569,7 +570,7 @@ fun ByteArray?.parseFeedPlan2(): TFeedPlanInfo2? {
         val change = (this[start + 19].toInt())
         val _alais = ByteArray(40)
         System.arraycopy(this, start + 20, _alais, 0, _alais.size)
-        val alias = _alais.getString()
+        val alias = _alais.getUtfString()
         list.add(
             TFeedPlan2(
                 id,
