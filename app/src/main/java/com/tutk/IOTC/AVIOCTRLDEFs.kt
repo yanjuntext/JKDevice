@@ -2,6 +2,7 @@ package com.tutk.IOTC
 
 import com.tutk.IOTC.Packet.intToByteArray_Little
 import com.tutk.IOTC.status.*
+import com.tutk.bean.TFeedPlan2
 import java.util.*
 
 /**
@@ -995,6 +996,18 @@ object AVIOCTRLDEFs {
     }
 
     /**
+     * 获取设备版本号、检查设备是否可以升级
+     * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ]
+     * [com.tutk.io.getDeviceVersionInfo]
+     */
+    fun getDeviceVersionInfo(type: Int): ByteArray {
+        val data = initByteArray(8)
+        val littleByteArray = type.littleByteArray()
+        System.arraycopy(littleByteArray, 0, data, 0, 4)
+        return data
+    }
+
+    /**
      * 喂食计划
      * [com.tutk.io.getFeedPlan]
      * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
@@ -1084,18 +1097,81 @@ object AVIOCTRLDEFs {
         data[13] = musicIndex.toByte()
         return data
     }
+
     /**
-     * 获取设备版本号、检查设备是否可以升级
-     * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ]
-     * [com.tutk.io.getDeviceVersionInfo]
-     */
-    fun getDeviceVersionInfo(type: Int):ByteArray{
+     * 获取喂食计划
+     * [IOTYPE_USER_IPCAM_PETS_SET_SIXED_MEAL_LIST_REQ]
+     * [com.tutk.io.getFeedPlan2]
+     * @param type 类型  0是获取
+     * */
+    fun getFeedPlan2(type: Int = 0): ByteArray {
         val data = initByteArray(8)
-        val littleByteArray = type.littleByteArray()
-        System.arraycopy(littleByteArray,0,data,0,4)
+        val _type = type.littleByteArray()
+        System.arraycopy(_type, 0, data, 0, _type.size)
         return data
     }
 
+    /**
+     * 修改喂食计划
+     * [IOTYPE_USER_IPCAM_PETS_SET_SIXED_MEAL_LIST_REQ]
+     * [com.tutk.io.editFeedPlan2]
+     *
+     */
+    fun editFeedPlan2(list: ArrayList<TFeedPlan2>): ByteArray {
+        val total = list.size
+        val indexTotal = 60
+        val length = indexTotal * total + 8
+        val data = initByteArray(if (length >= 368) length else 368)
+
+        val type = 1.littleByteArray()
+        System.arraycopy(type, 0, data, 0, type.size)
+
+        val size = total.littleByteArray()
+        System.arraycopy(size, 0, data, 4, size.size)
+        val calendar = Calendar.getInstance(TimeZone.getTimeZone("gmt"))
+        (0 until total).forEach {
+            val info = list[it]
+
+            val id = info.id.littleByteArray()
+            val start = it * indexTotal
+            System.arraycopy(id, 0, data, start + 8, 4)
+
+            val assembleEditFeedPlan2FeedInfo = assembleEditFeedPlan2FeedInfo(calendar, info)
+            System.arraycopy(assembleEditFeedPlan2FeedInfo,0,data,start + 12,assembleEditFeedPlan2FeedInfo.size)
+
+            data[start + 26] = info.smallTank.toByte()
+            data[start + 27] = info.change.toByte()
+            val alias = info.alias.toByteArray()
+            System.arraycopy(alias,0,data,start+28,if(alias.size > 40) 40 else alias.size)
+        }
+        return data
+    }
+
+    /**组装喂食计划数据
+     * [editFeedPlan2]
+     */
+    private fun assembleEditFeedPlan2FeedInfo(calendar: Calendar, info: TFeedPlan2): ByteArray {
+        val data = initByteArray(14)
+        val head = (0xFFFF.toShort()).littleByteArray()
+        System.arraycopy(head,0,data,0,head.size)
+
+        data[2] = 0x01
+        data[3] = 10
+        data[4] = (calendar.get(Calendar.YEAR) - 1960).toByte()
+        data[5] = (calendar.get(Calendar.MONTH) +1).toByte()
+        data[6] = info.week.toByte()
+        data[7] = info.hour.toByte()
+        data[8] = info.min.toByte()
+
+        val weight = (info.num.toShort()).littleByteArray()
+        System.arraycopy(weight,0,data,9,weight.size)
+
+        data[11] = ((1 shl 4) or (if(info.isEnable) 1 else 0)).toByte()
+
+        data[12] = info.index.toByte()
+        data[13] = info.musicIndex.toByte()
+        return data
+    }
 }
 
 fun Int.byteArray() = ByteArray(this)

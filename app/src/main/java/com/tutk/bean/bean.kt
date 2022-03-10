@@ -271,6 +271,44 @@ data class TFeedPlan(
 )
 
 /**
+ * 解析喂食计划
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_PETS_SET_SIXED_MEAL_LIST_RESP]
+ * @param result 结果，0成功，其他失败
+ * @param isGet 是否是获取
+ * @param list 喂食计划
+ */
+data class TFeedPlanInfo2(val result: Int, val isGet: Boolean, val list: ArrayList<TFeedPlan2>)
+
+/**
+ * 解析喂食计划 喂食计划详细信息
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_PETS_SET_SIXED_MEAL_LIST_RESP]
+ * @param id 喂食计划ID
+ * @param week 喂食星期
+ * @param hour 喂食小时
+ * @param min 喂食分钟
+ * @param num 喂食重量
+ * @param isEnable 是否开启
+ * @param index 第几餐
+ * @param musicIndex 喂食音频id
+ * @param smallTank 是否是小份
+ * @param change 当前喂食计划是否更改 修改当前喂食计划是值为1，否则为0
+ * @param alias 喂食计划别名
+ */
+data class TFeedPlan2(
+    val id: Int,
+    val week:Int,
+    val hour: Int,
+    val min: Int,
+    val num: Int,
+    val isEnable: Boolean,
+    val index: Int,
+    val musicIndex: Int,
+    val smallTank: Int,
+    val change: Int,
+    val alias: String
+)
+
+/**
  * 解析设备版本号
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_RESP]
  *  @param type 0:仅检查check  1:仅升级system 2:仅升级ui 3:升级system and ui  7:仅升级mcu

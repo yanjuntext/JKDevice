@@ -445,6 +445,41 @@ fun ByteArray?.parsePush(): TPushUrl? {
 }
 
 /**
+ * 解析设备版本号
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_RESP]
+ */
+fun ByteArray?.parseDeviceVersionInfo(): TDeviceVersionInfo? {
+    if (this == null || this.size < 72) return null
+    //固件版本号
+    val system = ByteArray(16)
+    //UI版本号
+    val ui = ByteArray(16)
+
+    val systemLatest = ByteArray(16)
+
+    val uiLatest = ByteArray(16)
+
+    val type = this.littleInt(0)
+    val result = this.littleInt(4)
+
+
+    System.arraycopy(this, 8, ui, 0, 16)
+    System.arraycopy(this, 24, system, 0, 16)
+    System.arraycopy(this, 40, uiLatest, 0, 16)
+    System.arraycopy(this, 56, systemLatest, 0, 16)
+
+    return TDeviceVersionInfo(
+        type,
+        result,
+        systemVersion = system.getString(),
+        uiVersion = ui.getString(),
+        systemVersionLatest = systemLatest.getString(),
+        uiVersionLatest = uiLatest.getString()
+    )
+
+}
+
+/**
  * 解析喂食计划
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_RESP]
  * @param total 一共几餐
@@ -499,37 +534,61 @@ fun ByteArray?.parseFeedPlan(total: Int = 8): TFeedPlanInfo? {
 }
 
 /**
- * 解析设备版本号
- * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_RESP]
+ * 解析喂食计划
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_PETS_SET_SIXED_MEAL_LIST_RESP]
  */
-fun ByteArray?.parseDeviceVersionInfo(): TDeviceVersionInfo? {
-    if (this == null || this.size < 72) return null
-    //固件版本号
-    val system = ByteArray(16)
-    //UI版本号
-    val ui = ByteArray(16)
+fun ByteArray?.parseFeedPlan2(): TFeedPlanInfo2? {
+    if (this == null || this.size < 8) return null
+    //结果
+    val result = this[0].toInt()
+    //是否是获取
+    val isGet = this[4].toInt() == 0
+    //总条数
+    val total = this[8].toInt()
 
-    val systemLatest = ByteArray(16)
+    val offset = 12
+    //每条计划数据内容长度
+    val size = 60
+    val list = mutableListOf<TFeedPlan2>()
 
-    val uiLatest = ByteArray(16)
+    if (size * total + offset < this.size) return null
 
-    val type = this.littleInt(0)
-    val result = this.littleInt(4)
+    (0 until total).forEach {
+        val start = it * size + offset
 
+        val id = this[start].toInt()
+        val week = this[start + 10].toInt()
+        val hour = this[start + 11].toInt()
+        val min = this[start + 12].toInt()
+        val num = this.littleShort(start + 13).toInt()
 
-    System.arraycopy(this, 8, ui, 0, 16)
-    System.arraycopy(this, 24, system, 0, 16)
-    System.arraycopy(this, 40, uiLatest, 0, 16)
-    System.arraycopy(this, 56, systemLatest, 0, 16)
-
-    return TDeviceVersionInfo(
-        type,
-        result,
-        systemVersion = system.getString(),
-        uiVersion = ui.getString(),
-        systemVersionLatest = systemLatest.getString(),
-        uiVersionLatest = uiLatest.getString()
-    )
-
+        val isEnable = ((this[start + 15].toInt()) and 0x01) == 1
+        val index = this[start + 16].toInt()
+        val musicIndex = this[start + 17].toInt()
+        val smallTank = this[start + 18].toInt()
+        val change = (this[start + 19].toInt())
+        val _alais = ByteArray(40)
+        System.arraycopy(this, start + 20, _alais, 0, _alais.size)
+        val alias = _alais.getString()
+        list.add(
+            TFeedPlan2(
+                id,
+                week,
+                hour,
+                min,
+                num,
+                isEnable,
+                index,
+                musicIndex,
+                smallTank,
+                change,
+                alias
+            )
+        )
+    }
+    return TFeedPlanInfo2(result, isGet, list = list as ArrayList<TFeedPlan2>)
 }
+
+
+
 

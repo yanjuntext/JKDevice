@@ -31,6 +31,9 @@ import com.tutk.io.getVideoQuality
 import com.tutk.io.setVideoQuality
 import com.tutk.utils.PermissionUtil
 import kotlinx.coroutines.*
+import org.webrtc.voiceengine.WebRtcAudioManager
+import org.webrtc.voiceengine.WebRtcAudioRecord
+import org.webrtc.voiceengine.WebRtcAudioUtils
 import java.io.*
 import kotlin.math.abs
 import kotlin.math.sqrt
@@ -332,6 +335,7 @@ class MonitorVer @JvmOverloads constructor(
 
     /**通话*/
     fun setAudioTalker(audioTalker: AudioTalker) {
+        WebRtcAudioRecord()
         if (mVoiceType == VoiceType.ONE_WAY_VOICE && audioTalker == AudioTalker.TALK) {
             //如果是单向语音，开启了通话，必须要关闭监听
             setAudioListener(AudioListener.MUTE)

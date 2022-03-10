@@ -17,6 +17,7 @@ import com.tutk.IOTC.audio.SendAudioJob
 import com.tutk.IOTC.status.PlayMode
 import com.tutk.IOTC.status.RecordStatus
 import com.tutk.IOTC.status.VoiceType
+import com.tutk.webtrc.MyAudioPlayer
 import kotlinx.coroutines.*
 
 /**
@@ -91,7 +92,8 @@ class AVChannel(
     internal var playMode: PlayMode = PlayMode.PLAY_LIVE
 
     //双向语音的音频播放器
-    internal var mAudioPlayer: AudioPlayer? = null
+//    internal var mAudioPlayer: AudioPlayer? = null
+    internal var mAudioPlayer: MyAudioPlayer? = null
     internal var mAudioFrame: AudioFrame? = null
 
     //语音类型
@@ -190,7 +192,8 @@ class AVChannel(
             return true
         }
         mAudioFrame = AudioFrame()
-        mAudioPlayer = AudioPlayer.getInstance().init(context, null, Frequency.PCM_8K)
+//        mAudioPlayer = AudioPlayer.getInstance().init(context, null, Frequency.PCM_8K)
+        mAudioPlayer = MyAudioPlayer.getInstance().init(context, null, Frequency.PCM_8K)
         //            MLog.e("wangyanjun11111", "onUpdate == ");
         mAudioPlayer?.setPtsUpdateListener {
             d("zrtAudioPlayer", "OnTSUpdateListener[$it]")

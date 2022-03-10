@@ -6,6 +6,7 @@ import com.tutk.IOTC.Liotc
 import com.tutk.IOTC.camera.VideoQuality
 import com.tutk.IOTC.status.*
 import com.tutk.bean.TEvent
+import com.tutk.bean.TFeedPlan2
 import com.tutk.utils.getDiffMinute0Zone
 import java.util.*
 
@@ -814,6 +815,74 @@ fun Camera?.getEventList(
 }
 
 /**
+ * 手动喂食
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
+ */
+fun Camera?.manualFeed(channel: Int = Camera.DEFAULT_AV_CHANNEL, num: Int): Boolean {
+    return if (canSend()) {
+        val calender = Calendar.getInstance()
+        val hour = calender.get(Calendar.HOUR_OF_DAY)
+        val min = calender.get(Calendar.MINUTE)
+
+        val instance = Calendar.getInstance(TimeZone.getTimeZone("gmt"))
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ,
+            AVIOCTRLDEFs.editFeedPlan(
+                instance.get(Calendar.YEAR) - 1960,
+                instance.get(Calendar.MONTH) + 1,
+                0x7f,
+                hour,
+                min,
+                num,
+                0,
+                0,
+                1,
+                10
+            )
+        )
+        true
+    } else false
+}
+
+/**
+ * 获取设备版本号、检查设备是否可以升级
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ]
+ */
+fun Camera?.getDeviceVersionInfo(
+    channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    must: Boolean = false
+): Boolean {
+    return if (canSend() || must) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ,
+            AVIOCTRLDEFs.getDeviceVersionInfo(AVIOCTRLDEFs.UPGRADE_ONLINE_TYPE_CHECK)
+        )
+        true
+    } else false
+}
+
+/**
+ * 开始升级
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ]
+ * @param type [com.tutk.bean.TDeviceVersionInfo.result]
+ */
+fun Camera?.upgrade(
+    channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    type: Int = AVIOCTRLDEFs.UPGRADE_ONLINE_TYPE_SYS
+): Boolean {
+    return if (canSend()) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ,
+            AVIOCTRLDEFs.getDeviceVersionInfo(type)
+        )
+        true
+    } else false
+}
+
+/**
  * 获取喂食计划
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
  *  一次性返回8餐
@@ -879,70 +948,37 @@ fun Camera?.deleteFeedPlan(channel: Int = Camera.DEFAULT_AV_CHANNEL, id: Int): B
 }
 
 /**
- * 手动喂食
- * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ]
- */
-fun Camera?.manualFeed(channel: Int = Camera.DEFAULT_AV_CHANNEL, num: Int): Boolean {
-    return if (canSend()) {
-        val calender = Calendar.getInstance()
-        val hour = calender.get(Calendar.HOUR_OF_DAY)
-        val min = calender.get(Calendar.MINUTE)
-
-        val instance = Calendar.getInstance(TimeZone.getTimeZone("gmt"))
+ * 获取喂食计划
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_PETS_SET_SIXED_MEAL_LIST_REQ]
+ * */
+fun Camera?.getFeedPlan2(channel: Int = Camera.DEFAULT_AV_CHANNEL, must: Boolean = false): Boolean {
+    return if (canSend() || must) {
         this?.sendIOCtrl(
             channel,
-            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_TRANSFER_TTY_DATA_REQ,
-            AVIOCTRLDEFs.editFeedPlan(
-                instance.get(Calendar.YEAR) - 1960,
-                instance.get(Calendar.MONTH) + 1,
-                0x7f,
-                hour,
-                min,
-                num,
-                0,
-                0,
-                1,
-                10
-            )
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_PETS_SET_SIXED_MEAL_LIST_REQ,
+            AVIOCTRLDEFs.getFeedPlan2()
         )
         true
     } else false
 }
-
 /**
- * 获取设备版本号、检查设备是否可以升级
- * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ]
+ * 修改、删除喂食计划
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_PETS_SET_SIXED_MEAL_LIST_REQ]
  */
-fun Camera?.getDeviceVersionInfo(
+fun Camera?.editFeedPlan2(
     channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    list: ArrayList<TFeedPlan2>,
     must: Boolean = false
 ): Boolean {
     return if (canSend() || must) {
         this?.sendIOCtrl(
             channel,
-            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ,
-            AVIOCTRLDEFs.getDeviceVersionInfo(AVIOCTRLDEFs.UPGRADE_ONLINE_TYPE_CHECK)
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_PETS_SET_SIXED_MEAL_LIST_REQ,
+            AVIOCTRLDEFs.editFeedPlan2(list)
         )
         true
     } else false
 }
-
-/**
- * 开始升级
- * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ]
- * @param type [com.tutk.bean.TDeviceVersionInfo.result]
- */
-fun Camera?.upgrade(channel: Int = Camera.DEFAULT_AV_CHANNEL,type:Int = AVIOCTRLDEFs.UPGRADE_ONLINE_TYPE_SYS):Boolean{
-    return if (canSend()) {
-        this?.sendIOCtrl(
-            channel,
-            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_UPGRADEONLIN_REQ,
-            AVIOCTRLDEFs.getDeviceVersionInfo(type)
-        )
-        true
-    } else false
-}
-
 
 
 
