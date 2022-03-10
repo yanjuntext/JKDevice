@@ -961,6 +961,7 @@ fun Camera?.getFeedPlan2(channel: Int = Camera.DEFAULT_AV_CHANNEL, must: Boolean
         true
     } else false
 }
+
 /**
  * 修改、删除喂食计划
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_PETS_SET_SIXED_MEAL_LIST_REQ]
@@ -975,6 +976,24 @@ fun Camera?.editFeedPlan2(
             channel,
             AVIOCTRLDEFs.IOTYPE_USER_IPCAM_PETS_SET_SIXED_MEAL_LIST_REQ,
             AVIOCTRLDEFs.editFeedPlan2(list)
+        )
+        true
+    } else false
+}
+
+/**
+ * wifi 信号强度
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_WIFI_SIGNAL_REQ]
+ */
+fun Camera?.getWifiSignal(
+    channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    must: Boolean = false
+): Boolean {
+    return if (canSend() || must) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_WIFI_SIGNAL_REQ,
+            AVIOCTRLDEFs.getWifiSignal()
         )
         true
     } else false

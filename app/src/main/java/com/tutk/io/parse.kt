@@ -630,5 +630,10 @@ fun ByteArray?.parseEventReport(): TEventReport? {
 
 }
 
+fun ByteArray?.parseWifiSignal():Int{
+    if(this == null || this.size < 4) return 0
+    return this.littleInt(0)
+}
+
 
 

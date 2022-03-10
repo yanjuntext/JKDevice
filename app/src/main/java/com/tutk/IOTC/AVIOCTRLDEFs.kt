@@ -454,6 +454,22 @@ object AVIOCTRLDEFs {
     const val startSOUND_END = 2
     const val startSOUND_ERROR = 3
 
+    /**
+     * 获取WIFI信号强度
+     * typedef struct
+     * {
+     * char reserved[4];
+     * }SmsgAVIoctrlGetWiFiSignalReq;
+     *
+     * typedef struct
+     * {
+     * int signal;
+     * }SmsgAVIoctrlGetWiFiSignalResp;
+     *
+     */
+    const val IOTYPE_USER_IPCAM_GET_WIFI_SIGNAL_REQ = 0x5029
+    const val IOTYPE_USER_IPCAM_GET_WIFI_SIGNAL_RESP = 0x5030
+
 
     private fun initByteArray(size: Int) = ByteArray(size)
 
@@ -1137,12 +1153,18 @@ object AVIOCTRLDEFs {
             System.arraycopy(id, 0, data, start + 8, 4)
 
             val assembleEditFeedPlan2FeedInfo = assembleEditFeedPlan2FeedInfo(calendar, info)
-            System.arraycopy(assembleEditFeedPlan2FeedInfo,0,data,start + 12,assembleEditFeedPlan2FeedInfo.size)
+            System.arraycopy(
+                assembleEditFeedPlan2FeedInfo,
+                0,
+                data,
+                start + 12,
+                assembleEditFeedPlan2FeedInfo.size
+            )
 
             data[start + 26] = info.smallTank.toByte()
             data[start + 27] = info.change.toByte()
             val alias = info.alias.toByteArray()
-            System.arraycopy(alias,0,data,start+28,if(alias.size > 40) 40 else alias.size)
+            System.arraycopy(alias, 0, data, start + 28, if (alias.size > 40) 40 else alias.size)
         }
         return data
     }
@@ -1153,25 +1175,32 @@ object AVIOCTRLDEFs {
     private fun assembleEditFeedPlan2FeedInfo(calendar: Calendar, info: TFeedPlan2): ByteArray {
         val data = initByteArray(14)
         val head = (0xFFFF.toShort()).littleByteArray()
-        System.arraycopy(head,0,data,0,head.size)
+        System.arraycopy(head, 0, data, 0, head.size)
 
         data[2] = 0x01
         data[3] = 10
         data[4] = (calendar.get(Calendar.YEAR) - 1960).toByte()
-        data[5] = (calendar.get(Calendar.MONTH) +1).toByte()
+        data[5] = (calendar.get(Calendar.MONTH) + 1).toByte()
         data[6] = info.week.toByte()
         data[7] = info.hour.toByte()
         data[8] = info.min.toByte()
 
         val weight = (info.num.toShort()).littleByteArray()
-        System.arraycopy(weight,0,data,9,weight.size)
+        System.arraycopy(weight, 0, data, 9, weight.size)
 
-        data[11] = ((1 shl 4) or (if(info.isEnable) 1 else 0)).toByte()
+        data[11] = ((1 shl 4) or (if (info.isEnable) 1 else 0)).toByte()
 
         data[12] = info.index.toByte()
         data[13] = info.musicIndex.toByte()
         return data
     }
+
+    /**
+     * 获取wifi型号强度
+     * [IOTYPE_USER_IPCAM_GET_WIFI_SIGNAL_REQ]
+     * [com.tutk.io.getWifiSignal]
+     */
+    fun getWifiSignal() = initByteArray(4)
 }
 
 fun Int.byteArray() = ByteArray(this)
