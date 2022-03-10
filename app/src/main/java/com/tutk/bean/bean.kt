@@ -296,16 +296,16 @@ data class TFeedPlanInfo2(val result: Int, val isGet: Boolean, val list: ArrayLi
  */
 data class TFeedPlan2(
     val id: Int,
-    val week:Int,
-    val hour: Int,
-    val min: Int,
-    val num: Int,
-    val isEnable: Boolean,
+    var week: Int,
+    var hour: Int,
+    var min: Int,
+    var num: Int,
+    var isEnable: Boolean,
     val index: Int,
-    val musicIndex: Int,
-    val smallTank: Int,
-    val change: Int,
-    val alias: String
+    var musicIndex: Int,
+    var smallTank: Int,
+    var change: Int,
+    var alias: String
 )
 
 /**
