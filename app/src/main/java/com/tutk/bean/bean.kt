@@ -341,3 +341,30 @@ data class TEventReport(
     val alarmReson: Int,
     val feedWeight: Int
 )
+
+/**
+ * 童锁
+ * [AVIOCTRLDEFs.IOTYPE_USER_GET_CHILDREN_LOCK_RESP]/[AVIOCTRLDEFs.IOTYPE_USER_SET_CHILDREN_LOCK_RESP]
+ * @param result 请求是否成功
+ * @param status 童锁状态 true:童锁开启  false:童锁关闭
+ */
+data class TChildrenLock(
+    val result: Int,
+    val status: Boolean
+) {
+    fun isSuccess() = result == 0
+}
+
+/**
+ * OSD 设置状态
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_VIDEOOSD_RESP]
+ */
+data class TOsdSetStatus(val result: Int) {
+    fun isSuccess() = result == 0
+}
+
+/**
+ * OSD 获取状态
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_VIDEOOSD_RESP]
+ */
+data class TOsdGetStatus(val status: Boolean)

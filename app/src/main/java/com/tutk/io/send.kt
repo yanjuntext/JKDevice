@@ -1000,6 +1000,82 @@ fun Camera?.getWifiSignal(
 }
 
 
+/**
+ * 获取OSD开关
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_VIDEOOSD_REQ]
+ */
+fun Camera?.getOsdStatus(
+    channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    must: Boolean = false
+): Boolean {
+    return if (canSend() || must) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_VIDEOOSD_REQ,
+            ByteArray(4)
+        )
+        true
+    } else false
+}
+
+/**
+ * 设置OSD开关
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_VIDEOOSD_REQ]
+ */
+fun Camera?.setOsdStatus(
+    channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    status: Boolean,
+    must: Boolean = false
+): Boolean {
+    return if (canSend() || must) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_VIDEOOSD_REQ,
+            AVIOCTRLDEFs.setVideoOsdStatus(status)
+        )
+        true
+    } else false
+}
+
+/**
+ * 获取童锁状态
+ * [AVIOCTRLDEFs.IOTYPE_USER_GET_CHILDREN_LOCK_REQ]
+ * */
+fun Camera?.getChildrenLockStatus(
+    channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    must: Boolean = false
+): Boolean {
+    return if (canSend() || must) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_GET_CHILDREN_LOCK_REQ,
+            ByteArray(5)
+        )
+        true
+    } else false
+}
+
+/**
+ * 设置童锁状态
+ * [AVIOCTRLDEFs.IOTYPE_USER_SET_CHILDREN_LOCK_REQ]
+ */
+fun Camera?.setChildrenLockStatus(
+    channel: Int = Camera.DEFAULT_AV_CHANNEL,
+    status: Boolean,
+    must: Boolean = false
+): Boolean {
+    return if (canSend() || must) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_SET_CHILDREN_LOCK_REQ,
+            AVIOCTRLDEFs.setVideoOsdStatus(status)
+        )
+        true
+    } else false
+}
+
+
+
 
 
 

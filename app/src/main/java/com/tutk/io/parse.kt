@@ -630,10 +630,40 @@ fun ByteArray?.parseEventReport(): TEventReport? {
 
 }
 
+/**
+ * 解析wifi信号强度
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_WIFI_SIGNAL_RESP]
+ */
 fun ByteArray?.parseWifiSignal():Int{
     if(this == null || this.size < 4) return 0
     return this.littleInt(0)
 }
 
+/**
+ * 解析OSD 获取状态
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_VIDEOOSD_RESP]
+ */
+fun ByteArray?.parseGetOsdStatus():TOsdGetStatus?{
+    if(this == null || this.size < 5) return null
+    return TOsdGetStatus(this[0].toInt() == 1)
+}
+
+/**
+ * 解析OSD 设置状态
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_SET_VIDEOOSD_RESP]
+ */
+fun ByteArray?.parseSetOsdStatus():TOsdSetStatus?{
+    if(this == null || this.size < 8) return null
+    return TOsdSetStatus(this.littleInt(0))
+}
+
+/**
+ * 解析 童锁状态
+ * [AVIOCTRLDEFs.IOTYPE_USER_SET_CHILDREN_LOCK_RESP] or [AVIOCTRLDEFs.IOTYPE_USER_GET_CHILDREN_LOCK_RESP]
+ */
+fun ByteArray?.parseChildrenLock():TChildrenLock?{
+    if(this == null || this.size < 9) return null
+    return TChildrenLock(this.littleInt(0),this[4].toInt() == 1)
+}
 
 

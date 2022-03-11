@@ -470,6 +470,55 @@ object AVIOCTRLDEFs {
     const val IOTYPE_USER_IPCAM_GET_WIFI_SIGNAL_REQ = 0x5029
     const val IOTYPE_USER_IPCAM_GET_WIFI_SIGNAL_RESP = 0x5030
 
+    /**
+     * OSD 设置和获取
+     *
+     *   typedef struct
+     *   {
+     *   char osdEnable; 				// OSD
+     *   //0:关 1:开
+     *   char reserved[4];
+     *   }SMsgAVIoctrlSetVideoOSDReq, SMsgAVIoctrlGetVideoOSDResp;
+     *
+     *   typedef struct
+     *   {
+     *   char reserved[4];
+     *   }SMsgAVIoctrlGetVideoOSDReq;
+     *
+     *   typedef struct
+     *   {
+     *   int result; 		// 0: success; otherwise: failed.
+     *   char reserved[4];
+     *  }SMsgAVIoctrlSetVideoOSDResp;
+     */
+    const val IOTYPE_USER_IPCAM_SET_VIDEOOSD_REQ = 0x202E
+    const val IOTYPE_USER_IPCAM_SET_VIDEOOSD_RESP = 0x202F
+    const val IOTYPE_USER_IPCAM_GET_VIDEOOSD_REQ = 0x2030
+    const val IOTYPE_USER_IPCAM_GET_VIDEOOSD_RESP = 0x2031
+
+
+    /**
+     * 童锁 设置和获取
+     *
+     *    typedef struct
+     *   {
+     *   char lockEnable; 				// 0：关闭；1：开启；
+     *   char reserved[4];
+     *   }SMsgAVIoctrlSetLockReq, SMsgAVIoctrlGetLockReq;
+     *
+     *   typedef struct
+     *   {
+     *   int result; 		// 0: success; otherwise: failed.
+     *   char lockEnable; 				// 0：关闭；1：开启；
+     *   char reserved[4];
+     *   }SMsgAVIoctrlSetLockResp, SMsgAVIoctrlGetLockResp;
+     *
+     */
+    const val IOTYPE_USER_SET_CHILDREN_LOCK_REQ = 0x5037
+    const val IOTYPE_USER_SET_CHILDREN_LOCK_RESP = 0x5038
+    const val IOTYPE_USER_GET_CHILDREN_LOCK_REQ = 0x5039
+    const val IOTYPE_USER_GET_CHILDREN_LOCK_RESP = 0x503A
+
 
     private fun initByteArray(size: Int) = ByteArray(size)
 
@@ -1201,6 +1250,20 @@ object AVIOCTRLDEFs {
      * [com.tutk.io.getWifiSignal]
      */
     fun getWifiSignal() = initByteArray(4)
+
+    /**
+     * 设置OSD状态/设置童锁状态
+     * [IOTYPE_USER_IPCAM_SET_VIDEOOSD_REQ] or [IOTYPE_USER_SET_CHILDREN_LOCK_REQ]
+     * [com.tutk.io.setOsdStatus] or [com.tutk.io.setChildrenLockStatus]
+     */
+    fun setVideoOsdStatus(status: Boolean):ByteArray{
+        val data = initByteArray(5)
+        data[0] = if(status) 1 else 0
+        return data
+    }
+
+
+
 }
 
 fun Int.byteArray() = ByteArray(this)
