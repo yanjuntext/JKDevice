@@ -9,7 +9,6 @@ import android.net.Uri
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.ingenic.api.AudioFrame
-import com.ingenic.api.AudioPlayer
 import com.ingenic.api.Frequency
 import com.tutk.IOTC.*
 import com.tutk.IOTC.audio.RecvAudioJob
@@ -158,7 +157,7 @@ class AVChannel(
     }
 
     /**视频直播*/
-    internal fun startShow(context: Context?,ratation:Int = 0) {
+    internal fun startShow(context: Context?, ratation: Int = 0) {
 
         if (mRecvVideoJob == null) {
             mRecvVideoJob = RecvVideoJob(this, iavChannelStatus = iavChannelStatus)
@@ -257,7 +256,7 @@ class AVChannel(
         if (status || recording) {
             mRecvAudioJob?.start(context, playMode.value)
         }
-        if(!status && !recording){
+        if (!status && !recording) {
             mRecvAudioJob?.isRunning = false
         }
     }
@@ -385,6 +384,9 @@ interface IAVChannelListener {
 
     /**图片内容*/
     fun onAVChannelReceiverFrameData(channel: Int, bitmap: Bitmap?)
+
+    /**图片内容，包含时间戳*/
+    fun onAVChannelReceiverFrameData(channel: Int, bitmap: Bitmap?, time: Int)
 
     fun onAVChannelReceiverFrameInfo(
         channel: Int,

@@ -600,6 +600,14 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
         }
     }
 
+    private fun broadCameraReceiverFrameData(channel: Int, bitmap: Bitmap?,time:Int) {
+        val iterator = mOnFrameCallbacks.iterator()
+        while (iterator.hasNext()) {
+            iterator.next().receiveFrameData(this, channel, bitmap,time)
+        }
+    }
+
+
     private fun broadCameraReceiverFrameInfo(
         channel: Int,
         bitRate: Int,
@@ -1169,6 +1177,10 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
 
     override fun onAVChannelReceiverFrameData(channel: Int, bitmap: Bitmap?) {
         broadCameraReceiverFrameData(channel, bitmap)
+    }
+
+    override fun onAVChannelReceiverFrameData(channel: Int, bitmap: Bitmap?, time: Int) {
+        broadCameraReceiverFrameData(channel, bitmap,time)
     }
 
     override fun onAVChannelReceiverFrameInfo(

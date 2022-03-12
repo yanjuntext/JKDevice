@@ -1,5 +1,6 @@
 package com.tutk.IOTC.camera
 
+import android.app.admin.DeviceAdminInfo
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -655,7 +656,9 @@ class DecodeVideoJob(
                                                 }
 
                                                 avChannel?.videoFPS = (avChannel?.videoFPS ?: 0) + 1
-                                                emit(bmp)
+//                                                emit(bmp)
+//                                                emit(avFrame.timestamp)
+                                                emit(DecoderVideoInfo(bmp,avFrame.timestamp))
                                                 avChannel.lastFrame = bmp
                                                 if (System.currentTimeMillis() - lastUpdateDispFrmPreSec > 60000) {
                                                     lastUpdateDispFrmPreSec =
@@ -729,7 +732,8 @@ class DecodeVideoJob(
 
             }.flowOn(Dispatchers.IO)
                 .collect {
-                    iavChannelStatus?.onAVChannelReceiverFrameData(avChannel?.mChannel ?: -1, it)
+                    iavChannelStatus?.onAVChannelReceiverFrameData(avChannel?.mChannel ?: -1, it.bitmap)
+                    iavChannelStatus?.onAVChannelReceiverFrameData(avChannel?.mChannel?:-1,it.bitmap,it.time)
                 }
         }
 
@@ -753,6 +757,8 @@ class DecodeVideoJob(
         Liotc.e(TAG, "$msg   uid[${avChannel?.uid}]")
     }
 }
+
+internal class DecoderVideoInfo(val bitmap: Bitmap?,val time:Int)
 
 /**录像帮助类*/
 internal object LocalRecordHelper {

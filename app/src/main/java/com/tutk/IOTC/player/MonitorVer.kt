@@ -772,6 +772,10 @@ class MonitorVer @JvmOverloads constructor(
     }
 
     override fun receiveFrameData(camera: Camera?, avChannel: Int, bmp: Bitmap?) {
+
+    }
+
+    override fun receiveFrameData(camera: Camera?, avChannel: Int, bmp: Bitmap?, time: Int) {
         if (avChannel != mAvChannel) {
             Liotc.d("Monitor", "receiveFrameData error [$avChannel],[$mAvChannel],[${bmp == null}]")
         }
@@ -843,7 +847,6 @@ class MonitorVer @JvmOverloads constructor(
                 _setFullScreen()
             }
         }
-
     }
 
     override fun receiveFrameInfo(

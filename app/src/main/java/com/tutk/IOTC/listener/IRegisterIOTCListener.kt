@@ -12,6 +12,8 @@ import com.tutk.IOTC.Camera
 interface OnFrameCallback {
     fun receiveFrameData(camera: Camera?, avChannel: Int, bmp: Bitmap?)
 
+    fun receiveFrameData(camera: Camera?,avChannel: Int,bmp: Bitmap?,time:Int)
+
     fun receiveFrameInfo(
         camera: Camera?,
         avChannel: Int,
