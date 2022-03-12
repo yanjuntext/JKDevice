@@ -125,7 +125,7 @@ class AVFrame(
             onlineNum = frameHead[4]
         }
         this.playmode = playmode
-        timestamp = if (playbacmmode == Camera.AUDIORECORD_PLAYBACKMODE) {
+        timestamp = if (playbacmmode == Camera.AUDIORECORD_LIVEMODE) {
             Packet.byteArrayToInt_Little(frameHead, 12)
         } else {
             Packet.byteArrayToInt_Little(frameHead, 8)
