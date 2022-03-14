@@ -103,6 +103,8 @@ class AVFrame(
     var onlineNum: Byte = 0
     var timestamp = 0 // Timestamp of the frame, in milliseconds.
 
+    var deviceCurrentTime = 0L//设备当前时间，in milliseconds.
+
     var videoWidth = 0
     var videoHeight = 0
 
@@ -130,6 +132,11 @@ class AVFrame(
         } else {
             Packet.byteArrayToInt_Little(frameHead, 8)
         }
+
+        if (frameHead.size >= 24) {
+            deviceCurrentTime = Packet.byteArrayToLong_Little(frameHead, 16)
+        }
+
         videoWidth = Packet.byteArrayToInt_Little(frameHead, 16)
         videoHeight = Packet.byteArrayToInt_Little(frameHead, 20)
         frmSize = frameDataSize

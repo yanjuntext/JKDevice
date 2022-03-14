@@ -658,7 +658,7 @@ class DecodeVideoJob(
                                                 avChannel?.videoFPS = (avChannel?.videoFPS ?: 0) + 1
 //                                                emit(bmp)
 //                                                emit(avFrame.timestamp)
-                                                emit(DecoderVideoInfo(bmp,avFrame.timestamp))
+                                                emit(DecoderVideoInfo(bmp,avFrame.deviceCurrentTime))
                                                 avChannel.lastFrame = bmp
                                                 if (System.currentTimeMillis() - lastUpdateDispFrmPreSec > 60000) {
                                                     lastUpdateDispFrmPreSec =
@@ -758,7 +758,7 @@ class DecodeVideoJob(
     }
 }
 
-internal class DecoderVideoInfo(val bitmap: Bitmap?,val time:Int)
+internal class DecoderVideoInfo(val bitmap: Bitmap?,val time:Long)
 
 /**录像帮助类*/
 internal object LocalRecordHelper {

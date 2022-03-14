@@ -790,7 +790,7 @@ class PlaybackMonitor @JvmOverloads constructor(
 
     }
 
-    override fun receiveFrameData(camera: Camera?, avChannel: Int, bmp: Bitmap?, time: Int) {
+    override fun receiveFrameData(camera: Camera?, avChannel: Int, bmp: Bitmap?, time: Long) {
         if (avChannel != mAvChannel) {
             Liotc.d("Monitor", "receiveFrameData error [$avChannel],[$mAvChannel],[${bmp == null}]")
         }
