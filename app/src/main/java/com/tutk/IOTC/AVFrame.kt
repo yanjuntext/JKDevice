@@ -134,7 +134,7 @@ class AVFrame(
         }
 
         if (frameHead.size >= 24) {
-            deviceCurrentTime = Packet.byteArrayToLong_Little(frameHead, 16)
+            deviceCurrentTime = Packet.byteArrayToLong(frameHead, false, 16)
         }
 
         videoWidth = Packet.byteArrayToInt_Little(frameHead, 16)

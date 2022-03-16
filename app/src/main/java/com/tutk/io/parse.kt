@@ -662,7 +662,7 @@ fun ByteArray?.parseSetOsdStatus():TOsdSetStatus?{
  * [AVIOCTRLDEFs.IOTYPE_USER_SET_CHILDREN_LOCK_RESP] or [AVIOCTRLDEFs.IOTYPE_USER_GET_CHILDREN_LOCK_RESP]
  */
 fun ByteArray?.parseChildrenLock():TChildrenLock?{
-    if(this == null || this.size < 9) return null
+    if(this == null || this.size < 8) return null
     return TChildrenLock(this.littleInt(0),this[4].toInt() == 1)
 }
 

@@ -486,7 +486,7 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
 
     }
 
-    fun connect(channel: Int, account: String = "admin") {
+    fun connect(channel: Int = DEFAULT_AV_CHANNEL, account: String = "admin") {
         _connect()
         start(channel, account, psw)
         getSupportStream(channel)
@@ -494,7 +494,7 @@ open class Camera(val uid: String, var psw: String, var viewAccount: String = "a
         getTimeZone(channel, must = true)
     }
 
-    fun reconnect(channel: Int, account: String = "admin") {
+    fun reconnect(channel: Int = DEFAULT_AV_CHANNEL, account: String = "admin") {
         Liotc.d("startConnectJob","reconnect")
         disconnect()
         connect(channel, account)

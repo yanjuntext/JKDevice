@@ -35,6 +35,27 @@ object Packet {
                 ((data[start + 1].toInt() and 0xff) shl 32) or ((data[start + 1].toInt() and 0xff) shl 40) or ((data[start + 1].toInt() and 0xff) shl 48) or ((data[start + 1].toInt() and 0xff) shl 56)).toLong()
     }
 
+    fun byteArrayToLong(data: ByteArray,big:Boolean,start:Int):Long{
+        if(data.size < start + 8) return 0L
+        var value = 0L
+        if(big){
+            (start until (start+8)).forEach { index->
+                val it = data[index].toLong()
+                value = value shl 8
+                value = value or (it and 0x00000000000000ff)
+            }
+        }else{
+            val count = start + 7
+            (count downTo start).forEach{index->
+                val b = data[index].toLong()
+                value = value shl 8
+                value = value or (b and 0x00000000000000ff)
+            }
+
+        }
+        return value
+    }
+
     //大端 数组转int
     fun byteArrayToInt_big(data: ByteArray, start: Int = 0): Int {
         val total = data.size
