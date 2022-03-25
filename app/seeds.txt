@@ -247,7 +247,7 @@ com.google.protobuf.NioByteString$1
 com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange$Builder
 com.google.protobuf.UInt32Value$1
 com.tutk.bean.TBean
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1
 com.ingenic.zalive.MsgEntity$Master2CliInfoResp$1
 com.google.protobuf.FieldMask$Builder
 com.tutk.IOTC.camera.SendFileJob$start$1$invokeSuspend$$inlined$collect$1
@@ -273,7 +273,7 @@ com.tutk.IOTC.RDCTRLDEFs
 com.google.protobuf.Internal$MapAdapter
 com.google.protobuf.Internal$BooleanList
 com.tutk.IOTC.camera.SendFileJob$start$1$1
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$1
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$1
 com.tutk.bean.TScanWifi
 com.tutk.IOTC.CameraKt
 com.google.protobuf.Internal$ProtobufList
@@ -334,7 +334,7 @@ com.tutk.IOTC.camera.DownFileJob$start$2
 com.tutk.IOTC.audio.RecvAudioJob$start$1$invokeSuspend$$inlined$collect$1
 com.ingenic.b.a$2
 com.google.protobuf.DescriptorProtos$UninterpretedOption$Builder
-com.tutk.IOTC.PlaybackMonitor$OnPlayBackCallback
+com.tutk.IOTC.player.PlaybackMonitor$OnPlayBackCallback
 com.google.protobuf.GeneratedMessageV3$FieldAccessorTable$SingularEnumFieldAccessor
 com.tutk.IOTC.camera.SendFileInfo
 com.google.protobuf.SmallSortedMap$EntryIterator
@@ -344,7 +344,7 @@ com.google.protobuf.WrappersProto$1
 com.google.protobuf.RepeatedFieldBuilder
 com.google.protobuf.FloatArrayList
 com.tutk.IOTC.AudioProcess$Encode
-com.tutk.IOTC.PlaybackMonitor$1
+com.tutk.IOTC.player.PlaybackMonitor$1
 com.google.protobuf.CodedOutputStream
 com.google.protobuf.FieldSet$1
 com.google.protobuf.GeneratedMessageV3$CachedDescriptorRetriever
@@ -507,7 +507,7 @@ com.google.protobuf.Int64Value$1
 com.tutk.IOTC.R$animator
 com.google.protobuf.SingleFieldBuilderV3
 com.tutk.IOTC.audio.SendAudioJob
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1
 com.tutk.IOTC.R$bool
 com.google.protobuf.UInt32ValueOrBuilder
 com.tutk.IOTC.R$anim
@@ -525,7 +525,7 @@ com.tutk.IOTC.camera.RecvVideoInfo
 com.google.protobuf.Any
 com.google.protobuf.FieldMask
 com.tutk.bean.TIRLedStatus
-com.tutk.IOTC.PlaybackMonitor$WhenMappings
+com.tutk.IOTC.player.PlaybackMonitor$WhenMappings
 com.google.protobuf.Descriptors$EnumValueDescriptor
 com.ingenic.zalive.MsgEntity$Response$Builder
 com.tutk.IOTC.camera.RecvVideoJob$start$1
@@ -661,7 +661,7 @@ com.ingenic.api.AudioFrame
 com.google.protobuf.DescriptorProtos$FileOptions$OptimizeMode$1
 com.google.protobuf.Value
 com.ingenic.zalive.MsgEntity$Dev2HeartDevStat$1
-com.tutk.IOTC.PlaybackMonitor
+com.tutk.IOTC.player.PlaybackMonitor
 com.tutk.IOTC.St_AVServStartInConfig
 com.ingenic.api.RecodeAudioDataListener
 com.tutk.IOTC.camera.AVChannelKt
@@ -790,7 +790,7 @@ com.google.protobuf.CodedOutputStream$ByteOutputEncoder
 com.google.protobuf.MapEntryLite$1
 com.tutk.libmediaconvert.AudioConvert
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Location$1
-com.tutk.IOTC.PlaybackMonitor$renderJob$1
+com.tutk.IOTC.player.PlaybackMonitor$renderJob$1
 com.google.protobuf.UInt64Value
 com.google.protobuf.DescriptorProtos$FieldDescriptorProtoOrBuilder
 com.ingenic.zalive.MsgEntity$ServerSync2MasterReq$Builder
@@ -877,7 +877,7 @@ com.tutk.IOTC.R$color: int material_grey_900
 com.tutk.IOTC.R$attr: int windowMinWidthMinor
 com.google.protobuf.Enum$Builder: java.util.List options_
 com.ingenic.zalive.MsgEntity$MasterPackResp$Builder: int bitField0_
-com.tutk.IOTC.PlaybackMonitor: android.graphics.Rect mMoveRect
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.Rect mMoveRect
 com.tutk.IOTC.status.WifiStatus: com.tutk.IOTC.status.WifiStatus[] $VALUES
 com.ingenic.zalive.MsgEntity$ServerRegisterReq$Builder: int bitField0_
 com.google.protobuf.Value: java.lang.Object kind_
@@ -896,7 +896,7 @@ com.tutk.IOTC.R$color: int ripple_material_dark
 com.tutk.IOTC.R$id: int split_action_bar
 com.tutk.IOTC.R$styleable: int MenuItem_contentDescription
 com.tutk.IOTC.camera.DownFileJob: android.net.Uri dstUri
-com.tutk.IOTC.PlaybackMonitor: float mOrigDist
+com.tutk.IOTC.player.PlaybackMonitor: float mOrigDist
 com.tutk.IOTC.status.PlayMode: com.tutk.IOTC.status.PlayMode[] $VALUES
 com.tutk.IOTC.R$dimen: int abc_button_padding_horizontal_material
 com.tutk.IOTC.R$styleable: int AppCompatTheme_actionBarDivider
@@ -925,7 +925,7 @@ com.tutk.bean.TSupportStream: int channel
 com.google.protobuf.DescriptorProtos$FieldOptions$Builder: int jstype_
 com.ingenic.zalive.MsgEntity: com.google.protobuf.Descriptors$Descriptor internal_static_Heart2CliIntoResp_descriptor
 com.tutk.IOTC.AVIOCTRLDEFs: int startSOUND_SENCMD
-com.tutk.IOTC.PlaybackMonitor: int NONE
+com.tutk.IOTC.player.PlaybackMonitor: int NONE
 com.google.protobuf.DescriptorProtos$FieldOptions: java.util.List uninterpretedOption_
 com.tutk.IOTC.camera.DownLoadFileStatus: com.tutk.IOTC.camera.DownLoadFileStatus[] $VALUES
 com.tutk.IOTC.AVIOCTRLDEFs: int IOTYPE_USER_IPCAM_PTZ_TRACK_RUN_SETTIG_REQ
@@ -1030,7 +1030,7 @@ com.tutk.IOTC.AVFrame: int AUDIO_CHANNEL_MONO
 com.tutk.IOTC.AVIOCTRLDEFs: int IOTYPE_USER_IPCAM_SET_ARM_TIME_REQ
 com.tutk.IOTC.R$styleable: int CompoundButton_buttonTint
 com.tutk.IOTC.AVIOCTRLDEFs: int AVIOCTRL_AUTO_PAN_SPEED
-com.tutk.IOTC.PlaybackMonitor: long mLastZoomTime
+com.tutk.IOTC.player.PlaybackMonitor: long mLastZoomTime
 com.tutk.IOTC.R$style: int Widget_AppCompat_ProgressBar_Horizontal
 com.google.protobuf.GeneratedMessage$FieldAccessorTable$SingularEnumFieldAccessor: java.lang.reflect.Method valueOfMethod
 com.tutk.IOTC.LogLevel: com.tutk.IOTC.LogLevel LEVEL_VERBOSE
@@ -1162,7 +1162,7 @@ com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Type: int TYPE_FIXED32
 com.tutk.IOTC.camera.DecodeVideoJob$start$1$1: int[] $out_height
 com.google.protobuf.GeneratedMessageV3$1: com.google.protobuf.GeneratedMessageV3 this$0
 com.tutk.IOTC.St_AVClientStartInConfig: int security_mode
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1: int label
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1: int label
 com.google.protobuf.ApiProto: com.google.protobuf.GeneratedMessageV3$FieldAccessorTable internal_static_google_protobuf_Method_fieldAccessorTable
 com.google.protobuf.Field$Builder: int bitField0_
 com.tutk.IOTC.R$style: int Base_Widget_AppCompat_SeekBar
@@ -1212,7 +1212,7 @@ com.google.protobuf.DescriptorProtos$DescriptorProto$Builder: com.google.protobu
 com.tutk.IOTC.R$style: int Base_TextAppearance_AppCompat_Medium_Inverse
 com.tutk.IOTC.R$id: int unchecked
 com.tutk.IOTC.camera.SendFileJob$start$1$1: java.lang.Object L$0
-com.tutk.IOTC.PlaybackMonitor: int DRAG
+com.tutk.IOTC.player.PlaybackMonitor: int DRAG
 com.google.protobuf.DescriptorProtos$EnumOptions: java.util.List uninterpretedOption_
 com.tutk.IOTC.R$layout: int abc_dialog_title_material
 com.google.protobuf.TypeProto: com.google.protobuf.GeneratedMessageV3$FieldAccessorTable internal_static_google_protobuf_Enum_fieldAccessorTable
@@ -1260,7 +1260,7 @@ com.tutk.IOTC.R$style: int TextAppearance_AppCompat_SearchResult_Title
 com.tutk.IOTC.AVIOCTRLDEFs: int AVIOTC_WIFIAPENC_WPA_AES
 com.google.protobuf.MapEntryLite: int VALUE_FIELD_NUMBER
 com.google.protobuf.DescriptorProtos$DescriptorProto$Builder: java.util.List field_
-com.tutk.IOTC.PlaybackMonitor: int mVideoPlayTime
+com.tutk.IOTC.player.PlaybackMonitor: int mVideoPlayTime
 com.ingenic.b.a: java.lang.Thread i
 com.tutk.IOTC.R$anim: int abc_tooltip_exit
 com.tutk.IOTC.R$id: int async
@@ -1352,7 +1352,7 @@ com.google.protobuf.GeneratedMessageLite$ExtendableMessage$ExtensionWriter: com.
 com.google.protobuf.DescriptorProtos$UninterpretedOption$Builder: java.lang.Object aggregateValue_
 com.ingenic.b.c: int d
 com.google.protobuf.DescriptorProtos$FileDescriptorProto: java.util.List extension_
-com.tutk.IOTC.PlaybackMonitor: int vTop
+com.tutk.IOTC.player.PlaybackMonitor: int vTop
 com.ingenic.b.c: byte[] f
 com.google.protobuf.LazyFieldLite: com.google.protobuf.ExtensionRegistryLite EMPTY_REGISTRY
 com.tutk.IOTC.AVAPIs: int AV_ER_SERVER_EXIT
@@ -1518,7 +1518,7 @@ com.tutk.IOTC.R$layout: int abc_activity_chooser_view
 com.ingenic.zalive.MsgEntity: com.google.protobuf.Descriptors$Descriptor internal_static_Cli2HeartInfoReq_descriptor
 com.tutk.IOTC.R$styleable: int Toolbar_subtitle
 com.tutk.IOTC.R$attr: int thumbTextPadding
-com.tutk.IOTC.PlaybackMonitor: int mBitmapHeight
+com.tutk.IOTC.player.PlaybackMonitor: int mBitmapHeight
 com.google.protobuf.DoubleValue: byte memoizedIsInitialized
 com.tutk.IOTC.R$attr: int contentInsetRight
 com.android.aec.a: java.lang.String d
@@ -1535,7 +1535,7 @@ com.google.protobuf.UInt64Value: long serialVersionUID
 com.tutk.IOTC.R$color: int notification_action_color_filter
 com.google.protobuf.DescriptorProtos$UninterpretedOption: int NAME_FIELD_NUMBER
 com.google.protobuf.ListValue: com.google.protobuf.ListValue DEFAULT_INSTANCE
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$1: int label
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$1: int label
 com.tutk.IOTC.camera.RecvVideoJob$start$1$1: java.lang.Object L$5
 com.tutk.IOTC.camera.IOCtrlQueueType: com.tutk.IOTC.camera.IOCtrlQueueType COMMON_IO_CMD_QUENE
 com.google.protobuf.GeneratedMessageLite$EqualsVisitor: com.google.protobuf.GeneratedMessageLite$EqualsVisitor$NotEqualsException NOT_EQUALS
@@ -1599,7 +1599,7 @@ com.tutk.IOTC.R$style: int Base_Widget_AppCompat_EditText
 com.tutk.IOTC.R$layout: int abc_expanded_menu_layout
 com.tutk.IOTC.Monitor: int mCurVideoWidth
 com.tutk.IOTC.IOTCAPIs: int API_ER_ANDROID_NULL
-com.tutk.IOTC.PlaybackMonitor: android.graphics.Bitmap mLastFrame
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.Bitmap mLastFrame
 com.ingenic.zalive.MsgEntity$MasterRegisterResp: long serialVersionUID
 com.google.protobuf.GeneratedMessage$4: java.lang.String val$descriptorOuterClass
 com.google.protobuf.NullValue: int NULL_VALUE_VALUE
@@ -1611,7 +1611,7 @@ com.tutk.IOTC.R$drawable: int abc_action_bar_item_background_material
 com.ingenic.zalive.MsgEntity$Request$Builder: com.google.protobuf.SingleFieldBuilderV3 cli2HeartReqBuilder_
 com.tutk.IOTC.R$attr: int backgroundSplit
 com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Annotation$Builder: java.lang.Object sourceFile_
-com.tutk.IOTC.PlaybackMonitor: android.graphics.PointF mStartClickPoint
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.PointF mStartClickPoint
 com.tutk.IOTC.R$id: int tag_transition_group
 com.google.protobuf.DescriptorProtos: com.google.protobuf.Descriptors$Descriptor internal_static_google_protobuf_DescriptorProto_ExtensionRange_descriptor
 com.tutk.IOTC.camera.DecodeVideoJob$start$1: kotlin.jvm.internal.Ref$LongRef $firstTimeStampFromDevice
@@ -1643,7 +1643,7 @@ com.ingenic.zalive.MsgEntity$Dev2HeartDevStat: byte memoizedIsInitialized
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto: java.lang.Object name_
 com.tutk.IOTC.R$styleable: int AppCompatTheme_toolbarStyle
 com.google.protobuf.Descriptors$ServiceDescriptor: com.google.protobuf.Descriptors$MethodDescriptor[] methods
-com.tutk.IOTC.PlaybackMonitor: kotlinx.coroutines.Job mRenderJob
+com.tutk.IOTC.player.PlaybackMonitor: kotlinx.coroutines.Job mRenderJob
 com.tutk.IOTC.R$attr: int fontWeight
 com.google.protobuf.DescriptorProtos$FileDescriptorProto: int PUBLIC_DEPENDENCY_FIELD_NUMBER
 com.tutk.IOTC.R$styleable: int DrawerArrowToggle_thickness
@@ -1655,7 +1655,7 @@ com.google.protobuf.BytesValue: com.google.protobuf.ByteString value_
 com.tutk.IOTC.R$attr: int subtitleTextColor
 com.tutk.IOTC.R$drawable: int abc_menu_hardkey_panel_mtrl_mult
 com.google.protobuf.Field: int ONEOF_INDEX_FIELD_NUMBER
-com.tutk.IOTC.PlaybackMonitor: boolean isRunning
+com.tutk.IOTC.player.PlaybackMonitor: boolean isRunning
 com.tutk.IOTC.R$styleable: int ActionBar_homeLayout
 com.tutk.IOTC.RDTAPIs: int RDT_ER_TIMEOUT
 com.tutk.IOTC.R$dimen: int abc_text_size_display_4_material
@@ -1691,7 +1691,7 @@ com.google.protobuf.DescriptorProtos$UninterpretedOption$Builder: com.google.pro
 com.google.protobuf.DescriptorProtos$DescriptorProto$Builder: java.lang.Object name_
 com.tutk.IOTC.R$styleable: int Toolbar_subtitleTextAppearance
 com.google.protobuf.Enum: int ENUMVALUE_FIELD_NUMBER
-com.tutk.IOTC.PlaybackMonitor: float mCurrentMaxScale
+com.tutk.IOTC.player.PlaybackMonitor: float mCurrentMaxScale
 com.tutk.IOTC.IOTCAPIs: int IOTC_ER_DID_NOT_LOGIN_WITH_AUTHKEY
 com.tutk.IOTC.R$styleable: int AppCompatTheme_spinnerStyle
 com.google.protobuf.UInt32Value: byte memoizedIsInitialized
@@ -1776,7 +1776,7 @@ com.tutk.IOTC.R$id: int blocking
 com.tutk.IOTC.R$styleable: int AppCompatImageView_tintMode
 com.ingenic.zalive.MsgEntity$Message: long serialVersionUID
 com.google.protobuf.DescriptorProtos$MethodDescriptorProto: int bitField0_
-com.tutk.IOTC.PlaybackMonitor: int vBottom
+com.tutk.IOTC.player.PlaybackMonitor: int vBottom
 com.tutk.IOTC.R$style: int Base_Widget_AppCompat_SearchView_ActionBar
 com.tutk.IOTC.R$styleable: int AppCompatTheme_listMenuViewStyle
 com.tutk.IOTC.R$style: int Base_Widget_AppCompat_Button_ButtonBar_AlertDialog
@@ -1985,14 +1985,14 @@ com.tutk.IOTC.audio.SendAudioJob$start$1$1: java.lang.Object L$0
 com.tutk.IOTC.R$color: int switch_thumb_disabled_material_light
 com.tutk.IOTC.R$styleable: int[] PopupWindow
 com.ingenic.zalive.HeartAddress: int heartIp
-com.tutk.IOTC.PlaybackMonitor: android.graphics.Rect mRectMonitor
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.Rect mRectMonitor
 com.ingenic.zalive.MsgEntity$Request$Builder: com.ingenic.zalive.MsgEntity$Dev2HeartDevStat devState_
 com.tutk.IOTC.camera.AVChannelKt: int MAX_BUF_SIZE
 com.google.protobuf.GeneratedMessage$FieldAccessorTable$SingularFieldAccessor: java.lang.Class type
 com.google.protobuf.WireFormat$FieldType: com.google.protobuf.WireFormat$FieldType[] $VALUES
 com.google.protobuf.RpcUtil$2: boolean alreadyCalled
 com.tutk.IOTC.R$dimen: int abc_dialog_corner_radius_material
-com.tutk.IOTC.PlaybackMonitor$1: com.tutk.IOTC.PlaybackMonitor this$0
+com.tutk.IOTC.player.PlaybackMonitor$1: com.tutk.IOTC.player.PlaybackMonitor this$0
 com.tutk.IOTC.R$drawable: int abc_ratingbar_small_material
 com.tutk.IOTC.camera.SendFileInfo: int sendTotal
 com.tutk.bean.TTimeZone: int gmtDiff
@@ -2044,7 +2044,7 @@ com.google.protobuf.DescriptorProtos$FileOptions$Builder: boolean deprecated_
 com.google.protobuf.MapFieldLite: boolean isMutable
 com.tutk.IOTC.R$id: int default_activity_button
 com.google.protobuf.EnumValue: int OPTIONS_FIELD_NUMBER
-com.tutk.IOTC.PlaybackMonitor: com.tutk.IOTC.status.VoiceType mVoiceType
+com.tutk.IOTC.player.PlaybackMonitor: com.tutk.IOTC.status.VoiceType mVoiceType
 com.tutk.IOTC.R$style: int ThemeOverlay_AppCompat_Dialog_Alert
 com.tutk.IOTC.R$style: int Base_Widget_AppCompat_AutoCompleteTextView
 com.tutk.bean.TSupportStream: int index
@@ -2080,7 +2080,7 @@ com.tutk.IOTC.camera.FileDirectory: com.tutk.IOTC.camera.FileDirectory WIFI
 com.tutk.IOTC.AVAPIs: int TIME_DELAY_DELTA
 com.ingenic.zalive.MsgEntity$Response$Builder: com.google.protobuf.SingleFieldBuilderV3 heart2CliBuilder_
 com.google.protobuf.DescriptorProtos$FileOptions: int CSHARP_NAMESPACE_FIELD_NUMBER
-com.tutk.IOTC.PlaybackMonitor: com.tutk.IOTC.Camera mCamera
+com.tutk.IOTC.player.PlaybackMonitor: com.tutk.IOTC.Camera mCamera
 com.tutk.IOTC.R$color: int secondary_text_disabled_material_light
 com.tutk.IOTC.R$layout: int abc_screen_toolbar
 com.google.protobuf.Descriptors$MethodDescriptor: com.google.protobuf.Descriptors$Descriptor outputType
@@ -2190,9 +2190,9 @@ com.google.protobuf.DescriptorProtos$UninterpretedOption: long serialVersionUID
 com.google.protobuf.Field$Kind: com.google.protobuf.Field$Kind[] $VALUES
 com.tutk.IOTC.R$style: int Widget_AppCompat_CompoundButton_Switch
 com.google.protobuf.UnknownFieldSetLite: int[] tags
-com.tutk.IOTC.PlaybackMonitor: float DEFAULT_MAX_ZOOM_SCALE
+com.tutk.IOTC.player.PlaybackMonitor: float DEFAULT_MAX_ZOOM_SCALE
 com.ingenic.api.AudioPlayer: com.ingenic.b.a mPlayer
-com.tutk.IOTC.PlaybackMonitor: com.tutk.IOTC.status.PlaybackStatus mPlaybackStatus
+com.tutk.IOTC.player.PlaybackMonitor: com.tutk.IOTC.status.PlaybackStatus mPlaybackStatus
 com.tutk.IOTC.R$styleable: int SearchView_suggestionRowLayout
 com.tutk.IOTC.camera.SendFileJob: com.tutk.IOTC.camera.AVChannel avChannel
 com.tutk.IOTC.R$style: int Theme_AppCompat_NoActionBar
@@ -2352,7 +2352,7 @@ com.ingenic.b.e: int f
 com.tutk.IOTC.R$drawable: int abc_popup_background_mtrl_mult
 com.tutk.IOTC.R$styleable: int AppCompatTheme_actionBarSplitStyle
 com.tutk.libmediaconvert.AudioConvert$AudioCodec: com.tutk.libmediaconvert.AudioConvert$AudioCodec AUDIO_CODEC_PCM
-com.tutk.IOTC.PlaybackMonitor: long mDownTime
+com.tutk.IOTC.player.PlaybackMonitor: long mDownTime
 com.tutk.IOTC.R$drawable: int abc_list_longpressed_holo
 com.tutk.IOTC.R$attr: int closeItemLayout
 com.tutk.IOTC.IOTCAPIs: int IOTC_ER_NOT_ENOUGH_MEMORY
@@ -2420,7 +2420,7 @@ com.google.protobuf.UnknownFieldSet$Field: com.google.protobuf.UnknownFieldSet$F
 com.google.protobuf.GeneratedMessageLite$EqualsVisitor: com.google.protobuf.GeneratedMessageLite$EqualsVisitor INSTANCE
 com.tutk.IOTC.R$style: int Theme_AppCompat_DayNight
 com.ingenic.zalive.MsgEntity$ZRT_ERR_Code: com.ingenic.zalive.MsgEntity$ZRT_ERR_Code ZALIVE_NET_DISCONNET_ERR
-com.tutk.IOTC.PlaybackMonitor: boolean isRecording
+com.tutk.IOTC.player.PlaybackMonitor: boolean isRecording
 com.tutk.IOTC.R$color: int primary_text_default_material_dark
 com.tutk.IOTC.camera.StartJob$start$1$1: long J$0
 com.google.protobuf.TextFormatParseInfoTree: java.util.Map subtreesFromField
@@ -2437,7 +2437,7 @@ com.tutk.IOTC.R$id: int accessibility_custom_action_21
 com.google.protobuf.DescriptorProtos$ServiceDescriptorProto: long serialVersionUID
 com.google.protobuf.Struct$FieldsDefaultEntryHolder: com.google.protobuf.MapEntry defaultEntry
 com.tutk.IOTC.R$styleable: int MenuItem_android_icon
-com.tutk.IOTC.PlaybackMonitor: int mVideoTotalTime
+com.tutk.IOTC.player.PlaybackMonitor: int mVideoTotalTime
 com.tutk.IOTC.status.RecordQuality: com.tutk.IOTC.status.RecordQuality[] $VALUES
 com.tutk.IOTC.R$attr: int progressBarStyle
 com.tutk.IOTC.Camera: int CONNECTION_STATE_CLIENT_S_WAKEUP_RUNNING
@@ -2669,7 +2669,7 @@ com.google.protobuf.DescriptorProtos$ServiceDescriptorProto: java.util.List meth
 com.google.protobuf.Method: int REQUEST_STREAMING_FIELD_NUMBER
 com.tutk.IOTC.R$style: int TextAppearance_Compat_Notification_Title
 com.ingenic.zalive.MsgEntity$Response: int PACKRESP_FIELD_NUMBER
-com.tutk.IOTC.PlaybackMonitor: com.tutk.IOTC.PlaybackMonitor$OnPlayBackCallback mOnPlaybackCallback
+com.tutk.IOTC.player.PlaybackMonitor: com.tutk.IOTC.player.PlaybackMonitor$OnPlayBackCallback mOnPlaybackCallback
 com.tutk.IOTC.AVIOCTRLDEFs: int IOTYPE_USER_IPCAM_PETS_SET_PLAY_DOG_SOUND_LIST_REQ
 com.ingenic.b.a: float C
 com.google.protobuf.StructProto: com.google.protobuf.GeneratedMessageV3$FieldAccessorTable internal_static_google_protobuf_ListValue_fieldAccessorTable
@@ -2815,7 +2815,7 @@ com.ingenic.zalive.HeartAddress: java.lang.String ipStr
 com.google.protobuf.Descriptors$FieldDescriptor$Type: com.google.protobuf.Descriptors$FieldDescriptor$Type FIXED32
 com.tutk.IOTC.R$attr: int dropdownListPreferredItemHeight
 com.tutk.IOTC.status.PlayMode: com.tutk.IOTC.status.PlayMode PLAY_BACK
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$1: com.tutk.IOTC.PlaybackMonitor this$0
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$1: com.tutk.IOTC.player.PlaybackMonitor this$0
 com.tutk.IOTC.R$id: int forever
 com.google.protobuf.Descriptors$Descriptor: int index
 com.google.protobuf.TextFormat: com.google.protobuf.TextFormat$Printer DEFAULT_PRINTER
@@ -2837,7 +2837,7 @@ com.tutk.IOTC.IOTCAPIs: int IOTC_ER_INVALID_SID
 com.tutk.IOTC.R$styleable: int AppCompatTheme_actionBarStyle
 com.google.protobuf.ByteString$1: com.google.protobuf.ByteString this$0
 com.tutk.IOTC.R$style: int Base_V21_Theme_AppCompat_Dialog
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$1: java.lang.Object L$0
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$1: java.lang.Object L$0
 com.google.protobuf.EnumValue$Builder: com.google.protobuf.RepeatedFieldBuilderV3 optionsBuilder_
 com.google.protobuf.DoubleValue: double value_
 com.google.protobuf.RepeatedFieldBuilder: com.google.protobuf.RepeatedFieldBuilder$BuilderExternalList externalBuilderList
@@ -2849,7 +2849,7 @@ com.tutk.IOTC.AVIOCTRLDEFs: int IOTYPE_USER_IPCAM_GETSTREAMCTRL_REQ
 com.google.protobuf.DescriptorProtos$UninterpretedOption$NamePart: com.google.protobuf.DescriptorProtos$UninterpretedOption$NamePart DEFAULT_INSTANCE
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequest: int bitField0_
 com.tutk.IOTC.R$styleable: int GradientColor_android_startX
-com.tutk.IOTC.PlaybackMonitor: android.graphics.PointF mStartPoint
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.PointF mStartPoint
 com.google.protobuf.WrappersProto: com.google.protobuf.Descriptors$Descriptor internal_static_google_protobuf_BoolValue_descriptor
 com.tutk.IOTC.camera.RecvVideoJob$start$1$1: com.tutk.IOTC.camera.RecvVideoJob this$0
 com.google.protobuf.GeneratedMessage$FieldAccessorTable$SingularFieldAccessor: java.lang.reflect.Method setMethod
@@ -3024,13 +3024,13 @@ com.tutk.IOTC.R$color: int material_blue_grey_950
 com.ingenic.zalive.MsgEntity$DevState: int dev_offline_VALUE
 com.google.protobuf.WireFormat: int MESSAGE_SET_ITEM_END_TAG
 com.tutk.IOTC.R$style: int ThemeOverlay_AppCompat_DayNight_ActionBar
-com.tutk.IOTC.PlaybackMonitor: android.graphics.Paint mPaint
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.Paint mPaint
 com.ingenic.zalive.MsgEntity$MasterPackResp: int PORT_FIELD_NUMBER
 com.tutk.IOTC.St_AVServStartInConfig: com.tutk.IOTC.AVAPIs$avTokenAuthFn token_auth
 com.tutk.IOTC.R$style: int Base_Widget_AppCompat_ProgressBar_Horizontal
 com.tutk.IOTC.camera.DecodeVideoJob$start$1: int label
 com.google.protobuf.TextFormatEscaper$1: com.google.protobuf.ByteString val$input
-com.tutk.IOTC.PlaybackMonitor: boolean isFullScreen
+com.tutk.IOTC.player.PlaybackMonitor: boolean isFullScreen
 com.tutk.IOTC.St_AvStatus: int LastRtt
 com.tutk.IOTC.AVIOCTRLDEFs: int AVIOTC_WIFIAPENC_AUTO_ADAPT
 com.tutk.IOTC.R$drawable: int abc_scrubber_control_to_pressed_mtrl_005
@@ -3233,7 +3233,7 @@ com.google.protobuf.MapEntry: com.google.protobuf.MapEntry$Metadata metadata
 com.tutk.IOTC.R$layout: int abc_action_bar_up_container
 com.tutk.IOTC.R$drawable: int abc_ic_voice_search_api_material
 com.tutk.IOTC.R$style: int Base_Widget_AppCompat_ImageButton
-com.tutk.IOTC.PlaybackMonitor$renderJob$1: int label
+com.tutk.IOTC.player.PlaybackMonitor$renderJob$1: int label
 com.tutk.IOTC.R$dimen: int abc_button_inset_horizontal_material
 com.google.protobuf.DescriptorProtos$FieldOptions: int jstype_
 com.tutk.IOTC.Camera: int CONNECTION_STATE_CLIENT_S_DEV_ISWILLSLEEP_CANOT_ROUSE
@@ -3294,7 +3294,7 @@ com.ingenic.b.d: boolean g
 com.tutk.IOTC.R$dimen: int tooltip_y_offset_touch
 com.tutk.IOTC.R$id: int checked
 com.tutk.IOTC.Monitor: com.tutk.IOTC.status.VoiceType mVoiceType
-com.tutk.IOTC.PlaybackMonitor: int mPinchedMode
+com.tutk.IOTC.player.PlaybackMonitor: int mPinchedMode
 com.tutk.IOTC.AVAPIs: int TIME_DELAY_MIN
 com.google.protobuf.AbstractProtobufList: boolean isMutable
 com.google.protobuf.DynamicMessage$Builder: com.google.protobuf.FieldSet fields
@@ -3360,7 +3360,7 @@ com.tutk.IOTC.R$anim: int btn_checkbox_to_unchecked_box_inner_merged_animation
 com.tutk.IOTC.R$id: int tag_on_receive_content_listener
 com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Annotation: java.util.List path_
 com.tutk.IOTC.AVIOCTRLDEFs: int IOTYPE_USER_IPCAM_GET_CAMERA_RESP
-com.tutk.IOTC.PlaybackMonitor: int nScreenHeight
+com.tutk.IOTC.player.PlaybackMonitor: int nScreenHeight
 com.tutk.IOTC.R$styleable: int AppCompatTheme_actionModeBackground
 com.google.protobuf.CodedOutputStream: int FIXED_64_SIZE
 com.google.protobuf.CodedInputStream: int currentLimit
@@ -3566,7 +3566,7 @@ com.google.protobuf.DescriptorProtos$FileOptions: int JAVA_GENERATE_EQUALS_AND_H
 com.tutk.IOTC.camera.AVChannel: com.tutk.IOTC.AVFrameQueue AudioFrameQueue
 com.tutk.IOTC.R$styleable: int MenuView_subMenuArrow
 com.tutk.IOTC.IOTCAPIs: int IOTC_ER_TCP_CONNECT_TO_SERVER_FAILED
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1: com.tutk.IOTC.PlaybackMonitor this$0
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1: com.tutk.IOTC.player.PlaybackMonitor this$0
 com.tutk.IOTC.IOTCAPIs: int IOTC_ER_TIMEOUT
 com.tutk.IOTC.R$attr: int showTitle
 com.tutk.IOTC.R$style: int Base_Theme_AppCompat_Light_Dialog
@@ -3622,7 +3622,7 @@ com.ingenic.zalive.MsgEntity$Response$Builder: com.ingenic.zalive.MsgEntity$Hear
 com.google.protobuf.CodedInputStream: int bufferSizeAfterLimit
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse: int FILE_FIELD_NUMBER
 com.tutk.IOTC.R$styleable: int AlertDialog_listItemLayout
-com.tutk.IOTC.PlaybackMonitor: android.view.View$OnClickListener mOnClickListener
+com.tutk.IOTC.player.PlaybackMonitor: android.view.View$OnClickListener mOnClickListener
 com.google.protobuf.DescriptorProtos$MethodDescriptorProto: com.google.protobuf.DescriptorProtos$MethodOptions options_
 com.google.protobuf.DescriptorProtos$DescriptorProto: java.util.List oneofDecl_
 com.ingenic.zalive.MsgEntity: com.google.protobuf.Descriptors$FileDescriptor descriptor
@@ -3877,7 +3877,7 @@ com.tutk.IOTC.R$dimen: int notification_action_icon_size
 com.tutk.IOTC.R$drawable: int abc_list_divider_mtrl_alpha
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Type: com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Type[] $VALUES
 com.tutk.IOTC.AVFrameQueue: java.util.concurrent.locks.ReentrantLock lock
-com.tutk.IOTC.PlaybackMonitor: com.tutk.bean.TEvent mRecordEvent
+com.tutk.IOTC.player.PlaybackMonitor: com.tutk.bean.TEvent mRecordEvent
 com.tutk.IOTC.R$styleable: int MenuItem_android_enabled
 com.tutk.IOTC.AVIOCTRLDEFs: int AVIOCTRL_PTZ_UP
 com.google.protobuf.Any: byte memoizedIsInitialized
@@ -3886,7 +3886,7 @@ com.tutk.IOTC.AVIOCTRLDEFs: int USER_EVENT_PETWANT_PIR_DETECT
 com.ingenic.zalive.MsgEntity$ServerSync2MasterReq: long serialVersionUID
 com.tutk.IOTC.camera.DownFileJob: java.lang.String TAG
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Builder: java.lang.Object name_
-com.tutk.IOTC.PlaybackMonitor$WhenMappings: int[] $EnumSwitchMapping$0
+com.tutk.IOTC.player.PlaybackMonitor$WhenMappings: int[] $EnumSwitchMapping$0
 com.ingenic.zalive.MsgEntity$MasterRegisterResp$Builder: java.lang.Object payloadkey_
 com.google.protobuf.AbstractMessageLite$Builder$LimitedInputStream: int limit
 com.google.protobuf.DescriptorProtos: com.google.protobuf.GeneratedMessageV3$FieldAccessorTable internal_static_google_protobuf_GeneratedCodeInfo_fieldAccessorTable
@@ -3918,7 +3918,7 @@ com.tutk.IOTC.R$styleable: int SwitchCompat_switchTextAppearance
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto: java.lang.Object defaultValue_
 com.tutk.IOTC.R$style: int Widget_AppCompat_Light_ActivityChooserView
 com.tutk.IOTC.R$color: int bright_foreground_disabled_material_light
-com.tutk.IOTC.PlaybackMonitor: com.tutk.IOTC.status.PlayMode mPlayMode
+com.tutk.IOTC.player.PlaybackMonitor: com.tutk.IOTC.status.PlayMode mPlayMode
 com.tutk.IOTC.R$styleable: int SearchView_voiceIcon
 com.tutk.IOTC.R$drawable: int abc_btn_colored_material
 com.tutk.IOTC.audio.RecvAudioJob: int mPlayMode
@@ -3959,7 +3959,7 @@ com.tutk.IOTC.R$styleable: int ActionBar_progressBarPadding
 com.tutk.bean.TFormatSdCard: int storage
 com.google.protobuf.DescriptorProtos$ServiceOptions$Builder: int bitField0_
 com.google.protobuf.DescriptorProtos$FileOptions: int PY_GENERIC_SERVICES_FIELD_NUMBER
-com.tutk.IOTC.PlaybackMonitor: int nScreenWidth
+com.tutk.IOTC.player.PlaybackMonitor: int nScreenWidth
 com.tutk.IOTC.camera.FileDirectory: com.tutk.IOTC.camera.FileDirectory RECORD_VIDEO_DIRECTORY
 com.ingenic.zalive.MsgEntity$ServerSync2MasterReq: int DSTATE_FIELD_NUMBER
 com.tutk.IOTC.camera.DownFileJob$start$1: java.lang.Object L$0
@@ -4216,7 +4216,7 @@ com.ingenic.zalive.MsgEntity$Master2CliInfoResp$Builder: int heartIp_
 com.tutk.IOTC.camera.SendFileJob: java.lang.String TAG
 com.tutk.IOTC.LocalRecording: boolean bp
 com.google.protobuf.Any: java.lang.Object typeUrl_
-com.tutk.IOTC.PlaybackMonitor: kotlinx.coroutines.Job mPlayTimeJob
+com.tutk.IOTC.player.PlaybackMonitor: kotlinx.coroutines.Job mPlayTimeJob
 com.tutk.IOTC.AVIOCTRLDEFs: int TTY_CMD_SET_FEED_JOY
 com.tutk.IOTC.R$styleable: int MenuItem_android_numericShortcut
 com.tutk.IOTC.camera.DownFileJob$start$2$1: java.lang.Object L$0
@@ -4263,7 +4263,7 @@ com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Annotation: byte memoized
 com.google.protobuf.Field$Kind: com.google.protobuf.Field$Kind TYPE_DOUBLE
 com.google.protobuf.Duration: int SECONDS_FIELD_NUMBER
 com.google.protobuf.WireFormat$JavaType: com.google.protobuf.WireFormat$JavaType STRING
-com.tutk.IOTC.PlaybackMonitor: int mBitmapWidth
+com.tutk.IOTC.player.PlaybackMonitor: int mBitmapWidth
 com.google.protobuf.DescriptorProtos$ServiceOptions: long serialVersionUID
 com.tutk.IOTC.R$id: int action_bar_spinner
 com.tutk.IOTC.R$style: int Theme_AppCompat
@@ -4387,7 +4387,7 @@ com.tutk.IOTC.IOTCAPIs: int IOTC_ER_STILL_IN_PROCESSING
 com.tutk.IOTC.R$styleable: int AppCompatTheme_listPreferredItemPaddingEnd
 com.tutk.IOTC.R$styleable: int[] StateListDrawableItem
 com.google.protobuf.DescriptorProtos$UninterpretedOption: int AGGREGATE_VALUE_FIELD_NUMBER
-com.tutk.IOTC.PlaybackMonitor: com.tutk.IOTC.listener.IAVChannelRecordStatus mAVChannelRecordStatus
+com.tutk.IOTC.player.PlaybackMonitor: com.tutk.IOTC.listener.IAVChannelRecordStatus mAVChannelRecordStatus
 com.google.protobuf.CodedInputStream: int bufferSize
 com.tutk.IOTC.R$styleable: int AppCompatTheme_windowActionBarOverlay
 com.tutk.IOTC.R$drawable: int notification_bg_low
@@ -4401,7 +4401,7 @@ com.tutk.IOTC.AVFrame: int MEDIA_CODEC_AUDIO_PCM
 com.tutk.IOTC.AVIOCTRLDEFs: int IOTYPE_USER_IPCAM_SETRECORD_RESP
 com.tutk.IOTC.R$drawable: int abc_btn_radio_to_on_mtrl_015
 com.ingenic.zalive.MsgEntity$msgType: int value
-com.tutk.IOTC.PlaybackMonitor: android.graphics.Rect mRectCanvas
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.Rect mRectCanvas
 com.tutk.IOTC.AVFrame: int AUDIO_SAMPLE_11K
 com.google.protobuf.TextFormat$Parser$Builder: com.google.protobuf.TextFormat$Parser$SingularOverwritePolicy singularOverwritePolicy
 com.google.protobuf.GeneratedMessageV3$FieldAccessorTable$SingularEnumFieldAccessor: java.lang.reflect.Method getValueDescriptorMethod
@@ -4437,11 +4437,11 @@ com.ingenic.zalive.MsgEntity$ServerRegisterReq: int ADDR_FIELD_NUMBER
 com.tutk.IOTC.Camera: java.util.List mSendFileStatusCallbacks
 com.google.protobuf.DescriptorProtos$MethodOptions: java.util.List uninterpretedOption_
 com.tutk.IOTC.Camera: int CONNECTION_STATE_CLIENT_S_DEV_ISSLEEP
-com.tutk.IOTC.PlaybackMonitor: int mCurVideoHeight
+com.tutk.IOTC.player.PlaybackMonitor: int mCurVideoHeight
 com.ingenic.zalive.MsgEntity$Master2CliInfoResp: long serialVersionUID
 com.tutk.IOTC.R$attr: int actionBarPopupTheme
 com.tutk.IOTC.R$drawable: int abc_ratingbar_material
-com.tutk.IOTC.PlaybackMonitor: int vRight
+com.tutk.IOTC.player.PlaybackMonitor: int vRight
 com.google.protobuf.LazyField$LazyIterator: java.util.Iterator iterator
 com.tutk.IOTC.R$styleable: int SwitchCompat_track
 com.android.aec.a: java.lang.String c
@@ -4466,7 +4466,7 @@ com.tutk.IOTC.AVIOCTRLDEFs: int IOTYPE_USER_IPCAM_DEVREBOOT_RESP
 com.tutk.IOTC.R$color: int button_material_light
 com.google.protobuf.ByteString$LiteralByteString: byte[] bytes
 com.tutk.IOTC.AVFrame: int AUDIO_SAMPLE_24K
-com.tutk.IOTC.PlaybackMonitor$renderJob$1: com.tutk.IOTC.PlaybackMonitor this$0
+com.tutk.IOTC.player.PlaybackMonitor$renderJob$1: com.tutk.IOTC.player.PlaybackMonitor this$0
 com.google.protobuf.DescriptorProtos$GeneratedCodeInfo: com.google.protobuf.Parser PARSER
 com.tutk.IOTC.camera.DecodeVideoJob: boolean isRunning
 com.tutk.IOTC.camera.DecodeVideoJob$start$1$1: java.lang.Object L$5
@@ -4696,7 +4696,7 @@ com.tutk.IOTC.R$styleable: int MenuItem_android_id
 com.google.protobuf.WireFormat: int WIRETYPE_START_GROUP
 com.tutk.IOTC.Camera: android.net.Uri mSendFileUri
 com.tutk.IOTC.R$styleable: int AppCompatTheme_selectableItemBackgroundBorderless
-com.tutk.IOTC.PlaybackMonitor: int FLING_MIN_VELOCITY
+com.tutk.IOTC.player.PlaybackMonitor: int FLING_MIN_VELOCITY
 com.google.protobuf.Struct$Builder: int bitField0_
 com.google.protobuf.DescriptorProtos$FileOptions$Builder: boolean pyGenericServices_
 com.tutk.IOTC.status.MotionDetect: com.tutk.IOTC.status.MotionDetect LOW
@@ -5191,7 +5191,7 @@ com.tutk.IOTC.R$id: int search_edit_frame
 com.tutk.IOTC.Camera: int EXTRA_EVENT_AUDIO_SUPPORT
 com.tutk.IOTC.IOTCAPIs: int IOTC_ER_SESSION_NO_FREE_CHANNEL
 com.tutk.IOTC.R$style: int Base_TextAppearance_AppCompat_Display1
-com.tutk.IOTC.PlaybackMonitor: android.view.GestureDetector mGestureDetector
+com.tutk.IOTC.player.PlaybackMonitor: android.view.GestureDetector mGestureDetector
 com.google.protobuf.GeneratedMessage$Builder$BuilderParentImpl: com.google.protobuf.GeneratedMessage$Builder this$0
 com.tutk.IOTC.R$styleable: int AppCompatTheme_actionBarSize
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Type: int TYPE_SINT32_VALUE
@@ -5263,7 +5263,7 @@ com.google.protobuf.Field: int KIND_FIELD_NUMBER
 com.google.protobuf.GeneratedMessage$FieldAccessorTable$RepeatedEnumFieldAccessor: java.lang.reflect.Method addRepeatedValueMethod
 com.tutk.IOTC.camera.DownFileJob: kotlinx.coroutines.Job runJob
 com.tutk.IOTC.R$attr: int titleMarginStart
-com.tutk.IOTC.PlaybackMonitor: int ZOOM
+com.tutk.IOTC.player.PlaybackMonitor: int ZOOM
 com.tutk.IOTC.Monitor: android.graphics.Paint mPaint
 com.google.protobuf.Any: int VALUE_FIELD_NUMBER
 com.tutk.IOTC.R$style: int Base_V22_Theme_AppCompat
@@ -5328,7 +5328,7 @@ com.google.protobuf.DynamicMessage$Builder: com.google.protobuf.Descriptors$Fiel
 com.tutk.IOTC.R$attr: int listPreferredItemHeightSmall
 com.google.protobuf.Syntax: com.google.protobuf.Internal$EnumLiteMap internalValueMap
 com.google.protobuf.Field$Kind: com.google.protobuf.Field$Kind TYPE_BOOL
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1: com.tutk.IOTC.PlaybackMonitor this$0
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1: com.tutk.IOTC.player.PlaybackMonitor this$0
 com.tutk.IOTC.AVFrame: int IPC_FRAME_FLAG_IFRAME
 com.google.protobuf.Method: boolean responseStreaming_
 com.google.protobuf.GeneratedMessage$FieldAccessorTable$SingularStringFieldAccessor: java.lang.reflect.Method getBytesMethodBuilder
@@ -5374,7 +5374,7 @@ com.tutk.IOTC.R$styleable: int AppCompatTheme_radioButtonStyle
 com.tutk.IOTC.R$attr: int switchStyle
 com.tutk.IOTC.Monitor: com.tutk.IOTC.Camera mCamera
 com.tutk.IOTC.R$styleable: int AppCompatTextHelper_android_drawableTop
-com.tutk.IOTC.PlaybackMonitor: android.graphics.PointF mCurrentPoint
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.PointF mCurrentPoint
 com.tutk.IOTC.R$id: int right_side
 com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq: int UID_FIELD_NUMBER
 com.tutk.IOTC.R$style: int Base_Animation_AppCompat_Dialog
@@ -5409,7 +5409,7 @@ com.tutk.IOTC.camera.SendFileStatus: com.tutk.IOTC.camera.SendFileStatus[] $VALU
 com.ingenic.zalive.ZALIVEIngenicHandler$1: com.ingenic.zalive.ZALIVEIngenicHandler this$0
 com.tutk.IOTC.St_AvIdentity: int length
 com.tutk.IOTC.AVFrame: int MEDIA_CODEC_UNKNOWN
-com.tutk.IOTC.PlaybackMonitor: int mCurVideoWidth
+com.tutk.IOTC.player.PlaybackMonitor: int mCurVideoWidth
 com.tutk.IOTC.R$color: int abc_decor_view_status_guard_light
 com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange: int START_FIELD_NUMBER
 com.tutk.IOTC.camera.DownFileJob$start$2: int label
@@ -5438,7 +5438,7 @@ com.google.protobuf.SingleFieldBuilderV3: com.google.protobuf.AbstractMessage$Bu
 com.google.protobuf.Syntax: com.google.protobuf.Syntax SYNTAX_PROTO2
 com.google.protobuf.ExtensionRegistry$ExtensionInfo: com.google.protobuf.Descriptors$FieldDescriptor descriptor
 com.tutk.IOTC.AVIOCTRLDEFs: int IOTYPE_USER_IPCAM_PTZ_TRACK_RUN_SETTIG_RESP
-com.tutk.IOTC.PlaybackMonitor: int mAvChannel
+com.tutk.IOTC.player.PlaybackMonitor: int mAvChannel
 com.tutk.IOTC.camera.RecvVideoInfo: int eventType
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Location$Builder: java.util.List path_
 com.tutk.IOTC.AudioProcess$Encode: int m
@@ -5512,7 +5512,7 @@ com.tutk.IOTC.R$attr: int subtitleTextStyle
 com.tutk.IOTC.AVAPIs: int AV_ER_SENDIOCTRL_ALREADY_CALLED
 com.tutk.IOTC.LogLevel: com.tutk.IOTC.LogLevel[] $VALUES
 com.tutk.IOTC.R$style: int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow
-com.tutk.IOTC.PlaybackMonitor: boolean mAudioTrackStatus
+com.tutk.IOTC.player.PlaybackMonitor: boolean mAudioTrackStatus
 com.google.protobuf.ApiProto: com.google.protobuf.GeneratedMessageV3$FieldAccessorTable internal_static_google_protobuf_Mixin_fieldAccessorTable
 com.tutk.IOTC.R$color: int abc_tint_seek_thumb
 com.google.protobuf.Mixin: java.lang.Object name_
@@ -5780,7 +5780,7 @@ com.tutk.IOTC.R$drawable: int abc_ic_menu_paste_mtrl_am_alpha
 com.tutk.libmediaconvert.AudioConvert: int CHANNEL_FMT_STERO
 com.tutk.IOTC.AVIOCTRLDEFs: int IOTYPE_USER_GET_BATTERY_CAPACITY_REQ
 com.ingenic.zalive.MsgEntity$ServerSync2MasterReq: int dstate_
-com.tutk.IOTC.PlaybackMonitor: int vLeft
+com.tutk.IOTC.player.PlaybackMonitor: int vLeft
 com.google.protobuf.Option: com.google.protobuf.Any value_
 com.google.protobuf.UnknownFieldSet$Field: java.util.List lengthDelimited
 com.google.protobuf.Enum$Builder: int bitField0_
@@ -5850,7 +5850,7 @@ com.google.protobuf.TypeProto: com.google.protobuf.Descriptors$FileDescriptor de
 com.google.protobuf.Descriptors$Descriptor: com.google.protobuf.Descriptors$Descriptor containingType
 com.google.protobuf.Field$Kind: com.google.protobuf.Field$Kind TYPE_INT64
 com.tutk.IOTC.camera.DecodeVideoJob$start$1$1: kotlin.jvm.internal.Ref$LongRef $sleepTime
-com.tutk.IOTC.PlaybackMonitor: float mCurrentScale
+com.tutk.IOTC.player.PlaybackMonitor: float mCurrentScale
 com.google.protobuf.DescriptorProtos$OneofDescriptorProto: long serialVersionUID
 com.tutk.IOTC.R$style: int Base_TextAppearance_AppCompat_Tooltip
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequest$Builder: com.google.protobuf.RepeatedFieldBuilderV3 protoFileBuilder_
@@ -6110,7 +6110,7 @@ com.tutk.IOTC.AVIOCTRLDEFs: int AVIOCTRL_PATTERN_STOP
 com.google.protobuf.ExtensionRegistry: java.util.Map mutableExtensionsByName
 com.google.protobuf.DescriptorProtos$FieldOptions$CType: com.google.protobuf.DescriptorProtos$FieldOptions$CType CORD
 com.tutk.IOTC.AVIOCTRLDEFs: int AVIOCTRL_MOTOR_RESET_POSITION
-com.tutk.IOTC.PlaybackMonitor: int FLING_MIN_DISTANCE
+com.tutk.IOTC.player.PlaybackMonitor: int FLING_MIN_DISTANCE
 com.tutk.IOTC.AVFrame: int MEDIA_CODEC_AUDIO_G711U
 com.tutk.IOTC.R$id: int action_divider
 com.tutk.IOTC.R$styleable: int LinearLayoutCompat_Layout_android_layout_width
@@ -6355,7 +6355,7 @@ com.ingenic.zalive.MsgEntity$Cli2HeartInfoReq: int CMD_FIELD_NUMBER
 com.google.protobuf.ByteString: int MIN_READ_FROM_CHUNK_SIZE
 com.tutk.IOTC.St_IOTCCheckDeviceOutput: int Status
 com.tutk.IOTC.audio.RecvAudioJob: com.tutk.IOTC.status.VoiceType mLastVoiceType
-com.tutk.IOTC.PlaybackMonitor: android.view.SurfaceHolder mSurHolder
+com.tutk.IOTC.player.PlaybackMonitor: android.view.SurfaceHolder mSurHolder
 com.google.protobuf.Descriptors$EnumDescriptor: com.google.protobuf.Descriptors$FileDescriptor file
 com.tutk.IOTC.R$attr: int height
 com.tutk.IOTC.R$drawable: int abc_seekbar_tick_mark_material
@@ -6449,7 +6449,7 @@ com.tutk.IOTC.R$style: int Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 com.tutk.IOTC.R$style: int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small
 com.google.protobuf.CodedInputStream$RefillCallback: void onRefill()
 com.ingenic.zalive.MsgEntity$ServerRegisterReq$Builder: com.google.protobuf.Message$Builder mergeUnknownFields(com.google.protobuf.UnknownFieldSet)
-com.tutk.IOTC.PlaybackMonitor: void surfaceChanged(android.view.SurfaceHolder,int,int,int)
+com.tutk.IOTC.player.PlaybackMonitor: void surfaceChanged(android.view.SurfaceHolder,int,int,int)
 com.google.protobuf.FloatValue$Builder: com.google.protobuf.AbstractMessage$Builder mergeFrom(com.google.protobuf.Message)
 com.google.protobuf.DescriptorProtos$FieldOptions: com.google.protobuf.DescriptorProtos$FieldOptions parseFrom(byte[],com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.GeneratedMessage$FieldAccessorTable$SingularMessageFieldAccessor: com.google.protobuf.Message$Builder newBuilder()
@@ -6570,7 +6570,7 @@ com.google.protobuf.Mixin$Builder: com.google.protobuf.Message build()
 com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange$Builder: com.google.protobuf.Message$Builder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Location: boolean hasTrailingComments()
 com.google.protobuf.NioByteString: boolean isValidUtf8()
-com.tutk.IOTC.PlaybackMonitor: void startPlayback(com.tutk.IOTC.Camera,com.tutk.bean.TEvent,com.tutk.IOTC.PlaybackMonitor$OnPlayBackCallback)
+com.tutk.IOTC.player.PlaybackMonitor: void startPlayback(com.tutk.IOTC.Camera,com.tutk.bean.TEvent,com.tutk.IOTC.player.PlaybackMonitor$OnPlayBackCallback)
 com.google.protobuf.ByteBufferWriter: ByteBufferWriter()
 com.tutk.IOTC.R$string: R$string()
 com.google.protobuf.EnumValue$Builder: com.google.protobuf.EnumValue buildPartial()
@@ -6736,7 +6736,7 @@ com.tutk.IOTC.Monitor: void startRecord(java.lang.String,com.tutk.IOTC.listener.
 com.google.protobuf.SmallSortedMap: boolean isImmutable()
 com.ingenic.zalive.MsgEntity$Response$Builder: com.ingenic.zalive.MsgEntity$Response$Builder setField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
 com.google.protobuf.TextFormat: com.google.protobuf.ByteString unescapeBytes(java.lang.CharSequence)
-com.tutk.IOTC.PlaybackMonitor: void setMaxZoom(float)
+com.tutk.IOTC.player.PlaybackMonitor: void setMaxZoom(float)
 com.google.protobuf.DescriptorProtos$ServiceDescriptorProto: com.google.protobuf.ByteString getNameBytes()
 com.google.protobuf.DescriptorProtos$FileDescriptorSet$Builder: com.google.protobuf.Message$Builder mergeFrom(com.google.protobuf.Message)
 com.tutk.IOTC.Packet: byte[] shortToByteArray_Big(short)
@@ -6748,7 +6748,7 @@ com.google.protobuf.UInt64Value: long access$302(com.google.protobuf.UInt64Value
 com.google.protobuf.DescriptorProtos$UninterpretedOption$NamePart$Builder: com.google.protobuf.AbstractMessage$Builder clear()
 com.google.protobuf.Duration$Builder: com.google.protobuf.Message build()
 com.google.protobuf.DescriptorProtos$FileDescriptorProtoOrBuilder: java.util.List getEnumTypeList()
-com.tutk.IOTC.PlaybackMonitor: void receiveChannelInfo(com.tutk.IOTC.Camera,int,int)
+com.tutk.IOTC.player.PlaybackMonitor: void receiveChannelInfo(com.tutk.IOTC.Camera,int,int)
 com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder: com.google.protobuf.DescriptorProtos$ServiceDescriptorProto$Builder addServiceBuilder()
 com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder: com.google.protobuf.Message$Builder mergeFrom(com.google.protobuf.Message)
 com.google.protobuf.TextFormat$Parser: void mergeField(com.google.protobuf.TextFormat$Tokenizer,com.google.protobuf.ExtensionRegistry,com.google.protobuf.MessageReflection$MergeTarget,java.util.List)
@@ -6990,7 +6990,7 @@ com.google.protobuf.DescriptorProtos$OneofDescriptorProto: <clinit>()
 com.google.protobuf.DescriptorProtos$UninterpretedOption$Builder: com.google.protobuf.ByteString getAggregateValueBytes()
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequest: com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequest parseFrom(byte[],com.google.protobuf.ExtensionRegistryLite)
 com.ingenic.zalive.MsgEntity$Heart2CliIntoResp: com.ingenic.zalive.MsgEntity$Heart2CliIntoResp parseFrom(java.io.InputStream,com.google.protobuf.ExtensionRegistryLite)
-com.tutk.IOTC.PlaybackMonitor: int access$getVLeft$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: int access$getVLeft$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.DoubleValue$Builder: com.google.protobuf.DoubleValue$Builder clearValue()
 com.google.protobuf.DescriptorProtos$SourceCodeInfo: java.util.List access$26200(com.google.protobuf.DescriptorProtos$SourceCodeInfo)
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder: com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder setUnknownFields(com.google.protobuf.UnknownFieldSet)
@@ -7242,7 +7242,7 @@ com.ingenic.zalive.MsgEntity$Cli2HeartInfoReq$Builder: com.ingenic.zalive.MsgEnt
 com.ingenic.zalive.MsgEntity$Request$Builder: MsgEntity$Request$Builder(com.google.protobuf.GeneratedMessageV3$BuilderParent)
 com.google.protobuf.DescriptorProtos$GeneratedCodeInfo: com.google.protobuf.DescriptorProtos$GeneratedCodeInfo parseFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.SingleFieldBuilderV3: com.google.protobuf.SingleFieldBuilderV3 clear()
-com.tutk.IOTC.PlaybackMonitor: android.graphics.Rect access$getMRectCanvas$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.Rect access$getMRectCanvas$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.ingenic.zalive.MsgEntity$ServerRegisterReqOrBuilder: java.lang.String getServerName()
 com.google.protobuf.DescriptorProtos$ServiceOptions$Builder: DescriptorProtos$ServiceOptions$Builder()
 com.google.protobuf.Duration$Builder: com.google.protobuf.GeneratedMessageV3$Builder addRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
@@ -7367,7 +7367,7 @@ com.google.protobuf.DescriptorProtos$EnumOptions: com.google.protobuf.Descriptor
 com.tutk.IOTC.audio.RecvAudioJob$start$1: RecvAudioJob$start$1(com.tutk.IOTC.audio.RecvAudioJob,kotlin.jvm.internal.Ref$IntRef,kotlin.coroutines.Continuation)
 com.google.protobuf.MessageReflection$ExtensionAdapter: boolean hasField(com.google.protobuf.Descriptors$FieldDescriptor)
 com.google.protobuf.MessageReflection$MergeTarget: com.google.protobuf.MessageReflection$MergeTarget addRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
-com.tutk.IOTC.PlaybackMonitor: com.tutk.IOTC.PlaybackMonitor$OnPlayBackCallback access$getMOnPlaybackCallback$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: com.tutk.IOTC.player.PlaybackMonitor$OnPlayBackCallback access$getMOnPlaybackCallback$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.Duration: com.google.protobuf.Message getDefaultInstanceForType()
 com.google.protobuf.DescriptorProtos$GeneratedCodeInfo: boolean isInitialized()
 com.google.protobuf.Field$Cardinality: int getNumber()
@@ -7386,7 +7386,7 @@ com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse$Builder: com.goo
 com.google.protobuf.Int64Value: boolean isInitialized()
 com.google.protobuf.Enum$Builder: com.google.protobuf.GeneratedMessageV3$Builder setRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,int,java.lang.Object)
 com.google.protobuf.DescriptorProtos$MethodDescriptorProto: com.google.protobuf.DescriptorProtos$MethodDescriptorProto$Builder newBuilder(com.google.protobuf.DescriptorProtos$MethodDescriptorProto)
-com.tutk.IOTC.PlaybackMonitor$1: boolean onFling(android.view.MotionEvent,android.view.MotionEvent,float,float)
+com.tutk.IOTC.player.PlaybackMonitor$1: boolean onFling(android.view.MotionEvent,android.view.MotionEvent,float,float)
 com.google.protobuf.UnmodifiableLazyStringList: void mergeFrom(com.google.protobuf.LazyStringList)
 com.google.protobuf.DescriptorProtos$FileDescriptorProto: com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder newBuilderForType()
 com.google.protobuf.Timestamp: Timestamp()
@@ -7511,7 +7511,7 @@ com.google.protobuf.BoolValue: BoolValue(com.google.protobuf.CodedInputStream,co
 com.ingenic.zalive.MsgEntity$Cli2HeartInfoReq: com.ingenic.zalive.MsgEntity$Cli2HeartInfoReq$Builder toBuilder()
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse$File$Builder: boolean hasInsertionPoint()
 com.google.protobuf.EnumValue$Builder: com.google.protobuf.Message$Builder setField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
-com.tutk.IOTC.PlaybackMonitor: void setFullScreen()
+com.tutk.IOTC.player.PlaybackMonitor: void setFullScreen()
 com.google.protobuf.Syntax$1: Syntax$1()
 com.google.protobuf.DescriptorProtos$FieldOptions$Builder: com.google.protobuf.AbstractMessage$Builder mergeFrom(com.google.protobuf.Message)
 com.tutk.IOTC.audio.RecvAudioJob: void stop()
@@ -7683,7 +7683,7 @@ com.google.protobuf.DescriptorProtos$FileDescriptorSet$Builder: DescriptorProtos
 com.tutk.bean.TDevicePushServiceUrl: int getPort()
 com.google.protobuf.DescriptorProtos$ServiceDescriptorProto: com.google.protobuf.DescriptorProtos$ServiceDescriptorProto$Builder newBuilder()
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse$File$Builder: PluginProtos$CodeGeneratorResponse$File$Builder(com.google.protobuf.GeneratedMessageV3$BuilderParent)
-com.tutk.IOTC.PlaybackMonitor: int access$getMVideoTotalTime$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: int access$getMVideoTotalTime$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.DescriptorProtos$ServiceDescriptorProto: DescriptorProtos$ServiceDescriptorProto(com.google.protobuf.GeneratedMessageV3$Builder,com.google.protobuf.DescriptorProtos$1)
 com.google.protobuf.Int64Value$Builder: com.google.protobuf.Int64Value$Builder clearOneof(com.google.protobuf.Descriptors$OneofDescriptor)
 com.google.protobuf.Type$Builder: com.google.protobuf.Message$Builder clearOneof(com.google.protobuf.Descriptors$OneofDescriptor)
@@ -7762,7 +7762,7 @@ com.google.protobuf.Any$Builder: com.google.protobuf.Any$Builder mergeUnknownFie
 com.google.protobuf.DescriptorProtos$MethodDescriptorProto$Builder: com.google.protobuf.Message$Builder mergeFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.BytesValue$Builder: com.google.protobuf.BytesValue$Builder mergeFrom(com.google.protobuf.BytesValue)
 com.google.protobuf.BytesValue$Builder: com.google.protobuf.Message$Builder addRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
-com.tutk.IOTC.PlaybackMonitor: boolean isRecording()
+com.tutk.IOTC.player.PlaybackMonitor: boolean isRecording()
 com.ingenic.zalive.MsgEntity$ServerRegisterReq: com.google.protobuf.Message$Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3$BuilderParent)
 com.tutk.IOTC.Camera: void registerFrameCallback(com.tutk.IOTC.listener.OnFrameCallback)
 com.google.protobuf.Api: com.google.protobuf.Api$Builder toBuilder()
@@ -7801,7 +7801,7 @@ com.google.protobuf.Value: com.google.protobuf.NullValue getNullValue()
 com.tutk.IOTC.audio.SendAudioJob: com.tutk.IOTC.status.VoiceType access$getMLastVoiceType$p(com.tutk.IOTC.audio.SendAudioJob)
 com.tutk.IOTC.audio.SendAudioJob: boolean isTwoWayVoiceType()
 com.google.protobuf.Mixin: com.google.protobuf.Mixin$Builder toBuilder()
-com.tutk.IOTC.PlaybackMonitor: void stopPlayTime()
+com.tutk.IOTC.player.PlaybackMonitor: void stopPlayTime()
 com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq$Builder: com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq build()
 com.ingenic.zalive.MsgEntity$ServerRegisterReq: com.google.protobuf.Parser getParserForType()
 com.google.protobuf.Utf8$Processor: int partialIsValidUtf8(int,java.nio.ByteBuffer,int,int)
@@ -7943,7 +7943,7 @@ com.google.protobuf.Descriptors$FieldDescriptor$JavaType: com.google.protobuf.De
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse$File: boolean hasContent()
 com.google.protobuf.Mixin$Builder: com.google.protobuf.AbstractMessageLite$Builder clone()
 com.jkapp.android.media.VideoDecoder: <clinit>()
-com.tutk.IOTC.PlaybackMonitor: void scaleToOrigin()
+com.tutk.IOTC.player.PlaybackMonitor: void scaleToOrigin()
 com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange$Builder: void maybeForceBuilderInitialization()
 com.ingenic.zalive.MsgEntity$Response: int getSerializedSize()
 com.google.protobuf.Option: com.google.protobuf.Option$Builder newBuilderForType()
@@ -7999,7 +7999,7 @@ com.ingenic.zalive.MsgEntity$DevPackReq$Builder: com.google.protobuf.MessageLite
 com.google.protobuf.DescriptorProtos$SourceCodeInfo: DescriptorProtos$SourceCodeInfo(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite,com.google.protobuf.DescriptorProtos$1)
 com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange$Builder: com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange$Builder clone()
 com.google.protobuf.DescriptorProtos$FieldOptions$Builder: com.google.protobuf.GeneratedMessageV3$Builder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
-com.tutk.IOTC.PlaybackMonitor: void setAudioTrackStatus(boolean)
+com.tutk.IOTC.player.PlaybackMonitor: void setAudioTrackStatus(boolean)
 com.ingenic.b.a: boolean d(com.ingenic.b.a,boolean)
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse: java.util.List getFileOrBuilderList()
 com.google.protobuf.GeneratedMessage$FieldAccessorTable$RepeatedFieldAccessor: java.lang.Object get(com.google.protobuf.GeneratedMessage)
@@ -8044,7 +8044,7 @@ com.google.protobuf.ByteString: com.google.protobuf.ByteString copyFrom(byte[],i
 com.tutk.libmediaconvert.BuildConfig: BuildConfig()
 com.ingenic.zalive.MsgEntity$ServerRegisterReq$Builder: com.google.protobuf.AbstractMessageLite$Builder mergeFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.DescriptorProtos$MethodDescriptorProto$Builder: com.google.protobuf.Message$Builder mergeUnknownFields(com.google.protobuf.UnknownFieldSet)
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$1: java.lang.Object invoke(kotlinx.coroutines.flow.FlowCollector,kotlin.coroutines.Continuation)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$1: java.lang.Object invoke(kotlinx.coroutines.flow.FlowCollector,kotlin.coroutines.Continuation)
 com.google.protobuf.EnumValue$Builder: com.google.protobuf.Option$Builder addOptionsBuilder(int)
 com.ingenic.zalive.MsgEntity$DevPackReq$Builder: com.ingenic.zalive.MsgEntity$DevPackReq$Builder mergeUnknownFields(com.google.protobuf.UnknownFieldSet)
 com.google.protobuf.DescriptorProtos$FileOptions: com.google.protobuf.DescriptorProtos$FileOptions parseFrom(com.google.protobuf.CodedInputStream)
@@ -8107,7 +8107,7 @@ com.google.protobuf.Utf8$UnsafeProcessor: int encodeUtf8(java.lang.CharSequence,
 com.google.protobuf.MapEntry: boolean access$600(com.google.protobuf.MapEntry$Metadata,java.lang.Object)
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequest$Builder: com.google.protobuf.Descriptors$Descriptor getDescriptorForType()
 com.google.protobuf.DoubleValue$Builder: com.google.protobuf.GeneratedMessageV3$Builder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
-com.tutk.IOTC.PlaybackMonitor: void unRegisterAVChannelRecordStatus()
+com.tutk.IOTC.player.PlaybackMonitor: void unRegisterAVChannelRecordStatus()
 com.google.protobuf.Method$Builder: com.google.protobuf.Method$Builder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
 com.google.protobuf.DescriptorProtos: com.google.protobuf.Descriptors$FileDescriptor getDescriptor()
 com.tutk.IOTC.IOTCAPIs: int IOTC_Session_Check(int,com.tutk.IOTC.St_SInfo)
@@ -8303,7 +8303,7 @@ com.google.protobuf.ByteString: com.google.protobuf.ByteString substring(int,int
 com.google.protobuf.Enum: int hashCode()
 com.google.protobuf.DescriptorProtos$MessageOptions$Builder: com.google.protobuf.AbstractMessage$Builder clone()
 com.ingenic.zalive.MsgEntity$MasterSync2ServerResq$Builder: com.ingenic.zalive.MsgEntity$MasterSync2ServerResq getDefaultInstanceForType()
-com.tutk.IOTC.PlaybackMonitor: float spacing(android.view.MotionEvent)
+com.tutk.IOTC.player.PlaybackMonitor: float spacing(android.view.MotionEvent)
 com.google.protobuf.ExtensionRegistryLite: com.google.protobuf.ExtensionRegistryLite getUnmodifiable()
 com.google.protobuf.FieldMask: <clinit>()
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Builder: com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Label getLabel()
@@ -8924,7 +8924,7 @@ com.ingenic.zalive.MsgEntity$Response: void writeTo(com.google.protobuf.CodedOut
 com.ingenic.zalive.MsgEntity$MasterPackResp$Builder: MsgEntity$MasterPackResp$Builder(com.google.protobuf.GeneratedMessageV3$BuilderParent,com.ingenic.zalive.MsgEntity$1)
 com.google.protobuf.ListValue$Builder: com.google.protobuf.ListValue$Builder removeValues(int)
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto: com.google.protobuf.DescriptorProtos$FieldDescriptorProto parseFrom(com.google.protobuf.ByteString,com.google.protobuf.ExtensionRegistryLite)
-com.tutk.IOTC.PlaybackMonitor: boolean moveVideo(android.view.MotionEvent)
+com.tutk.IOTC.player.PlaybackMonitor: boolean moveVideo(android.view.MotionEvent)
 com.google.protobuf.Internal$MapAdapter$EntryAdapter: java.lang.Object getKey()
 com.google.protobuf.Type$Builder: com.google.protobuf.RepeatedFieldBuilderV3 getOptionsFieldBuilder()
 com.google.protobuf.WireFormat$FieldType$2: WireFormat$FieldType$2(java.lang.String,int,com.google.protobuf.WireFormat$JavaType,int)
@@ -9228,7 +9228,7 @@ com.ingenic.b.a: boolean f(com.ingenic.b.a,boolean)
 com.google.protobuf.DescriptorProtos$FileDescriptorSet: com.google.protobuf.GeneratedMessageV3$FieldAccessorTable internalGetFieldAccessorTable()
 com.ingenic.zalive.MsgEntity$Master2CliInfoResp$Builder: com.ingenic.zalive.MsgEntity$Master2CliInfoResp$Builder mergeUnknownFields(com.google.protobuf.UnknownFieldSet)
 com.google.protobuf.DescriptorProtos$FieldOptions$Builder: com.google.protobuf.DescriptorProtos$FieldOptions$Builder setDeprecated(boolean)
-com.tutk.IOTC.PlaybackMonitor$1: PlaybackMonitor$1(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor$1: PlaybackMonitor$1(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Annotation$Builder: com.google.protobuf.AbstractMessage$Builder mergeFrom(com.google.protobuf.Message)
 com.google.protobuf.DescriptorProtos$OneofOptions$Builder: com.google.protobuf.DescriptorProtos$OneofOptions$Builder setUninterpretedOption(int,com.google.protobuf.DescriptorProtos$UninterpretedOption$Builder)
 com.tutk.IOTC.camera.DecodeVideoJob$start$1$1: java.lang.Object invoke(kotlinx.coroutines.flow.FlowCollector,kotlin.coroutines.Continuation)
@@ -9785,7 +9785,7 @@ com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange$Builder: java
 com.google.protobuf.Mixin$Builder: com.google.protobuf.Message getDefaultInstanceForType()
 com.google.protobuf.Mixin$Builder: com.google.protobuf.Mixin$Builder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
 com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Builder: com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Builder clearOneof(com.google.protobuf.Descriptors$OneofDescriptor)
-com.tutk.IOTC.PlaybackMonitor$renderJob$1: kotlin.coroutines.Continuation create(java.lang.Object,kotlin.coroutines.Continuation)
+com.tutk.IOTC.player.PlaybackMonitor$renderJob$1: kotlin.coroutines.Continuation create(java.lang.Object,kotlin.coroutines.Continuation)
 com.google.protobuf.DescriptorProtos$EnumValueOptions$Builder: com.google.protobuf.GeneratedMessageV3$ExtendableBuilder clone()
 com.google.protobuf.MapField: void ensureMutable()
 com.google.protobuf.DescriptorProtos$UninterpretedOption$NamePart: com.google.protobuf.DescriptorProtos$UninterpretedOption$NamePart parseDelimitedFrom(java.io.InputStream)
@@ -9980,7 +9980,7 @@ com.google.protobuf.TextFormat$Printer: void printFieldValue(com.google.protobuf
 com.google.protobuf.Enum$Builder: com.google.protobuf.ByteString getNameBytes()
 com.tutk.IOTC.camera.LocalRecordHelper: java.lang.String access$getFileName$p()
 com.ingenic.zalive.MsgEntity$DevPackReq$Builder: com.google.protobuf.MessageLite$Builder clear()
-com.tutk.IOTC.PlaybackMonitor: kotlinx.coroutines.Job access$getMRenderJob$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: kotlinx.coroutines.Job access$getMRenderJob$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.DescriptorProtos$FieldOptions: int hashCode()
 com.google.protobuf.MessageReflection: void writeMessageTo(com.google.protobuf.Message,java.util.Map,com.google.protobuf.CodedOutputStream,boolean)
 com.ingenic.zalive.MsgEntity$Dev2HeartDevStat$Builder: com.google.protobuf.GeneratedMessageV3$Builder setRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,int,java.lang.Object)
@@ -10669,7 +10669,7 @@ com.ingenic.zalive.MsgEntity$ServerSync2MasterReq$Builder: com.google.protobuf.A
 com.google.protobuf.Value: com.google.protobuf.Message$Builder newBuilderForType()
 com.google.protobuf.GeneratedMessageLite: com.google.protobuf.GeneratedMessageLite parseFrom(com.google.protobuf.GeneratedMessageLite,byte[])
 com.google.protobuf.Empty: com.google.protobuf.Empty$Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3$BuilderParent)
-com.tutk.IOTC.PlaybackMonitor: void setAudioListener(com.tutk.IOTC.AudioListener)
+com.tutk.IOTC.player.PlaybackMonitor: void setAudioListener(com.tutk.IOTC.AudioListener)
 com.google.protobuf.DescriptorProtos$UninterpretedOption$Builder: com.google.protobuf.ByteString getStringValue()
 com.google.protobuf.DescriptorProtos$EnumValueOptions$Builder: com.google.protobuf.DescriptorProtos$EnumValueOptions$Builder setDeprecated(boolean)
 com.google.protobuf.DescriptorProtos$EnumValueOptions$Builder: com.google.protobuf.DescriptorProtos$EnumValueOptions$Builder addAllUninterpretedOption(java.lang.Iterable)
@@ -10785,7 +10785,7 @@ com.google.protobuf.UnsafeUtil: boolean hasUnsafeArrayOperations()
 com.google.protobuf.DescriptorProtos$UninterpretedOptionOrBuilder: long getNegativeIntValue()
 com.tutk.IOTC.RDTAPIs: int RDT_Create(int,int,int)
 com.google.protobuf.TimestampProto: com.google.protobuf.Descriptors$FileDescriptor access$002(com.google.protobuf.Descriptors$FileDescriptor)
-com.tutk.IOTC.PlaybackMonitor: int access$getVBottom$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: int access$getVBottom$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.DescriptorProtos$FieldOptions$Builder: com.google.protobuf.Message$Builder clear()
 com.tutk.IOTC.IOTCAPIs: int IOTC_Device_Update_Authkey(java.lang.String)
 com.google.protobuf.Field$Builder: com.google.protobuf.ByteString getTypeUrlBytes()
@@ -10986,7 +10986,7 @@ com.google.protobuf.AbstractMessage$Builder: com.google.protobuf.MessageLite$Bui
 com.tutk.bean.TTimeZone: int component1()
 com.google.protobuf.SmallSortedMap$EmptySet$1: java.lang.Object next()
 com.google.protobuf.DescriptorProtos$MessageOptions$Builder: com.google.protobuf.GeneratedMessageV3$ExtendableBuilder setField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
-com.tutk.IOTC.PlaybackMonitor: void receiveSessionInfo(com.tutk.IOTC.Camera,int)
+com.tutk.IOTC.player.PlaybackMonitor: void receiveSessionInfo(com.tutk.IOTC.Camera,int)
 com.ingenic.zalive.MsgEntity$ServerRegisterReq$1: MsgEntity$ServerRegisterReq$1()
 com.google.protobuf.Method$Builder: com.google.protobuf.Message$Builder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
 com.google.protobuf.Struct: com.google.protobuf.Struct parseFrom(byte[],com.google.protobuf.ExtensionRegistryLite)
@@ -11091,7 +11091,7 @@ com.google.protobuf.Int64Value$Builder: com.google.protobuf.Int64Value buildPart
 com.google.protobuf.MapField$MutatabilityAwareMap: boolean containsValue(java.lang.Object)
 com.google.protobuf.BoolValue$Builder: com.google.protobuf.Message$Builder mergeFrom(com.google.protobuf.Message)
 com.google.protobuf.Struct$Builder: com.google.protobuf.Message getDefaultInstanceForType()
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1: java.lang.Object emit(java.lang.Object,kotlin.coroutines.Continuation)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1: java.lang.Object emit(java.lang.Object,kotlin.coroutines.Continuation)
 com.tutk.IOTC.AVAPIs: int avStatusCheck(int,com.tutk.IOTC.St_AvStatus)
 com.google.protobuf.DescriptorProtos$FileDescriptorProtoOrBuilder: int getWeakDependency(int)
 com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto$Builder: com.google.protobuf.Descriptors$Descriptor getDescriptor()
@@ -11315,7 +11315,7 @@ com.google.protobuf.DescriptorProtos$EnumDescriptorProto: void writeTo(com.googl
 com.google.protobuf.Parser: java.lang.Object parsePartialFrom(com.google.protobuf.CodedInputStream)
 com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange$Builder: com.google.protobuf.GeneratedMessageV3$Builder clone()
 com.google.protobuf.Any: int hashCode()
-com.tutk.IOTC.PlaybackMonitor: void surfaceDestroyed(android.view.SurfaceHolder)
+com.tutk.IOTC.player.PlaybackMonitor: void surfaceDestroyed(android.view.SurfaceHolder)
 com.google.protobuf.Api$Builder: com.google.protobuf.Api$Builder addOptions(int,com.google.protobuf.Option)
 com.ingenic.api.AudioPlayer: void pauseAudioRecord()
 com.google.protobuf.DescriptorProtos: com.google.protobuf.GeneratedMessageV3$FieldAccessorTable access$9800()
@@ -11489,7 +11489,7 @@ com.google.protobuf.DescriptorProtos$FieldOptions: boolean equals(java.lang.Obje
 com.google.protobuf.GeneratedMessage$ExtendableMessage: java.lang.Object getExtension(com.google.protobuf.GeneratedMessage$GeneratedExtension)
 com.google.protobuf.LazyFieldLite: com.google.protobuf.ByteString toByteString()
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequestOrBuilder: java.util.List getProtoFileOrBuilderList()
-com.tutk.IOTC.PlaybackMonitor: com.tutk.IOTC.status.PlaybackStatus access$getMPlaybackStatus$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: com.tutk.IOTC.status.PlaybackStatus access$getMPlaybackStatus$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.Value: com.google.protobuf.ListValueOrBuilder getListValueOrBuilder()
 com.google.protobuf.FieldMask: com.google.protobuf.ByteString getPathsBytes(int)
 com.ingenic.zalive.HeartAddress: java.lang.String getIpStr()
@@ -12272,7 +12272,7 @@ com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder: com.google.pro
 com.google.protobuf.GeneratedMessageV3$ExtendableMessageOrBuilder: boolean hasExtension(com.google.protobuf.Extension)
 com.google.protobuf.FloatValue$Builder: FloatValue$Builder(com.google.protobuf.GeneratedMessageV3$BuilderParent,com.google.protobuf.FloatValue$1)
 com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange$Builder: DescriptorProtos$DescriptorProto$ExtensionRange$Builder(com.google.protobuf.GeneratedMessageV3$BuilderParent,com.google.protobuf.DescriptorProtos$1)
-com.tutk.IOTC.PlaybackMonitor: void stopRecord()
+com.tutk.IOTC.player.PlaybackMonitor: void stopRecord()
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder: com.google.protobuf.MessageLite$Builder mergeFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.MapField$MutatabilityAwareMap$MutatabilityAwareSet: boolean contains(java.lang.Object)
 com.google.protobuf.LazyField: boolean equals(java.lang.Object)
@@ -12856,7 +12856,7 @@ com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequestOrBuilder: com.goo
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto: com.google.protobuf.MessageLite getDefaultInstanceForType()
 com.google.protobuf.SingleFieldBuilder: com.google.protobuf.GeneratedMessage getMessage()
 com.google.protobuf.Api: Api()
-com.tutk.IOTC.PlaybackMonitor: boolean scaleVideo(android.view.MotionEvent)
+com.tutk.IOTC.player.PlaybackMonitor: boolean scaleVideo(android.view.MotionEvent)
 com.google.protobuf.DescriptorProtos$MethodOptions$Builder: com.google.protobuf.MessageLite buildPartial()
 com.google.protobuf.UInt32Value$Builder: com.google.protobuf.UInt32Value getDefaultInstanceForType()
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Location: int getSerializedSize()
@@ -12971,7 +12971,7 @@ com.google.protobuf.DescriptorProtos$FileDescriptorSet: void writeTo(com.google.
 com.tutk.IOTC.camera.RecvVideoJob$start$1$1: java.lang.Object invokeSuspend(java.lang.Object)
 com.google.protobuf.DescriptorProtos$UninterpretedOption$NamePart$Builder: void maybeForceBuilderInitialization()
 com.google.protobuf.BoolValue$Builder: com.google.protobuf.MessageLite getDefaultInstanceForType()
-com.tutk.IOTC.PlaybackMonitor: PlaybackMonitor(android.content.Context,android.util.AttributeSet)
+com.tutk.IOTC.player.PlaybackMonitor: PlaybackMonitor(android.content.Context,android.util.AttributeSet)
 com.google.protobuf.CodedOutputStream$ByteOutputEncoder: void writeByteArray(int,byte[])
 com.google.protobuf.SourceContext: com.google.protobuf.SourceContext getDefaultInstance()
 com.tutk.IOTC.Camera: int access$getLANDS_ORIENTATION$cp()
@@ -13022,7 +13022,7 @@ com.google.protobuf.DescriptorProtos$FileOptions$Builder: com.google.protobuf.De
 com.google.protobuf.Method: java.lang.Object access$302(com.google.protobuf.Method,java.lang.Object)
 com.tutk.IOTC.camera.DownFileJob$start$2: java.lang.Object invoke(java.lang.Object,java.lang.Object)
 com.google.protobuf.DescriptorProtos$ServiceOptions: com.google.protobuf.DescriptorProtos$ServiceOptions parseFrom(com.google.protobuf.CodedInputStream)
-com.tutk.IOTC.PlaybackMonitor: int access$getNScreenHeight$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: int access$getNScreenHeight$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.IntArrayList: boolean equals(java.lang.Object)
 com.google.protobuf.ByteString: com.google.protobuf.CodedInputStream newCodedInput()
 com.google.protobuf.ExtensionLite: boolean isRepeated()
@@ -13076,7 +13076,7 @@ com.google.protobuf.Method: java.util.List getOptionsOrBuilderList()
 com.google.protobuf.DescriptorProtos$MessageOptions$Builder: com.google.protobuf.DescriptorProtos$MessageOptions$Builder setExtension(com.google.protobuf.GeneratedMessage$GeneratedExtension,java.lang.Object)
 com.google.protobuf.MapField$ImmutableMessageConverter: com.google.protobuf.Message getMessageDefaultInstance()
 com.tutk.IOTC.status.RecordQuality: com.tutk.IOTC.status.RecordQuality valueOf(java.lang.String)
-com.tutk.IOTC.PlaybackMonitor: void setRecording(boolean)
+com.tutk.IOTC.player.PlaybackMonitor: void setRecording(boolean)
 com.google.protobuf.DescriptorProtos$MethodDescriptorProto$Builder: com.google.protobuf.AbstractMessage$Builder clear()
 com.google.protobuf.Type$Builder: com.google.protobuf.Type$Builder removeFields(int)
 com.tutk.IOTC.audio.SendAudioJob: boolean access$isActive(com.tutk.IOTC.audio.SendAudioJob)
@@ -13125,7 +13125,7 @@ com.google.protobuf.DescriptorProtos$SourceCodeInfo$Location$Builder: com.google
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Builder: boolean hasType()
 com.google.protobuf.GeneratedMessageV3$ExtendableMessage: boolean hasExtension(com.google.protobuf.GeneratedMessage$GeneratedExtension)
 com.google.protobuf.DescriptorProtos$ServiceDescriptorProto$Builder: com.google.protobuf.Message$Builder clone()
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1: java.lang.Object invoke(kotlinx.coroutines.CoroutineScope,kotlin.coroutines.Continuation)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1: java.lang.Object invoke(kotlinx.coroutines.CoroutineScope,kotlin.coroutines.Continuation)
 com.ingenic.zalive.MsgEntity$CliCmd: int getNumber()
 com.google.protobuf.UInt64Value$Builder: com.google.protobuf.Message getDefaultInstanceForType()
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequestOrBuilder: int getFileToGenerateCount()
@@ -13281,7 +13281,7 @@ com.google.protobuf.SourceContext$Builder: void maybeForceBuilderInitialization(
 com.google.protobuf.DescriptorProtos: com.google.protobuf.GeneratedMessageV3$FieldAccessorTable access$100()
 com.tutk.IOTC.camera.StartJob: void i(java.lang.String,java.lang.String)
 com.google.protobuf.Empty$Builder: com.google.protobuf.Descriptors$Descriptor getDescriptor()
-com.tutk.IOTC.PlaybackMonitor: int access$getNScreenWidth$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: int access$getNScreenWidth$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.ingenic.zalive.MsgEntity$MasterSync2ServerResq$Builder: com.google.protobuf.Message buildPartial()
 com.google.protobuf.ExtensionRegistry$DescriptorIntPair: int hashCode()
 com.google.protobuf.Empty: com.google.protobuf.Empty parseFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
@@ -13310,7 +13310,7 @@ com.ingenic.zalive.MsgEntity$MasterPackResp: com.ingenic.zalive.MsgEntity$Master
 com.google.protobuf.DescriptorProtos$FileDescriptorProto: java.lang.Object access$1202(com.google.protobuf.DescriptorProtos$FileDescriptorProto,java.lang.Object)
 com.google.protobuf.LazyStringList: java.lang.Object getRaw(int)
 com.google.protobuf.DescriptorProtos$OneofDescriptorProto$Builder: com.google.protobuf.GeneratedMessageV3$Builder setUnknownFields(com.google.protobuf.UnknownFieldSet)
-com.tutk.IOTC.PlaybackMonitor: void surfaceCreated(android.view.SurfaceHolder)
+com.tutk.IOTC.player.PlaybackMonitor: void surfaceCreated(android.view.SurfaceHolder)
 com.google.protobuf.DescriptorProtos$FileDescriptorSet$Builder: com.google.protobuf.DescriptorProtos$FileDescriptorSet$Builder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
 com.ingenic.zalive.MsgEntity$DevPackReq$Builder: com.google.protobuf.GeneratedMessageV3$Builder setUnknownFields(com.google.protobuf.UnknownFieldSet)
 com.ingenic.zalive.MsgEntity$MasterRegisterResp$Builder: com.google.protobuf.Message$Builder addRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
@@ -13349,7 +13349,7 @@ com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder: java.lang.Stri
 com.ingenic.zalive.MsgEntity$MasterPackResp$Builder: com.google.protobuf.GeneratedMessageV3$Builder mergeUnknownFields(com.google.protobuf.UnknownFieldSet)
 com.google.protobuf.Option$Builder: com.google.protobuf.AbstractMessage$Builder mergeUnknownFields(com.google.protobuf.UnknownFieldSet)
 com.google.protobuf.BytesValue$1: java.lang.Object parsePartialFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
-com.tutk.IOTC.PlaybackMonitor: int access$getVRight$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: int access$getVRight$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.DescriptorProtos$ServiceOptions$Builder: DescriptorProtos$ServiceOptions$Builder(com.google.protobuf.GeneratedMessageV3$BuilderParent)
 com.ingenic.zalive.MsgEntity$Response: com.google.protobuf.MessageLite$Builder toBuilder()
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequest: com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequest getDefaultInstance()
@@ -13388,7 +13388,7 @@ com.google.protobuf.Value$Builder: com.google.protobuf.Value$Builder clearKind()
 com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq$Builder: com.google.protobuf.GeneratedMessageV3$Builder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
 com.ingenic.zalive.MsgEntity$MasterPackResp$Builder: void maybeForceBuilderInitialization()
 com.google.protobuf.UnknownFieldSet$Builder: com.google.protobuf.MessageLite$Builder mergeFrom(java.io.InputStream,com.google.protobuf.ExtensionRegistryLite)
-com.tutk.IOTC.PlaybackMonitor: void renderJob()
+com.tutk.IOTC.player.PlaybackMonitor: void renderJob()
 com.tutk.bean.TSupportStream: boolean equals(java.lang.Object)
 com.tutk.io.SendKt: boolean canSend(com.tutk.IOTC.Camera)
 com.google.protobuf.Extension: java.lang.Object singularToReflectionType(java.lang.Object)
@@ -13458,7 +13458,7 @@ com.tutk.bean.TIRLedStatus: com.tutk.IOTC.status.IrLedStatus component2()
 com.google.protobuf.DescriptorProtos$DescriptorProto$Builder: com.google.protobuf.DescriptorProtos$DescriptorProto$Builder setUnknownFields(com.google.protobuf.UnknownFieldSet)
 com.tutk.IOTC.Camera: void onAVChannelSendFileStatus(com.tutk.IOTC.camera.SendFileStatus,int,int,int)
 com.google.protobuf.EnumValueOrBuilder: java.util.List getOptionsOrBuilderList()
-com.tutk.IOTC.PlaybackMonitor: void releaseAudio()
+com.tutk.IOTC.player.PlaybackMonitor: void releaseAudio()
 com.google.protobuf.UnknownFieldSet$Builder: com.google.protobuf.MessageLite getDefaultInstanceForType()
 com.ingenic.zalive.MsgEntity$MasterRegisterResp$Builder: com.ingenic.zalive.MsgEntity$MasterRegisterResp$Builder clearPattern()
 com.google.protobuf.Type$Builder: com.google.protobuf.ByteString getNameBytes()
@@ -13565,7 +13565,7 @@ com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder: com.google.pro
 com.tutk.io.SendKt: boolean getVideoMirrorStatus(com.tutk.IOTC.Camera,int,boolean)
 com.tutk.IOTC.AVAPIs$avChangePasswordRequestFn: int change_password_request(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
 com.google.protobuf.Type: int getSerializedSize()
-com.tutk.IOTC.PlaybackMonitor: void resume()
+com.tutk.IOTC.player.PlaybackMonitor: void resume()
 com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange$Builder: com.google.protobuf.GeneratedMessageV3$Builder mergeUnknownFields(com.google.protobuf.UnknownFieldSet)
 com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder: com.google.protobuf.RepeatedFieldBuilderV3 getEnumTypeFieldBuilder()
 com.google.protobuf.IntArrayList: java.lang.Object get(int)
@@ -13817,7 +13817,7 @@ com.google.protobuf.Method$Builder: Method$Builder(com.google.protobuf.Method$1)
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder: com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
 com.google.protobuf.DescriptorProtos$FieldOptions$CType: int getNumber()
 com.google.protobuf.GeneratedMessageLite$SerializedForm: com.google.protobuf.GeneratedMessageLite$SerializedForm of(com.google.protobuf.MessageLite)
-com.tutk.IOTC.PlaybackMonitor: void receiveFrameInfo(com.tutk.IOTC.Camera,int,long,int,int,int,int)
+com.tutk.IOTC.player.PlaybackMonitor: void receiveFrameInfo(com.tutk.IOTC.Camera,int,long,int,int,int,int)
 com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto$Builder: com.google.protobuf.ByteString getNameBytes()
 com.ingenic.zalive.MsgEntity$ServerSync2MasterReq: com.ingenic.zalive.MsgEntity$ServerSync2MasterReq parseFrom(byte[],com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.TextFormatEscaper$2: byte byteAt(int)
@@ -14069,7 +14069,7 @@ com.google.protobuf.CodedOutputStream: int computeByteBufferSize(int,java.nio.By
 com.google.protobuf.DescriptorProtos$FieldOptions$Builder: java.util.List getUninterpretedOptionBuilderList()
 com.google.protobuf.UInt64Value$Builder: java.lang.Object clone()
 com.google.protobuf.DescriptorProtos$MethodDescriptorProto: boolean hasClientStreaming()
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$1: PlaybackMonitor$startPlayTime$1$1(com.tutk.IOTC.PlaybackMonitor,kotlin.coroutines.Continuation)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$1: PlaybackMonitor$startPlayTime$1$1(com.tutk.IOTC.player.PlaybackMonitor,kotlin.coroutines.Continuation)
 com.google.protobuf.DescriptorProtos$EnumOptions: int access$19302(com.google.protobuf.DescriptorProtos$EnumOptions,int)
 com.ingenic.zalive.MsgEntity$Response$Builder: com.ingenic.zalive.MsgEntity$Heart2CliIntoRespOrBuilder getHeart2CliOrBuilder()
 com.google.protobuf.FieldMask$Builder: com.google.protobuf.FieldMask$Builder clear()
@@ -14392,7 +14392,7 @@ com.google.protobuf.MessageReflection: int getSerializedSize(com.google.protobuf
 com.google.protobuf.GeneratedMessageV3$ExtendableBuilder: com.google.protobuf.MessageLite$Builder clear()
 com.google.protobuf.GeneratedMessage$FieldAccessorTable$RepeatedFieldAccessor: void addRepeated(com.google.protobuf.GeneratedMessage$Builder,java.lang.Object)
 com.google.protobuf.Method: com.google.protobuf.Message$Builder toBuilder()
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$1: java.lang.Object invoke(java.lang.Object,java.lang.Object)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$1: java.lang.Object invoke(java.lang.Object,java.lang.Object)
 com.google.protobuf.Type: com.google.protobuf.Type$Builder newBuilder(com.google.protobuf.Type)
 com.google.protobuf.ByteString: void copyTo(byte[],int)
 com.google.protobuf.DescriptorProtos$EnumDescriptorProto$Builder: com.google.protobuf.DescriptorProtos$EnumDescriptorProto$Builder setOptions(com.google.protobuf.DescriptorProtos$EnumOptions$Builder)
@@ -14413,7 +14413,7 @@ com.google.protobuf.BoolValue$Builder: com.google.protobuf.BoolValue$Builder mer
 com.ingenic.zalive.MsgEntity$Cli2HeartInfoReq: com.ingenic.zalive.MsgEntity$Cli2HeartInfoReq parseFrom(java.io.InputStream)
 com.google.protobuf.ByteString: java.util.List asReadOnlyByteBufferList()
 com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto$1: com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto parsePartialFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
-com.tutk.IOTC.PlaybackMonitor$renderJob$1: java.lang.Object invokeSuspend(java.lang.Object)
+com.tutk.IOTC.player.PlaybackMonitor$renderJob$1: java.lang.Object invokeSuspend(java.lang.Object)
 com.google.protobuf.RepeatedFieldBuilder$MessageExternalList: java.lang.Object get(int)
 com.tutk.IOTC.camera.AVChannel: com.ingenic.api.AudioPlayer getMAudioPlayer$app_release()
 com.tutk.IOTC.status.RecordMode: com.tutk.IOTC.status.RecordMode[] values()
@@ -14568,7 +14568,7 @@ com.google.protobuf.FieldMask$Builder: com.google.protobuf.AbstractMessageLite$B
 com.google.protobuf.UInt32Value$Builder: com.google.protobuf.UInt32Value$Builder setRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,int,java.lang.Object)
 com.tutk.libmediaconvert.VideoDecoder$ColorFormat: <clinit>()
 com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq: int getSerializedSize()
-com.tutk.IOTC.PlaybackMonitor: void startRecord$lambda-6(com.tutk.IOTC.PlaybackMonitor,com.tutk.IOTC.listener.OnResultCallback,com.tutk.IOTC.status.RecordStatus)
+com.tutk.IOTC.player.PlaybackMonitor: void startRecord$lambda-6(com.tutk.IOTC.player.PlaybackMonitor,com.tutk.IOTC.listener.OnResultCallback,com.tutk.IOTC.status.RecordStatus)
 com.google.protobuf.FieldSet: void clearField(com.google.protobuf.FieldSet$FieldDescriptorLite)
 com.tutk.bean.TRecordMode: int component1()
 com.google.protobuf.MapField: MapField(com.google.protobuf.MapField$Converter,com.google.protobuf.MapField$StorageMode,java.util.Map)
@@ -15234,7 +15234,7 @@ com.ingenic.zalive.MsgEntity$Request$Builder: com.google.protobuf.AbstractMessag
 com.google.protobuf.DescriptorProtos$DescriptorProto: com.google.protobuf.DescriptorProtos$DescriptorProto parseFrom(byte[],com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.DescriptorProtos$FieldDescriptorProtoOrBuilder: com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Label getLabel()
 com.google.protobuf.Field$Cardinality: com.google.protobuf.Field$Cardinality[] values()
-com.tutk.IOTC.PlaybackMonitor: void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange: com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange parseFrom(byte[])
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse$File: java.lang.String getName()
 com.google.protobuf.DescriptorProtos$EnumValueOptions$Builder: com.google.protobuf.GeneratedMessageV3$Builder addRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
@@ -15282,7 +15282,7 @@ com.google.protobuf.Internal$BooleanList: boolean setBoolean(int,boolean)
 com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq: com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq parseDelimitedFrom(java.io.InputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.ListValue$Builder: com.google.protobuf.ValueOrBuilder getValuesOrBuilder(int)
 com.google.protobuf.Type$Builder: com.google.protobuf.AbstractMessageLite$Builder clone()
-com.tutk.IOTC.PlaybackMonitor: java.io.File takePhoto(java.lang.String,java.lang.String)
+com.tutk.IOTC.player.PlaybackMonitor: java.io.File takePhoto(java.lang.String,java.lang.String)
 com.google.protobuf.DescriptorProtos$FileDescriptorProto: java.lang.String getDependency(int)
 com.google.protobuf.SourceContext$Builder: com.google.protobuf.MessageLite buildPartial()
 com.google.protobuf.AbstractMessage: int hashCode()
@@ -15349,7 +15349,7 @@ com.google.protobuf.DescriptorProtos$FileOptions: boolean access$14502(com.googl
 com.google.protobuf.DescriptorProtos$MessageOptions$Builder: com.google.protobuf.GeneratedMessageV3$Builder clearOneof(com.google.protobuf.Descriptors$OneofDescriptor)
 com.google.protobuf.DescriptorProtos$ServiceOptions$Builder: com.google.protobuf.DescriptorProtos$ServiceOptions$Builder setExtension(com.google.protobuf.GeneratedMessage$GeneratedExtension,int,java.lang.Object)
 com.google.protobuf.TextFormat$Parser: void checkUnknownFields(java.util.List)
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1: PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1: PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.DescriptorProtos$GeneratedCodeInfo: com.google.protobuf.DescriptorProtos$GeneratedCodeInfo parseFrom(byte[],com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.DescriptorProtos$ServiceDescriptorProto: com.google.protobuf.Parser getParserForType()
 com.google.protobuf.MapEntry$Builder: com.google.protobuf.Descriptors$Descriptor getDescriptorForType()
@@ -15358,7 +15358,7 @@ com.google.protobuf.Api: com.google.protobuf.ByteString getVersionBytes()
 com.google.protobuf.GeneratedMessageLite$Visitor: void visitOneofNotSet(boolean)
 com.ingenic.zalive.MsgEntity$MasterPackResp: com.ingenic.zalive.MsgEntity$MasterPackResp parseFrom(com.google.protobuf.ByteString)
 com.google.protobuf.UInt64Value: long getValue()
-com.tutk.IOTC.PlaybackMonitor: void startShow()
+com.tutk.IOTC.player.PlaybackMonitor: void startShow()
 com.tutk.IOTC.camera.LocalRecordHelper: void access$setMRecordTime$p(int)
 com.google.protobuf.LazyStringArrayList$ByteStringListView: com.google.protobuf.ByteString remove(int)
 com.google.protobuf.Mixin$1: java.lang.Object parsePartialFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
@@ -15370,7 +15370,7 @@ com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Annotation$Builder: com.g
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto: com.google.protobuf.ByteString getDefaultValueBytes()
 com.google.protobuf.CodedOutputStream: int spaceLeft()
 com.google.protobuf.GeneratedMessageV3$Builder: java.lang.Object getField(com.google.protobuf.Descriptors$FieldDescriptor)
-com.tutk.IOTC.PlaybackMonitor: void startPlayTime()
+com.tutk.IOTC.player.PlaybackMonitor: void startPlayTime()
 com.tutk.IOTC.audio.RecvAudioJob: void access$d(com.tutk.IOTC.audio.RecvAudioJob,java.lang.String)
 com.google.protobuf.InvalidProtocolBufferException: com.google.protobuf.InvalidProtocolBufferException invalidTag()
 com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange$Builder: boolean hasEnd()
@@ -15444,7 +15444,7 @@ com.google.protobuf.DescriptorProtos$MessageOptions$Builder: com.google.protobuf
 com.google.protobuf.GeneratedMessage: com.google.protobuf.Message parseDelimitedWithIOException(com.google.protobuf.Parser,java.io.InputStream)
 com.tutk.bean.TDeviceInfo: boolean equals(java.lang.Object)
 com.google.protobuf.DescriptorProtos$EnumDescriptorProto$Builder: com.google.protobuf.DescriptorProtos$EnumDescriptorProto$Builder mergeFrom(com.google.protobuf.DescriptorProtos$EnumDescriptorProto)
-com.tutk.IOTC.PlaybackMonitor$renderJob$1: java.lang.Object invoke(kotlinx.coroutines.CoroutineScope,kotlin.coroutines.Continuation)
+com.tutk.IOTC.player.PlaybackMonitor$renderJob$1: java.lang.Object invoke(kotlinx.coroutines.CoroutineScope,kotlin.coroutines.Continuation)
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse$File: java.lang.Object access$2300(com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse$File)
 com.tutk.io.SendKt: void getAudioCodec(com.tutk.IOTC.Camera,int)
 com.google.protobuf.Value$Builder: com.google.protobuf.SingleFieldBuilderV3 getListValueFieldBuilder()
@@ -15497,7 +15497,7 @@ com.google.protobuf.DescriptorProtos$DescriptorProto$Builder: com.google.protobu
 com.tutk.bean.TScanWifi: java.util.List getList()
 com.google.protobuf.DescriptorProtos$UninterpretedOption$NamePart: DescriptorProtos$UninterpretedOption$NamePart(com.google.protobuf.GeneratedMessageV3$Builder)
 com.google.protobuf.Field$Builder: com.google.protobuf.AbstractMessageLite$Builder mergeFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
-com.tutk.IOTC.PlaybackMonitor$1: boolean onDoubleTap(android.view.MotionEvent)
+com.tutk.IOTC.player.PlaybackMonitor$1: boolean onDoubleTap(android.view.MotionEvent)
 com.google.protobuf.BooleanArrayList: BooleanArrayList(boolean[],int)
 com.google.protobuf.Descriptors$EnumDescriptor: Descriptors$EnumDescriptor(com.google.protobuf.DescriptorProtos$EnumDescriptorProto,com.google.protobuf.Descriptors$FileDescriptor,com.google.protobuf.Descriptors$Descriptor,int,com.google.protobuf.Descriptors$1)
 com.google.protobuf.GeneratedMessageV3$FieldAccessorTable$MapFieldAccessor: void addRepeated(com.google.protobuf.GeneratedMessageV3$Builder,java.lang.Object)
@@ -15523,7 +15523,7 @@ com.google.protobuf.Type$1: Type$1()
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder: com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder setLocation(int,com.google.protobuf.DescriptorProtos$SourceCodeInfo$Location$Builder)
 com.google.protobuf.DynamicMessage: com.google.protobuf.DynamicMessage getDefaultInstanceForType()
 com.google.protobuf.Method$Builder: com.google.protobuf.GeneratedMessageV3$FieldAccessorTable internalGetFieldAccessorTable()
-com.tutk.IOTC.PlaybackMonitor: boolean access$isRunning$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: boolean access$isRunning$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.DescriptorProtos$FieldOptions$Builder: com.google.protobuf.MessageLite$Builder mergeFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.tutk.IOTC.AudioTalker: <clinit>()
 com.tutk.IOTC.camera.LocalRecordHelper: void setParseBuffer$app_release(byte[])
@@ -15580,7 +15580,7 @@ com.google.protobuf.FieldOrBuilder: java.lang.String getTypeUrl()
 com.google.protobuf.Any: Any(com.google.protobuf.GeneratedMessageV3$Builder)
 com.google.protobuf.AbstractParser: com.google.protobuf.MessageLite parseFrom(com.google.protobuf.CodedInputStream)
 com.google.protobuf.DescriptorProtos$FileDescriptorSet: com.google.protobuf.MessageLite$Builder newBuilderForType()
-com.tutk.IOTC.PlaybackMonitor: void access$_setFullScreen(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: void access$_setFullScreen(com.tutk.IOTC.player.PlaybackMonitor)
 com.ingenic.zalive.MsgEntity$Dev2HeartDevStat: com.ingenic.zalive.MsgEntity$Dev2HeartDevStat getDefaultInstanceForType()
 com.tutk.IOTC.camera.RecvVideoJob: void setRunning(boolean)
 com.google.protobuf.UnsafeUtil$1: java.lang.Object run()
@@ -15800,7 +15800,7 @@ com.google.protobuf.Method$Builder: com.google.protobuf.Method$Builder removeOpt
 com.google.protobuf.BooleanArrayList: java.lang.String makeOutOfBoundsExceptionMessage(int)
 com.google.protobuf.SmallSortedMap$Entry: java.lang.String toString()
 com.google.protobuf.GeneratedMessage$ExtendableMessage: java.lang.Object getExtension(com.google.protobuf.ExtensionLite)
-com.tutk.IOTC.PlaybackMonitor: void access$setMVideoPlayTime$p(com.tutk.IOTC.PlaybackMonitor,int)
+com.tutk.IOTC.player.PlaybackMonitor: void access$setMVideoPlayTime$p(com.tutk.IOTC.player.PlaybackMonitor,int)
 com.google.protobuf.DescriptorProtos$EnumOptions$Builder: com.google.protobuf.GeneratedMessageV3$Builder clone()
 com.google.protobuf.TextFormatParseInfoTree: TextFormatParseInfoTree(java.util.Map,java.util.Map,com.google.protobuf.TextFormatParseInfoTree$1)
 com.google.protobuf.Int32Value: com.google.protobuf.Int32Value parseFrom(byte[])
@@ -16258,7 +16258,7 @@ com.google.protobuf.DescriptorProtos$ServiceOptions: int access$21102(com.google
 com.tutk.IOTC.AudioProcess$Encode: boolean init(int,int,int,int)
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder: java.lang.Object clone()
 com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder: com.google.protobuf.DescriptorProtos$FileDescriptorProto getDefaultInstanceForType()
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$1: kotlin.coroutines.Continuation create(java.lang.Object,kotlin.coroutines.Continuation)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$1: kotlin.coroutines.Continuation create(java.lang.Object,kotlin.coroutines.Continuation)
 com.tutk.IOTC.camera.RecvVideoJob: void access$setMNoFramIndex$p(com.tutk.IOTC.camera.RecvVideoJob,int)
 com.google.protobuf.DescriptorProtos$DescriptorProto$Builder: com.google.protobuf.DescriptorProtos$DescriptorProto$Builder setNameBytes(com.google.protobuf.ByteString)
 com.google.protobuf.EmptyProto: <clinit>()
@@ -16452,7 +16452,7 @@ com.google.protobuf.ListValue$1: ListValue$1()
 com.google.protobuf.DescriptorProtos$EnumDescriptorProto$Builder: com.google.protobuf.MessageLite$Builder mergeFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.EnumValue: EnumValue(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.Type: com.google.protobuf.Descriptors$Descriptor getDescriptor()
-com.tutk.IOTC.PlaybackMonitor: long access$getMLastZoomTime$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: long access$getMLastZoomTime$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.GeneratedMessage$ExtendableBuilder: void verifyExtensionContainingType(com.google.protobuf.Extension)
 com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto$Builder: com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto$Builder addRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
 com.google.protobuf.Value$Builder: com.google.protobuf.Message$Builder clear()
@@ -16526,7 +16526,7 @@ com.google.protobuf.TextFormatParseInfoTree: com.google.protobuf.TextFormatParse
 com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder: com.google.protobuf.DescriptorProtos$SourceCodeInfo getSourceCodeInfo()
 com.google.protobuf.Utf8$Processor: int partialIsValidUtf8Default(int,java.nio.ByteBuffer,int,int)
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto: com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3$BuilderParent)
-com.tutk.IOTC.PlaybackMonitor: void seekTo(int)
+com.tutk.IOTC.player.PlaybackMonitor: void seekTo(int)
 com.google.protobuf.DescriptorProtos$OneofOptions$Builder: com.google.protobuf.AbstractMessage$Builder mergeFrom(com.google.protobuf.Message)
 com.google.protobuf.LazyField$LazyEntry: java.lang.Object setValue(java.lang.Object)
 com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange: int getSerializedSize()
@@ -16660,7 +16660,7 @@ com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq: int hashCode()
 com.google.protobuf.RopeByteString: com.google.protobuf.RopeByteString newInstanceForTest(com.google.protobuf.ByteString,com.google.protobuf.ByteString)
 com.tutk.libmediaconvert.AudioDecoder: int decode(byte[],int,byte[])
 com.google.protobuf.SourceContext: com.google.protobuf.MessageLite$Builder toBuilder()
-com.tutk.IOTC.PlaybackMonitor$WhenMappings: <clinit>()
+com.tutk.IOTC.player.PlaybackMonitor$WhenMappings: <clinit>()
 com.google.protobuf.DynamicMessage: com.google.protobuf.DynamicMessage parseFrom(com.google.protobuf.Descriptors$Descriptor,com.google.protobuf.ByteString)
 com.google.protobuf.DescriptorProtos$MethodOptions$Builder: com.google.protobuf.DescriptorProtos$MethodOptions$Builder setUnknownFields(com.google.protobuf.UnknownFieldSet)
 com.ingenic.api.Frequency: com.ingenic.api.Frequency valueOf(java.lang.String)
@@ -16970,7 +16970,7 @@ com.google.protobuf.DescriptorProtos$OneofOptions$Builder: com.google.protobuf.M
 com.google.protobuf.DescriptorProtos: com.google.protobuf.Descriptors$Descriptor access$22200()
 com.google.protobuf.GeneratedMessageLite$Visitor: com.google.protobuf.UnknownFieldSetLite visitUnknownFields(com.google.protobuf.UnknownFieldSetLite,com.google.protobuf.UnknownFieldSetLite)
 com.google.protobuf.Any$Builder: com.google.protobuf.Descriptors$Descriptor getDescriptorForType()
-com.tutk.IOTC.PlaybackMonitor: void receiveIOCtrlData(com.tutk.IOTC.Camera,int,int,byte[])
+com.tutk.IOTC.player.PlaybackMonitor: void receiveIOCtrlData(com.tutk.IOTC.Camera,int,int,byte[])
 com.google.protobuf.Any$1: com.google.protobuf.Any parsePartialFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.GeneratedMessage$ExtendableMessage: int getExtensionCount(com.google.protobuf.ExtensionLite)
 com.google.protobuf.Any$Builder: com.google.protobuf.Any$Builder clearTypeUrl()
@@ -17272,7 +17272,7 @@ com.google.protobuf.Option$Builder: com.google.protobuf.AbstractMessageLite$Buil
 com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto$1: java.lang.Object parsePartialFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.ingenic.zalive.MsgEntity$MasterPackResp$Builder: com.google.protobuf.Message$Builder clearOneof(com.google.protobuf.Descriptors$OneofDescriptor)
 com.google.protobuf.DescriptorProtos$ServiceOptions: com.google.protobuf.DescriptorProtos$ServiceOptions parseFrom(java.io.InputStream)
-com.tutk.IOTC.PlaybackMonitor: PlaybackMonitor(android.content.Context,android.util.AttributeSet,int,int,kotlin.jvm.internal.DefaultConstructorMarker)
+com.tutk.IOTC.player.PlaybackMonitor: PlaybackMonitor(android.content.Context,android.util.AttributeSet,int,int,kotlin.jvm.internal.DefaultConstructorMarker)
 com.google.protobuf.DescriptorProtos$MethodOptionsOrBuilder: boolean hasDeprecated()
 com.google.protobuf.DescriptorProtos$EnumOptions$Builder: DescriptorProtos$EnumOptions$Builder()
 com.google.protobuf.AnyOrBuilder: com.google.protobuf.ByteString getTypeUrlBytes()
@@ -17325,11 +17325,11 @@ com.google.protobuf.ListValue: com.google.protobuf.GeneratedMessageV3$FieldAcces
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse: java.util.List access$3200(com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse)
 com.google.protobuf.Value: com.google.protobuf.Value$Builder newBuilder()
 com.tutk.io.ParseKt: void parseResetPassword(byte[])
-com.tutk.IOTC.PlaybackMonitor$renderJob$1: PlaybackMonitor$renderJob$1(com.tutk.IOTC.PlaybackMonitor,kotlin.coroutines.Continuation)
+com.tutk.IOTC.player.PlaybackMonitor$renderJob$1: PlaybackMonitor$renderJob$1(com.tutk.IOTC.player.PlaybackMonitor,kotlin.coroutines.Continuation)
 com.google.protobuf.DescriptorProtos$EnumValueOptions$Builder: com.google.protobuf.GeneratedMessageV3$ExtendableBuilder clearExtension(com.google.protobuf.GeneratedMessage$GeneratedExtension)
 com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq$Builder: com.google.protobuf.Descriptors$Descriptor getDescriptor()
 com.google.protobuf.DescriptorProtos$FileOptions$Builder: java.lang.String getCsharpNamespace()
-com.tutk.IOTC.PlaybackMonitor: void setOnClickListener(android.view.View$OnClickListener)
+com.tutk.IOTC.player.PlaybackMonitor: void setOnClickListener(android.view.View$OnClickListener)
 com.google.protobuf.Type: boolean isInitialized()
 com.google.protobuf.UninitializedMessageException: com.google.protobuf.InvalidProtocolBufferException asInvalidProtocolBufferException()
 com.google.protobuf.DoubleValue$Builder: com.google.protobuf.DoubleValue$Builder clear()
@@ -17557,7 +17557,7 @@ com.ingenic.zalive.MsgEntity$Dev2HeartDevStat$Builder: com.google.protobuf.Gener
 com.ingenic.zalive.MsgEntity$MasterPackResp$Builder: com.ingenic.zalive.MsgEntity$MasterPackResp$Builder clearOneof(com.google.protobuf.Descriptors$OneofDescriptor)
 com.ingenic.zalive.MsgEntity$Master2CliInfoRespOrBuilder: int getHeartPort()
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder: com.google.protobuf.GeneratedMessageV3$Builder clearOneof(com.google.protobuf.Descriptors$OneofDescriptor)
-com.tutk.IOTC.PlaybackMonitor: void onStart()
+com.tutk.IOTC.player.PlaybackMonitor: void onStart()
 com.google.protobuf.DescriptorProtos$ServiceDescriptorProtoOrBuilder: com.google.protobuf.DescriptorProtos$MethodDescriptorProtoOrBuilder getMethodOrBuilder(int)
 com.ingenic.zalive.MsgEntity$Response$Builder: void maybeForceBuilderInitialization()
 com.google.protobuf.Enum$Builder: java.util.List getEnumvalueBuilderList()
@@ -17768,7 +17768,7 @@ com.google.protobuf.Api$Builder: java.util.List getMethodsList()
 com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq$Builder: com.google.protobuf.Message buildPartial()
 com.google.protobuf.DescriptorProtos$UninterpretedOption$Builder: com.google.protobuf.DescriptorProtos$UninterpretedOption build()
 com.google.protobuf.Timestamp$Builder: com.google.protobuf.AbstractMessage$Builder clone()
-com.tutk.IOTC.PlaybackMonitor: void onStop()
+com.tutk.IOTC.player.PlaybackMonitor: void onStop()
 com.google.protobuf.Method: com.google.protobuf.Method getDefaultInstanceForType()
 com.google.protobuf.GeneratedMessageV3: GeneratedMessageV3(com.google.protobuf.GeneratedMessageV3$Builder)
 com.google.protobuf.BooleanArrayList: BooleanArrayList()
@@ -17942,7 +17942,7 @@ com.google.protobuf.BooleanArrayList: void addBoolean(int,boolean)
 com.google.protobuf.GeneratedMessageV3$ExtendableBuilder: com.google.protobuf.MessageLite$Builder clone()
 com.tutk.IOTC.Liotc: void d(java.lang.String,java.lang.String)
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequest: boolean access$1000()
-com.tutk.IOTC.PlaybackMonitor: void _setFullScreen()
+com.tutk.IOTC.player.PlaybackMonitor: void _setFullScreen()
 com.google.protobuf.GeneratedMessage$ExtendableBuilder: com.google.protobuf.GeneratedMessage$ExtendableBuilder setRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,int,java.lang.Object)
 com.google.protobuf.IntArrayList: <clinit>()
 com.google.protobuf.CodedOutputStream$ByteOutputEncoder: void writeFixed32NoTag(int)
@@ -18174,7 +18174,7 @@ com.google.protobuf.Api$Builder: com.google.protobuf.Mixin$Builder addMixinsBuil
 com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq$Builder: com.google.protobuf.Message$Builder mergeFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.FloatValue: com.google.protobuf.FloatValue parseFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.Int32Value: com.google.protobuf.Int32Value parseFrom(byte[],com.google.protobuf.ExtensionRegistryLite)
-com.tutk.IOTC.PlaybackMonitor: android.net.Uri takePhotoUri(java.lang.String,java.lang.String,java.lang.String)
+com.tutk.IOTC.player.PlaybackMonitor: android.net.Uri takePhotoUri(java.lang.String,java.lang.String,java.lang.String)
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Builder: com.google.protobuf.GeneratedMessageV3$Builder setRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,int,java.lang.Object)
 com.google.protobuf.DescriptorProtos$EnumOptions$Builder: com.google.protobuf.Message buildPartial()
 com.google.protobuf.DescriptorProtos$MessageOptions$Builder: java.util.List getUninterpretedOptionOrBuilderList()
@@ -18295,7 +18295,7 @@ com.google.protobuf.Mixin$Builder: com.google.protobuf.GeneratedMessageV3$Builde
 com.tutk.IOTC.camera.AVChannel: void startShow$app_release(android.content.Context)
 com.google.protobuf.Struct$Builder: com.google.protobuf.MessageLite buildPartial()
 com.google.protobuf.Type: com.google.protobuf.ProtocolStringList getOneofsList()
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1: java.lang.Object invoke(java.lang.Object,java.lang.Object)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1: java.lang.Object invoke(java.lang.Object,java.lang.Object)
 com.tutk.IOTC.IOTCAPIs: void IOTC_Set_Max_Session_Number(int)
 com.tutk.IOTC.camera.StartJob$start$1: java.lang.Object invokeSuspend(java.lang.Object)
 com.google.protobuf.UninitializedMessageException: java.lang.String buildDescription(java.util.List)
@@ -18407,7 +18407,7 @@ com.google.protobuf.Int32Value$Builder: com.google.protobuf.MessageLite buildPar
 com.ingenic.zalive.MsgEntity$ServerRegisterReq$Builder: boolean hasClientPort()
 com.google.protobuf.Value$Builder: com.google.protobuf.AbstractMessageLite$Builder mergeFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder: java.util.List getExtensionOrBuilderList()
-com.tutk.IOTC.PlaybackMonitor: void receiveFrameData(com.tutk.IOTC.Camera,int,android.graphics.Bitmap)
+com.tutk.IOTC.player.PlaybackMonitor: void receiveFrameData(com.tutk.IOTC.Camera,int,android.graphics.Bitmap)
 com.google.protobuf.Api$Builder: com.google.protobuf.Message$Builder setRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,int,java.lang.Object)
 com.google.protobuf.Method$Builder: com.google.protobuf.AbstractMessage$Builder mergeUnknownFields(com.google.protobuf.UnknownFieldSet)
 com.google.protobuf.DescriptorProtos$FileDescriptorProtoOrBuilder: com.google.protobuf.DescriptorProtos$SourceCodeInfo getSourceCodeInfo()
@@ -18444,7 +18444,7 @@ com.google.protobuf.Int32Value$Builder: com.google.protobuf.Message$Builder clon
 com.google.protobuf.TextFormat$Parser: TextFormat$Parser(boolean,com.google.protobuf.TextFormat$Parser$SingularOverwritePolicy,com.google.protobuf.TextFormatParseInfoTree$Builder)
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder: com.google.protobuf.AbstractMessage$Builder mergeFrom(com.google.protobuf.Message)
 com.google.protobuf.ByteString$ArraysByteArrayCopier: ByteString$ArraysByteArrayCopier()
-com.tutk.IOTC.PlaybackMonitor: void pause()
+com.tutk.IOTC.player.PlaybackMonitor: void pause()
 com.ingenic.zalive.MsgEntity: com.google.protobuf.GeneratedMessageV3$FieldAccessorTable access$9200()
 com.google.protobuf.DescriptorProtos$DescriptorProto$Builder: com.google.protobuf.RepeatedFieldBuilderV3 getFieldFieldBuilder()
 com.ingenic.zalive.MsgEntity$Response$Builder: com.ingenic.zalive.MsgEntity$Master2CliInfoRespOrBuilder getMaster2CliOrBuilder()
@@ -18773,7 +18773,7 @@ com.google.protobuf.Empty: com.google.protobuf.Empty parseFrom(java.io.InputStre
 com.ingenic.zalive.MsgEntity$Dev2HeartDevStat$Builder: com.google.protobuf.Message$Builder setRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,int,java.lang.Object)
 com.google.protobuf.DescriptorProtos$FileOptions: java.util.List getUninterpretedOptionList()
 com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto$Builder: com.google.protobuf.AbstractMessage$Builder mergeUnknownFields(com.google.protobuf.UnknownFieldSet)
-com.tutk.IOTC.PlaybackMonitor: int access$getMVideoPlayTime$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: int access$getMVideoPlayTime$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.GeneratedMessageLite$MergeFromVisitor: com.google.protobuf.MapFieldLite visitMap(com.google.protobuf.MapFieldLite,com.google.protobuf.MapFieldLite)
 com.google.protobuf.TextFormat: void printUnknownFieldValue(int,java.lang.Object,com.google.protobuf.TextFormat$TextGenerator)
 com.google.protobuf.DoubleArrayList: double getDouble(int)
@@ -18932,7 +18932,7 @@ com.google.protobuf.DescriptorProtos$GeneratedCodeInfo$Builder: com.google.proto
 com.google.protobuf.Enum: int getEnumvalueCount()
 com.google.protobuf.GeneratedMessageLite$HashCodeVisitor: com.google.protobuf.MessageLite visitMessage(com.google.protobuf.MessageLite,com.google.protobuf.MessageLite)
 com.google.protobuf.DescriptorProtos$ServiceOptions$Builder: com.google.protobuf.Message$Builder setField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
-com.tutk.IOTC.PlaybackMonitor$renderJob$1: java.lang.Object invoke(java.lang.Object,java.lang.Object)
+com.tutk.IOTC.player.PlaybackMonitor$renderJob$1: java.lang.Object invoke(java.lang.Object,java.lang.Object)
 com.google.protobuf.AbstractParser: com.google.protobuf.MessageLite parseDelimitedFrom(java.io.InputStream,com.google.protobuf.ExtensionRegistryLite)
 com.google.protobuf.Descriptors: java.lang.String computeFullName(com.google.protobuf.Descriptors$FileDescriptor,com.google.protobuf.Descriptors$Descriptor,java.lang.String)
 com.google.protobuf.compiler.PluginProtos$1: com.google.protobuf.ExtensionRegistry assignDescriptors(com.google.protobuf.Descriptors$FileDescriptor)
@@ -19026,8 +19026,8 @@ com.google.protobuf.DescriptorProtos$MessageOptions$Builder: com.google.protobuf
 com.google.protobuf.DescriptorProtos$OneofDescriptorProto: java.lang.Object access$8302(com.google.protobuf.DescriptorProtos$OneofDescriptorProto,java.lang.Object)
 com.google.protobuf.LazyStringArrayList: java.lang.Object remove(int)
 com.google.protobuf.GeneratedMessage$ExtendableBuilder: GeneratedMessage$ExtendableBuilder(com.google.protobuf.GeneratedMessage$BuilderParent)
-com.tutk.IOTC.PlaybackMonitor: PlaybackMonitor(android.content.Context,android.util.AttributeSet,int)
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$1: java.lang.Object invokeSuspend(java.lang.Object)
+com.tutk.IOTC.player.PlaybackMonitor: PlaybackMonitor(android.content.Context,android.util.AttributeSet,int)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$1: java.lang.Object invokeSuspend(java.lang.Object)
 com.tutk.bean.TSupportStream: TSupportStream(int,int)
 com.google.protobuf.StringValue: com.google.protobuf.StringValue parseDelimitedFrom(java.io.InputStream)
 com.google.protobuf.LongArrayList: com.google.protobuf.Internal$LongList mutableCopyWithCapacity(int)
@@ -19096,7 +19096,7 @@ com.google.protobuf.GeneratedMessage$Builder: com.google.protobuf.AbstractMessag
 com.tutk.IOTC.AVFrameQueue: com.tutk.IOTC.AVFrame removeHead()
 com.google.protobuf.DescriptorProtos$FileOptions$Builder: com.google.protobuf.Message$Builder clear()
 com.ingenic.zalive.MsgEntity$Cli2HeartInfoReq: com.ingenic.zalive.MsgEntity$Cli2HeartInfoReq parseFrom(java.io.InputStream,com.google.protobuf.ExtensionRegistryLite)
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1: kotlin.coroutines.Continuation create(java.lang.Object,kotlin.coroutines.Continuation)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1: kotlin.coroutines.Continuation create(java.lang.Object,kotlin.coroutines.Continuation)
 com.tutk.IOTC.LocalRecording: boolean stopRecording()
 com.google.protobuf.DescriptorProtos$UninterpretedOption$Builder: com.google.protobuf.Message getDefaultInstanceForType()
 com.google.protobuf.RopeByteString: void writeToInternal(java.io.OutputStream,int,int)
@@ -19359,7 +19359,7 @@ com.tutk.IOTC.IOTCAPIs: void IOTC_WakeUp_Setup_Auto_WakeUp(int)
 com.google.protobuf.DescriptorProtos$DescriptorProto$Builder: DescriptorProtos$DescriptorProto$Builder(com.google.protobuf.GeneratedMessageV3$BuilderParent,com.google.protobuf.DescriptorProtos$1)
 com.google.protobuf.Type$Builder: com.google.protobuf.Type$Builder setSyntax(com.google.protobuf.Syntax)
 com.google.protobuf.Field: Field(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite,com.google.protobuf.Field$1)
-com.tutk.IOTC.PlaybackMonitor: void onDestroy()
+com.tutk.IOTC.player.PlaybackMonitor: void onDestroy()
 com.google.protobuf.EnumOrBuilder: com.google.protobuf.SourceContext getSourceContext()
 com.ingenic.zalive.MsgEntity$ServerRegisterReq$Builder: com.ingenic.zalive.MsgEntity$ServerRegisterReq$Builder mergeUnknownFields(com.google.protobuf.UnknownFieldSet)
 com.google.protobuf.DescriptorProtos$EnumOptions$1: java.lang.Object parsePartialFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
@@ -19452,7 +19452,7 @@ com.tutk.IOTC.listener.OnFrameCallback: void receiveFrameData(com.tutk.IOTC.Came
 com.google.protobuf.DescriptorProtos$FileOptions$Builder: com.google.protobuf.DescriptorProtos$FileOptions$Builder mergeFrom(com.google.protobuf.DescriptorProtos$FileOptions)
 com.google.protobuf.BytesValue: com.google.protobuf.Descriptors$Descriptor getDescriptor()
 com.ingenic.zalive.MsgEntity$ServerRegisterReq: com.google.protobuf.MessageLite$Builder toBuilder()
-com.tutk.IOTC.PlaybackMonitor: android.view.SurfaceHolder access$getMSurHolder$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: android.view.SurfaceHolder access$getMSurHolder$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.MapField$MutatabilityAwareMap: MapField$MutatabilityAwareMap(com.google.protobuf.MutabilityOracle,java.util.Map)
 com.google.protobuf.ServiceException: ServiceException(java.lang.String)
 com.google.protobuf.Value$Builder: com.google.protobuf.ListValue$Builder getListValueBuilder()
@@ -19501,7 +19501,7 @@ com.google.protobuf.MapEntry$Metadata$1: com.google.protobuf.MapEntry parseParti
 com.google.protobuf.Mixin: com.google.protobuf.Mixin parseFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)
 com.ingenic.zalive.MsgEntity$Dev2HeartDevStat$Builder: com.ingenic.zalive.MsgEntity$Dev2HeartDevStat$Builder setUidBytes(com.google.protobuf.ByteString)
 com.google.protobuf.BytesValue: com.google.protobuf.BytesValue parseFrom(byte[])
-com.tutk.IOTC.PlaybackMonitor: android.graphics.Paint access$getMPaint$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.Paint access$getMPaint$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.Descriptors$FieldDescriptor$Type: <clinit>()
 com.google.protobuf.CodedOutputStream$ByteOutputEncoder: void writeFixed64(int,long)
 com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange: com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange$Builder newBuilder(com.google.protobuf.DescriptorProtos$DescriptorProto$ReservedRange)
@@ -19576,11 +19576,11 @@ com.ingenic.zalive.MsgEntity$ServerSync2MasterReq$Builder: com.google.protobuf.M
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Builder: com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Builder setJsonName(java.lang.String)
 com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq$Builder: boolean hasUid()
 com.google.protobuf.Timestamp$Builder: com.google.protobuf.Timestamp$Builder clearOneof(com.google.protobuf.Descriptors$OneofDescriptor)
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1: java.lang.Object invokeSuspend(java.lang.Object)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1: java.lang.Object invokeSuspend(java.lang.Object)
 com.google.protobuf.DescriptorProtos$DescriptorProtoOrBuilder: com.google.protobuf.DescriptorProtos$FieldDescriptorProto getField(int)
 com.google.protobuf.Mixin$Builder: java.lang.String getRoot()
 com.google.protobuf.MessageOrBuilder: com.google.protobuf.Descriptors$Descriptor getDescriptorForType()
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1: PlaybackMonitor$startPlayTime$1(com.tutk.IOTC.PlaybackMonitor,kotlin.coroutines.Continuation)
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1: PlaybackMonitor$startPlayTime$1(com.tutk.IOTC.player.PlaybackMonitor,kotlin.coroutines.Continuation)
 com.tutk.IOTC.camera.StartJob$start$1$1: java.lang.Object invoke(java.lang.Object,java.lang.Object)
 com.google.protobuf.StringValue$Builder: com.google.protobuf.StringValue$Builder clearValue()
 com.google.protobuf.DescriptorProtos$FileDescriptorProtoOrBuilder: java.util.List getWeakDependencyList()
@@ -19794,7 +19794,7 @@ com.google.protobuf.Mixin$Builder: com.google.protobuf.MessageLite getDefaultIns
 com.google.protobuf.DescriptorProtos$OneofDescriptorProtoOrBuilder: boolean hasOptions()
 com.google.protobuf.DescriptorProtos$ServiceDescriptorProto: int getMethodCount()
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Builder: com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Builder clearTypeName()
-com.tutk.IOTC.PlaybackMonitor: void access$setRunning$p(com.tutk.IOTC.PlaybackMonitor,boolean)
+com.tutk.IOTC.player.PlaybackMonitor: void access$setRunning$p(com.tutk.IOTC.player.PlaybackMonitor,boolean)
 com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Label: <clinit>()
 com.tutk.IOTC.camera.RecvVideoJob$start$1: RecvVideoJob$start$1(com.tutk.IOTC.camera.RecvVideoJob,kotlin.coroutines.Continuation)
 com.google.protobuf.DescriptorProtos$OneofOptions: com.google.protobuf.DescriptorProtos$OneofOptions parseFrom(byte[],com.google.protobuf.ExtensionRegistryLite)
@@ -19974,7 +19974,7 @@ com.google.protobuf.DescriptorProtos$EnumValueDescriptorProto$Builder: com.googl
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder: com.google.protobuf.MessageLite$Builder clone()
 com.google.protobuf.DescriptorProtos$DescriptorProto: java.util.List getReservedRangeOrBuilderList()
 com.google.protobuf.MessageReflection$ExtensionAdapter: com.google.protobuf.MessageReflection$MergeTarget$ContainerType getContainerType()
-com.tutk.IOTC.PlaybackMonitor: boolean onTouchEvent(android.view.MotionEvent)
+com.tutk.IOTC.player.PlaybackMonitor: boolean onTouchEvent(android.view.MotionEvent)
 com.tutk.IOTC.camera.RecvVideoJob$start$1: kotlin.coroutines.Continuation create(java.lang.Object,kotlin.coroutines.Continuation)
 com.google.protobuf.Method$Builder: com.google.protobuf.Method$Builder setRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,int,java.lang.Object)
 com.google.protobuf.DescriptorProtos$EnumValueOptions$Builder: java.lang.Object clone()
@@ -20299,7 +20299,7 @@ com.google.protobuf.TextFormat$Printer: void access$600(com.google.protobuf.Text
 com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder: com.google.protobuf.DescriptorProtos$EnumDescriptorProto$Builder addEnumTypeBuilder(int)
 com.google.protobuf.DescriptorProtos$GeneratedCodeInfo: boolean equals(java.lang.Object)
 com.google.protobuf.GeneratedMessageLite$EqualsVisitor: java.lang.Object visitOneofByteString(boolean,java.lang.Object,java.lang.Object)
-com.tutk.IOTC.PlaybackMonitor: int access$getVTop$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: int access$getVTop$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.DescriptorProtos$DescriptorProto$ExtensionRange$Builder: com.google.protobuf.Message$Builder mergeFrom(com.google.protobuf.Message)
 com.ingenic.zalive.MsgEntity$Message$Builder: boolean hasResp()
 com.google.protobuf.GeneratedMessageV3$ExtendableBuilder: boolean parseUnknownField(com.google.protobuf.CodedInputStream,com.google.protobuf.UnknownFieldSet$Builder,com.google.protobuf.ExtensionRegistryLite,int)
@@ -20574,7 +20574,7 @@ com.tutk.IOTC.status.VideoMirrorMode: <clinit>()
 com.ingenic.zalive.MsgEntity$MasterRegisterResp$1: MsgEntity$MasterRegisterResp$1()
 com.tutk.liblocalrecorder.LocalRecorder: long nativeGetVideoTimeStamp(long)
 com.tutk.IOTC.audio.RecvAudioJob$start$1$invokeSuspend$$inlined$collect$1: RecvAudioJob$start$1$invokeSuspend$$inlined$collect$1()
-com.tutk.IOTC.PlaybackMonitor: void startRecord(java.lang.String,com.tutk.IOTC.listener.OnResultCallback)
+com.tutk.IOTC.player.PlaybackMonitor: void startRecord(java.lang.String,com.tutk.IOTC.listener.OnResultCallback)
 com.google.protobuf.UInt32Value$Builder: com.google.protobuf.GeneratedMessageV3$Builder clear()
 com.tutk.IOTC.camera.DownFileJob$start$2: DownFileJob$start$2(com.tutk.IOTC.camera.DownFileJob,java.lang.String,android.net.Uri,kotlin.coroutines.Continuation)
 com.tutk.IOTC.IOTCAPIs: int IOTC_Listen2(int,java.lang.String,int)
@@ -20633,7 +20633,7 @@ com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse: com.google.prot
 com.google.protobuf.DescriptorProtos$EnumDescriptorProto$Builder: com.google.protobuf.GeneratedMessageV3$Builder clearOneof(com.google.protobuf.Descriptors$OneofDescriptor)
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse: com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse getDefaultInstance()
 com.tutk.io.SendKt: boolean deleteTFCardRecordVideo$default(com.tutk.IOTC.Camera,int,com.tutk.bean.TEvent,boolean,int,java.lang.Object)
-com.tutk.IOTC.PlaybackMonitor: void unAttachCamera()
+com.tutk.IOTC.player.PlaybackMonitor: void unAttachCamera()
 com.tutk.IOTC.AVFrame: int getFrmSize()
 com.google.protobuf.DescriptorProtos$ServiceOptions$Builder: com.google.protobuf.GeneratedMessageV3$ExtendableBuilder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
 com.google.protobuf.GeneratedMessageV3$FieldAccessorTable: com.google.protobuf.GeneratedMessageV3$FieldAccessorTable$FieldAccessor access$200(com.google.protobuf.GeneratedMessageV3$FieldAccessorTable,com.google.protobuf.Descriptors$FieldDescriptor)
@@ -20745,7 +20745,7 @@ com.google.protobuf.Utf8: int incompleteStateFor(int)
 com.ingenic.zalive.MsgEntity$Master2CliInfoResp$Builder: com.google.protobuf.MessageLite buildPartial()
 com.google.protobuf.GeneratedMessageLite$GeneratedExtension: java.lang.Object fromFieldSetType(java.lang.Object)
 com.google.protobuf.GeneratedMessage$ExtendableBuilder: com.google.protobuf.GeneratedMessage$ExtendableBuilder clearExtension(com.google.protobuf.ExtensionLite)
-com.tutk.IOTC.PlaybackMonitor: void stop()
+com.tutk.IOTC.player.PlaybackMonitor: void stop()
 com.google.protobuf.DescriptorProtos$EnumValueOptions$Builder: com.google.protobuf.Message build()
 com.ingenic.zalive.MsgEntity$ServerRegisterReq$Builder: com.ingenic.zalive.MsgEntity$ServerRegisterReq$Builder clearClientPort()
 com.google.protobuf.Parser: java.lang.Object parsePartialFrom(byte[])
@@ -20841,7 +20841,7 @@ com.google.protobuf.DescriptorProtos$SourceCodeInfo$Builder: com.google.protobuf
 com.google.protobuf.Api: Api(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite,com.google.protobuf.Api$1)
 com.google.protobuf.CodedOutputStream: int computeInt32SizeNoTag(int)
 com.google.protobuf.SourceContext$Builder: com.google.protobuf.GeneratedMessageV3$Builder setUnknownFields(com.google.protobuf.UnknownFieldSet)
-com.tutk.IOTC.PlaybackMonitor: android.graphics.Bitmap takePhoto()
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.Bitmap takePhoto()
 com.ingenic.zalive.MsgEntity$Cli2MasterInfoReq$Builder: com.google.protobuf.Message$Builder setRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,int,java.lang.Object)
 com.google.protobuf.GeneratedMessage$FieldAccessorTable$SingularEnumFieldAccessor: void set(com.google.protobuf.GeneratedMessage$Builder,java.lang.Object)
 com.google.protobuf.Struct$Builder: com.google.protobuf.Struct$Builder clear()
@@ -21255,7 +21255,7 @@ com.google.protobuf.SmallSortedMap$EmptySet$1: SmallSortedMap$EmptySet$1()
 com.google.protobuf.BoolValue$Builder: com.google.protobuf.AbstractMessage$Builder clearOneof(com.google.protobuf.Descriptors$OneofDescriptor)
 com.google.protobuf.Field$Builder: com.google.protobuf.Field$Builder clearKind()
 com.ingenic.zalive.MsgEntity$ServerRegisterReq$Builder: com.ingenic.zalive.MsgEntity$ServerRegisterReq build()
-com.tutk.IOTC.PlaybackMonitor: android.graphics.Bitmap access$getMLastFrame$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: android.graphics.Bitmap access$getMLastFrame$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.google.protobuf.Value: com.google.protobuf.MessageLite$Builder newBuilderForType()
 com.tutk.IOTC.camera.StartJob: void access$setStoped$p(com.tutk.IOTC.camera.StartJob,boolean)
 com.ingenic.zalive.MsgEntity$DevState$1: com.ingenic.zalive.MsgEntity$DevState findValueByNumber(int)
@@ -21441,7 +21441,7 @@ com.ingenic.zalive.MsgEntity$Request: com.ingenic.zalive.MsgEntity$DevPackReq ac
 com.google.protobuf.NioByteString: com.google.protobuf.ByteString substring(int,int)
 com.google.protobuf.DescriptorProtos$FileOptions$Builder: com.google.protobuf.GeneratedMessageV3$ExtendableBuilder addRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
 com.ingenic.zalive.MsgEntity$msgType: com.ingenic.zalive.MsgEntity$msgType valueOf(com.google.protobuf.Descriptors$EnumValueDescriptor)
-com.tutk.IOTC.PlaybackMonitor: kotlinx.coroutines.Job access$getMPlayTimeJob$p(com.tutk.IOTC.PlaybackMonitor)
+com.tutk.IOTC.player.PlaybackMonitor: kotlinx.coroutines.Job access$getMPlayTimeJob$p(com.tutk.IOTC.player.PlaybackMonitor)
 com.tutk.io.ParseKt: com.tutk.bean.TRecordModeWithTime parseRecordModeWithTime(byte[])
 com.google.protobuf.DescriptorProtos$MessageOptions$Builder: com.google.protobuf.AbstractMessage$Builder mergeFrom(com.google.protobuf.Message)
 com.ingenic.zalive.MsgEntity$Dev2HeartDevStat: com.ingenic.zalive.MsgEntity$Dev2HeartDevStat getDefaultInstance()
@@ -22036,7 +22036,7 @@ com.google.protobuf.TextFormat$Parser$Builder: com.google.protobuf.TextFormat$Pa
 com.google.protobuf.GeneratedMessage$FieldAccessorTable$SingularFieldAccessor: java.lang.Object getRepeatedRaw(com.google.protobuf.GeneratedMessage,int)
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorRequest: boolean equals(java.lang.Object)
 com.google.protobuf.ListValue: com.google.protobuf.Message getDefaultInstanceForType()
-com.tutk.IOTC.PlaybackMonitor: void stopShow()
+com.tutk.IOTC.player.PlaybackMonitor: void stopShow()
 com.google.protobuf.StringValue$Builder: com.google.protobuf.GeneratedMessageV3$Builder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
 com.google.protobuf.GeneratedMessageV3: com.google.protobuf.MapField internalGetMapField(int)
 com.google.protobuf.DescriptorProtos$OneofOptions$Builder: com.google.protobuf.Message$Builder setRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,int,java.lang.Object)
@@ -22214,7 +22214,7 @@ com.google.protobuf.UnmodifiableLazyStringList: UnmodifiableLazyStringList(com.g
 com.ingenic.zalive.MsgEntity$Dev2HeartDevStat$Builder: com.google.protobuf.GeneratedMessageV3$Builder clearField(com.google.protobuf.Descriptors$FieldDescriptor)
 com.google.protobuf.Field$Builder: com.google.protobuf.Field$Builder removeOptions(int)
 com.google.protobuf.DescriptorProtos$SourceCodeInfo$Location$Builder: void ensurePathIsMutable()
-com.tutk.IOTC.PlaybackMonitor: void registerAVChannelRecordStatus(com.tutk.IOTC.listener.IAVChannelRecordStatus)
+com.tutk.IOTC.player.PlaybackMonitor: void registerAVChannelRecordStatus(com.tutk.IOTC.listener.IAVChannelRecordStatus)
 com.google.protobuf.compiler.PluginProtos$CodeGeneratorResponse: com.google.protobuf.UnknownFieldSet getUnknownFields()
 com.google.protobuf.Struct$Builder: com.google.protobuf.AbstractMessage$Builder mergeFrom(com.google.protobuf.Message)
 com.google.protobuf.Method: boolean getResponseStreaming()
@@ -23073,7 +23073,7 @@ com.google.protobuf.DescriptorProtos$EnumDescriptorProto: int getSerializedSize(
 com.google.protobuf.ByteString$LiteralByteString: java.lang.String toStringInternal(java.nio.charset.Charset)
 com.google.protobuf.DescriptorProtos$FileDescriptorProto$Builder: com.google.protobuf.DescriptorProtos$EnumDescriptorProto$Builder addEnumTypeBuilder()
 com.google.protobuf.DescriptorProtos$MessageOptions$Builder: com.google.protobuf.DescriptorProtos$MessageOptions$Builder setMessageSetWireFormat(boolean)
-com.tutk.IOTC.PlaybackMonitor$OnPlayBackCallback: void onPlayBackStatus(com.tutk.IOTC.status.PlaybackStatus,int,int)
+com.tutk.IOTC.player.PlaybackMonitor$OnPlayBackCallback: void onPlayBackStatus(com.tutk.IOTC.status.PlaybackStatus,int,int)
 com.google.protobuf.DescriptorProtos$DescriptorProto$Builder: void ensureReservedRangeIsMutable()
 com.google.protobuf.SourceContext$Builder: com.google.protobuf.SourceContext$Builder addRepeatedField(com.google.protobuf.Descriptors$FieldDescriptor,java.lang.Object)
 com.google.protobuf.DescriptorProtos$FieldOptionsOrBuilder: boolean getLazy()

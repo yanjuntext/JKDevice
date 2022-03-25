@@ -368,3 +368,11 @@ data class TOsdSetStatus(val result: Int) {
  * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_GET_VIDEOOSD_RESP]
  */
 data class TOsdGetStatus(val status: Boolean)
+
+/**
+ * 复位设备
+ *  [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_DEVRESET_RESP]
+ */
+data class TResetDevice(val result: Int) {
+    fun isSuccess() = result == 0
+}

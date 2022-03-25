@@ -519,6 +519,10 @@ object AVIOCTRLDEFs {
     const val IOTYPE_USER_GET_CHILDREN_LOCK_REQ = 0x5039
     const val IOTYPE_USER_GET_CHILDREN_LOCK_RESP = 0x503A
 
+    /**设备复位*/
+    const val IOTYPE_USER_IPCAM_DEVRESET_REQ = 0x200A
+    const val IOTYPE_USER_IPCAM_DEVRESET_RESP = 0x200B
+
 
     private fun initByteArray(size: Int) = ByteArray(size)
 
@@ -1256,9 +1260,9 @@ object AVIOCTRLDEFs {
      * [IOTYPE_USER_IPCAM_SET_VIDEOOSD_REQ] or [IOTYPE_USER_SET_CHILDREN_LOCK_REQ]
      * [com.tutk.io.setOsdStatus] or [com.tutk.io.setChildrenLockStatus]
      */
-    fun setVideoOsdStatus(status: Boolean):ByteArray{
+    fun setVideoOsdStatus(status: Boolean): ByteArray {
         val data = initByteArray(5)
-        data[0] = if(status) 1 else 0
+        data[0] = if (status) 1 else 0
         return data
     }
 

@@ -20556,56 +20556,56 @@ com.tutk.IOTC.PacketKt -> a.e.a.o:
     1:1:long littleLong(byte[],int):119:119 -> c
     2:2:short[] shortArray(int):121:121 -> c
     1:1:short littleShort(byte[],int):118:118 -> d
-com.tutk.IOTC.PlaybackMonitor -> com.tutk.IOTC.PlaybackMonitor:
+com.tutk.IOTC.player.PlaybackMonitor -> com.tutk.IOTC.player.PlaybackMonitor:
 # {"id":"sourceFile","fileName":"PlaybackMonitor.kt"}
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> <init>
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> <init>
     1:1:void <init>(android.content.Context,android.util.AttributeSet,int,int,kotlin.jvm.internal.DefaultConstructorMarker):44 -> <init>
     2:95:void <init>(android.content.Context,android.util.AttributeSet,int):48:141 -> <init>
     96:96:void <init>(android.content.Context,android.util.AttributeSet,int):140:140 -> <init>
     1:16:void _setFullScreen():170:185 -> _setFullScreen
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$_setFullScreen
-    1:1:void access$_setFullScreen(com.tutk.IOTC.PlaybackMonitor):44 -> access$_setFullScreen
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getMLastFrame$p
-    1:1:android.graphics.Bitmap access$getMLastFrame$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getMLastFrame$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getMLastZoomTime$p
-    1:1:long access$getMLastZoomTime$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getMLastZoomTime$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getMOnPlaybackCallback$p
-    1:1:com.tutk.IOTC.PlaybackMonitor$OnPlayBackCallback access$getMOnPlaybackCallback$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getMOnPlaybackCallback$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getMPaint$p
-    1:1:android.graphics.Paint access$getMPaint$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getMPaint$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getMPlayTimeJob$p
-    1:1:kotlinx.coroutines.Job access$getMPlayTimeJob$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getMPlayTimeJob$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getMPlaybackStatus$p
-    1:1:com.tutk.IOTC.status.PlaybackStatus access$getMPlaybackStatus$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getMPlaybackStatus$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getMRectCanvas$p
-    1:1:android.graphics.Rect access$getMRectCanvas$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getMRectCanvas$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getMRenderJob$p
-    1:1:kotlinx.coroutines.Job access$getMRenderJob$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getMRenderJob$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getMSurHolder$p
-    1:1:android.view.SurfaceHolder access$getMSurHolder$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getMSurHolder$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getMVideoPlayTime$p
-    1:1:int access$getMVideoPlayTime$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getMVideoPlayTime$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getMVideoTotalTime$p
-    1:1:int access$getMVideoTotalTime$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getMVideoTotalTime$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getNScreenHeight$p
-    1:1:int access$getNScreenHeight$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getNScreenHeight$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getNScreenWidth$p
-    1:1:int access$getNScreenWidth$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getNScreenWidth$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getVBottom$p
-    1:1:int access$getVBottom$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getVBottom$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getVLeft$p
-    1:1:int access$getVLeft$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getVLeft$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getVRight$p
-    1:1:int access$getVRight$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getVRight$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$getVTop$p
-    1:1:int access$getVTop$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$getVTop$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$isRunning$p
-    1:1:boolean access$isRunning$p(com.tutk.IOTC.PlaybackMonitor):44 -> access$isRunning$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$scaleToOrigin
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$setMVideoPlayTime$p
-    1:1:void access$setMVideoPlayTime$p(com.tutk.IOTC.PlaybackMonitor,int):44 -> access$setMVideoPlayTime$p
-    1:1:void access$scaleToOrigin(com.tutk.IOTC.PlaybackMonitor):44:44 -> access$setRunning$p
-    1:1:void access$setRunning$p(com.tutk.IOTC.PlaybackMonitor,boolean):44 -> access$setRunning$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$_setFullScreen
+    1:1:void access$_setFullScreen(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$_setFullScreen
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getMLastFrame$p
+    1:1:android.graphics.Bitmap access$getMLastFrame$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getMLastFrame$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getMLastZoomTime$p
+    1:1:long access$getMLastZoomTime$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getMLastZoomTime$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getMOnPlaybackCallback$p
+    1:1:com.tutk.IOTC.player.PlaybackMonitor$OnPlayBackCallback access$getMOnPlaybackCallback$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getMOnPlaybackCallback$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getMPaint$p
+    1:1:android.graphics.Paint access$getMPaint$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getMPaint$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getMPlayTimeJob$p
+    1:1:kotlinx.coroutines.Job access$getMPlayTimeJob$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getMPlayTimeJob$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getMPlaybackStatus$p
+    1:1:com.tutk.IOTC.status.PlaybackStatus access$getMPlaybackStatus$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getMPlaybackStatus$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getMRectCanvas$p
+    1:1:android.graphics.Rect access$getMRectCanvas$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getMRectCanvas$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getMRenderJob$p
+    1:1:kotlinx.coroutines.Job access$getMRenderJob$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getMRenderJob$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getMSurHolder$p
+    1:1:android.view.SurfaceHolder access$getMSurHolder$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getMSurHolder$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getMVideoPlayTime$p
+    1:1:int access$getMVideoPlayTime$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getMVideoPlayTime$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getMVideoTotalTime$p
+    1:1:int access$getMVideoTotalTime$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getMVideoTotalTime$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getNScreenHeight$p
+    1:1:int access$getNScreenHeight$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getNScreenHeight$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getNScreenWidth$p
+    1:1:int access$getNScreenWidth$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getNScreenWidth$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getVBottom$p
+    1:1:int access$getVBottom$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getVBottom$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getVLeft$p
+    1:1:int access$getVLeft$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getVLeft$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getVRight$p
+    1:1:int access$getVRight$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getVRight$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$getVTop$p
+    1:1:int access$getVTop$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$getVTop$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$isRunning$p
+    1:1:boolean access$isRunning$p(com.tutk.IOTC.player.PlaybackMonitor):44 -> access$isRunning$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$scaleToOrigin
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$setMVideoPlayTime$p
+    1:1:void access$setMVideoPlayTime$p(com.tutk.IOTC.player.PlaybackMonitor,int):44 -> access$setMVideoPlayTime$p
+    1:1:void access$scaleToOrigin(com.tutk.IOTC.player.PlaybackMonitor):44:44 -> access$setRunning$p
+    1:1:void access$setRunning$p(com.tutk.IOTC.player.PlaybackMonitor,boolean):44 -> access$setRunning$p
     1:1:void setRecording(boolean):116:116 -> isRecording
     1:1:boolean isRecording():116 -> isRecording
     1:40:boolean moveVideo(android.view.MotionEvent):599:638 -> moveVideo
@@ -20641,9 +20641,9 @@ com.tutk.IOTC.PlaybackMonitor -> com.tutk.IOTC.PlaybackMonitor:
     1:1:void setRecording(boolean):116:116 -> setRecording
     1:5:float spacing(android.view.MotionEvent):587:591 -> spacing
     1:4:void startPlayTime():294:297 -> startPlayTime
-    1:12:void startPlayback(com.tutk.IOTC.Camera,com.tutk.bean.TEvent,com.tutk.IOTC.PlaybackMonitor$OnPlayBackCallback):220:231 -> startPlayback
+    1:12:void startPlayback(com.tutk.IOTC.Camera,com.tutk.bean.TEvent,com.tutk.IOTC.player.PlaybackMonitor$OnPlayBackCallback):220:231 -> startPlayback
     1:1:void startRecord(java.lang.String,com.tutk.IOTC.listener.OnResultCallback):384:384 -> startRecord
-    1:2:void startRecord$lambda-6(com.tutk.IOTC.PlaybackMonitor,com.tutk.IOTC.listener.OnResultCallback,com.tutk.IOTC.status.RecordStatus):385:386 -> startRecord$lambda-6
+    1:2:void startRecord$lambda-6(com.tutk.IOTC.player.PlaybackMonitor,com.tutk.IOTC.listener.OnResultCallback,com.tutk.IOTC.status.RecordStatus):385:386 -> startRecord$lambda-6
     1:7:void startShow():340:346 -> startShow
     1:10:void stop():280:289 -> stop
     1:2:void stopPlayTime():318:319 -> stopPlayTime
@@ -20670,22 +20670,22 @@ com.tutk.IOTC.PlaybackMonitor -> com.tutk.IOTC.PlaybackMonitor:
     19:24:android.net.Uri takePhotoUri(java.lang.String,java.lang.String,java.lang.String):1032:1037 -> takePhotoUri
     1:10:void unAttachCamera():324:333 -> unAttachCamera
     1:2:void unRegisterAVChannelRecordStatus():379:380 -> unRegisterAVChannelRecordStatus
-com.tutk.IOTC.PlaybackMonitor$1 -> com.tutk.IOTC.PlaybackMonitor$a:
+com.tutk.IOTC.player.PlaybackMonitor$1 -> com.tutk.IOTC.player.PlaybackMonitor$a:
 # {"id":"sourceFile","fileName":"PlaybackMonitor.kt"}
-    com.tutk.IOTC.PlaybackMonitor this$0 -> a
-    1:1:void <init>(com.tutk.IOTC.PlaybackMonitor):141:141 -> <init>
+    com.tutk.IOTC.player.PlaybackMonitor this$0 -> a
+    1:1:void <init>(com.tutk.IOTC.player.PlaybackMonitor):141:141 -> <init>
     1:5:boolean onDoubleTap(android.view.MotionEvent):157:161 -> onDoubleTap
     6:6:boolean onDoubleTap(android.view.MotionEvent):159:159 -> onDoubleTap
     1:4:boolean onFling(android.view.MotionEvent,android.view.MotionEvent,float,float):148:151 -> onFling
-com.tutk.IOTC.PlaybackMonitor$OnPlayBackCallback -> com.tutk.IOTC.PlaybackMonitor$b:
+com.tutk.IOTC.player.PlaybackMonitor$OnPlayBackCallback -> com.tutk.IOTC.player.PlaybackMonitor$b:
 # {"id":"sourceFile","fileName":"PlaybackMonitor.kt"}
     void onPlayBackStatus(com.tutk.IOTC.status.PlaybackStatus,int,int) -> a
-com.tutk.IOTC.PlaybackMonitor$WhenMappings -> com.tutk.IOTC.PlaybackMonitor$c:
+com.tutk.IOTC.player.PlaybackMonitor$WhenMappings -> com.tutk.IOTC.player.PlaybackMonitor$c:
 # {"id":"sourceFile","fileName":"PlaybackMonitor.kt"}
     int[] $EnumSwitchMapping$0 -> a
-com.tutk.IOTC.PlaybackMonitor$renderJob$1 -> com.tutk.IOTC.PlaybackMonitor$d:
+com.tutk.IOTC.player.PlaybackMonitor$renderJob$1 -> com.tutk.IOTC.player.PlaybackMonitor$d:
 # {"id":"sourceFile","fileName":"PlaybackMonitor.kt"}
-    com.tutk.IOTC.PlaybackMonitor this$0 -> b
+    com.tutk.IOTC.player.PlaybackMonitor this$0 -> b
     int label -> a
     java.lang.Object invoke(kotlinx.coroutines.CoroutineScope,kotlin.coroutines.Continuation) -> a
     1:35:java.lang.Object invokeSuspend(java.lang.Object):405:405 -> invokeSuspend
@@ -20693,26 +20693,26 @@ com.tutk.IOTC.PlaybackMonitor$renderJob$1 -> com.tutk.IOTC.PlaybackMonitor$d:
     44:62:java.lang.Object invokeSuspend(java.lang.Object):411:429 -> invokeSuspend
     63:66:java.lang.Object invokeSuspend(java.lang.Object):426:429 -> invokeSuspend
     67:77:java.lang.Object invokeSuspend(java.lang.Object):428:438 -> invokeSuspend
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1 -> com.tutk.IOTC.PlaybackMonitor$e:
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1 -> com.tutk.IOTC.player.PlaybackMonitor$e:
 # {"id":"sourceFile","fileName":"PlaybackMonitor.kt"}
-    com.tutk.IOTC.PlaybackMonitor this$0 -> b
+    com.tutk.IOTC.player.PlaybackMonitor this$0 -> b
     int label -> a
     java.lang.Object invoke(kotlinx.coroutines.CoroutineScope,kotlin.coroutines.Continuation) -> a
     1:19:java.lang.Object invokeSuspend(java.lang.Object):297:297 -> invokeSuspend
     20:775:java.lang.Object invokeSuspend(java.lang.Object):298:1053 -> invokeSuspend
     776:776:java.lang.Object invokeSuspend(java.lang.Object):314:314 -> invokeSuspend
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$1 -> com.tutk.IOTC.PlaybackMonitor$e$a:
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$1 -> com.tutk.IOTC.player.PlaybackMonitor$e$a:
 # {"id":"sourceFile","fileName":"PlaybackMonitor.kt"}
-    com.tutk.IOTC.PlaybackMonitor this$0 -> c
+    com.tutk.IOTC.player.PlaybackMonitor this$0 -> c
     java.lang.Object L$0 -> b
     int label -> a
     java.lang.Object invoke(kotlinx.coroutines.flow.FlowCollector,kotlin.coroutines.Continuation) -> a
     1:7:java.lang.Object invokeSuspend(java.lang.Object):298:298 -> invokeSuspend
     8:12:java.lang.Object invokeSuspend(java.lang.Object):299:303 -> invokeSuspend
-com.tutk.IOTC.PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1 -> com.tutk.IOTC.PlaybackMonitor$e$b:
+com.tutk.IOTC.player.PlaybackMonitor$startPlayTime$1$invokeSuspend$$inlined$collect$1 -> com.tutk.IOTC.player.PlaybackMonitor$e$b:
 # {"id":"sourceFile","fileName":"Collect.kt"}
-    com.tutk.IOTC.PlaybackMonitor this$0 -> a
-    1:1:void <init>(com.tutk.IOTC.PlaybackMonitor):72:72 -> <init>
+    com.tutk.IOTC.player.PlaybackMonitor this$0 -> a
+    1:1:void <init>(com.tutk.IOTC.player.PlaybackMonitor):72:72 -> <init>
     1:68:java.lang.Object emit(java.lang.Object,kotlin.coroutines.Continuation):73:140 -> emit
     69:75:java.lang.Object emit(java.lang.Object,kotlin.coroutines.Continuation):137:143 -> emit
 com.tutk.IOTC.RDCTRLDEFs -> a.e.a.p:

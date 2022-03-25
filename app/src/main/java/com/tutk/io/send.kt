@@ -1074,6 +1074,21 @@ fun Camera?.setChildrenLockStatus(
     } else false
 }
 
+/**
+ * [AVIOCTRLDEFs.IOTYPE_USER_IPCAM_DEVRESET_REQ]
+ * 设备复位
+ * */
+fun Camera?.resetDevice(channel: Int = Camera.DEFAULT_AV_CHANNEL, must: Boolean = false): Boolean {
+    return if (canSend() || must) {
+        this?.sendIOCtrl(
+            channel,
+            AVIOCTRLDEFs.IOTYPE_USER_IPCAM_DEVRESET_REQ,
+            ByteArray(8)
+        )
+        true
+    } else false
+}
+
 
 
 
