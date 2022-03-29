@@ -743,7 +743,7 @@ internal class DownFileJob(
                                     "Stop".toByteArray()
                                 )
                                 d("send stop")
-                                RDTAPIs.RDT_Write(rdt_id,stopArray,STRUCT_SIZE)
+                                RDTAPIs.RDT_Write(rdt_id, stopArray, STRUCT_SIZE)
                                 break
                             } else {
                                 isRunning = false
@@ -852,7 +852,7 @@ internal class DownFileJob(
                         rdt_id = RDTAPIs.RDT_Create(sid, DOWNLOAD_WAIT_TIME, 3)
                         d("RDT_ID=[$rdt_id]")
 
-                        while (isRunning && isActive() && !srcFile.isNullOrEmpty() && this@DownFileJob.dstUri!= null && rdt_id >= 0) {
+                        while (isRunning && isActive() && !srcFile.isNullOrEmpty() && this@DownFileJob.dstUri != null && rdt_id >= 0) {
 
                             if ((avChannel?.SID ?: -1) >= 0 && (avChannel?.mAvIndex ?: -1) >= 0) {
                                 val srcFileArray = srcFile.toByteArray()
@@ -1105,48 +1105,72 @@ internal class DownFileJob(
     }
 }
 
-fun ByteArray.getString():String{
+fun ByteArray.getString(): String {
     val sb = StringBuilder()
     run outSide@{
         forEach {
-            if(it.toInt() == 0){
+            if (it.toInt() == 0) {
                 return@outSide
             }
             sb.append(it.toInt().toChar())
         }
     }
-    return sb.toString()?:""
+    return sb.toString() ?: ""
 }
 
-fun ByteArray.getUtfString():String{
+fun ByteArray.getUtfString(): String {
     val sb = StringBuilder()
     var size = 0
     run outside@{
         this.forEachIndexed { index, byte ->
-            if(byte.toInt() == 0x0){
+            if (byte.toInt() == 0x0) {
                 size = index
                 return@outside
             }
             sb.append(byte.toInt().toChar())
         }
     }
-    if(size == 0){
+    if (size == 0) {
         return String(this)
     }
     return try {
-        val value = String(this,0,size,Charsets.UTF_8)
+        val value = String(this, 0, size, Charsets.UTF_8)
         value.nonValidXMLCharacters()
-    }catch (e:Exception){
+    } catch (e: Exception) {
+        e.printStackTrace()
+        sb.toString()
+    }
+}
+
+fun ByteArray.getUtfString2(): String {
+    val sb = StringBuilder()
+    var size = 0
+    run outside@{
+        this.forEachIndexed { index, byte ->
+            if (byte.toInt() == 0x0) {
+                size = index
+                return@outside
+            }
+            sb.append(byte.toInt().toChar())
+        }
+    }
+    if (size == 0) {
+        return ""
+    }
+    return try {
+        val value = String(this, 0, size, Charsets.UTF_8)
+        value.nonValidXMLCharacters()
+    } catch (e: Exception) {
         e.printStackTrace()
         sb.toString()
     }
 }
 
 /**去除无效字符串*/
-fun String?.nonValidXMLCharacters():String{
-    if(this.isNullOrEmpty()) return ""
+fun String?.nonValidXMLCharacters(): String {
+    if (this.isNullOrEmpty()) return ""
     val sb = StringBuilder()
-    this.forEach {current->
+    this.forEach { current ->
         // here; it should not happen.
         if (current.toInt() == 0x9 || current.toInt() == 0xA || current.toInt() == 0xD
             || current.toInt() in 0x20..0xD7FF
