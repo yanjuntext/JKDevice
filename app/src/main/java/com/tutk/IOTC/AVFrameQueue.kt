@@ -21,44 +21,73 @@ class AVFrameQueue {
     private val addLock = ReentrantLock()
 
     fun removeHead(): AVFrame? {
-        lock.lock()
-        return if (mSize == 0) {
-            lock.unlock()
-            null
-        } else {
-            val avFrame = listData.removeAt(0)
+
+        val iterator = listData.iterator()
+        return if(iterator.hasNext()){
+            val avFrame = iterator.next()
+            iterator.remove()
+
             mSize--
-            lock.unlock()
             avFrame
-        }
+        }else null
+
+//        lock.lock()
+//        return if (mSize == 0) {
+//            lock.unlock()
+//            null
+//        } else {
+//
+//            val avFrame = listData.removeAt(0)
+//            mSize--
+//            lock.unlock()
+//            avFrame
+//        }
     }
 
     fun addLast(avFrame: AVFrame) {
-        addLock.lock()
-        if (mSize > 1500) {
+
+//        addLock.lock()
+        if(listData.size > 1500){
             removeHead()
         }
+//        if (mSize > 1500) {
+//            removeHead()
+//        }
         listData.add(avFrame)
         mSize++
-        addLock.unlock()
+//        addLock.unlock()
     }
 
     fun removeAll() {
-        addLock.lock()
-        lock.lock()
-        listData.clear()
+
+        val iterator = listData.iterator()
+        while (iterator.hasNext()){
+            iterator.next()
+            iterator.remove()
+        }
         mSize = 0
-        addLock.unlock()
-        lock.unlock()
+
+//        addLock.lock()
+//        lock.lock()
+//        listData.clear()
+//        mSize = 0
+//        lock.unlock()
+//        addLock.unlock()
     }
 
     fun isFirstIFrame(): Boolean {
-        var value = false
-        lock.lock()
-        if (listData.isNotEmpty()) {
-            value = listData[0].isIFrame()
-        }
-        lock.unlock()
-        return value
+        val iterator = listData.iterator()
+        return if(iterator.hasNext()){
+            iterator.next().isIFrame()
+        } else false
+
+
+//        var value = false
+//        lock.lock()
+//        if (listData.isNotEmpty()) {
+//            value = listData[0].isIFrame()
+//        }
+//        lock.unlock()
+//        return value
     }
 }

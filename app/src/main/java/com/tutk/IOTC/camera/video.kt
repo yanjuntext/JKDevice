@@ -144,186 +144,162 @@ class RecvVideoJob(
                         )
 //                        d(TAG, "amera video data nReadSize=[$nReadSize],running[$isRunning]")
 
-                        if (nReadSize >= 0) {
-                            avChannel?.videoBPS = (avChannel?.videoBPS ?: 0) + outBufSize[0]
-                            nFrmCount++
+                        when{
+                            nReadSize >= 0->{
+                                avChannel?.videoBPS = (avChannel?.videoBPS ?: 0) + outBufSize[0]
+                                nFrmCount++
 
-                            val framData = ByteArray(nReadSize)
-                            System.arraycopy(buf, 0, framData, 0, nReadSize)
+                                val framData = ByteArray(nReadSize)
+                                System.arraycopy(buf, 0, framData, 0, nReadSize)
 
-                            val fram = AVFrame(
-                                pFrmNo[0].toLong(),
-                                AVFrame.FRM_STATE_COMPLETE,
-                                pFrmInfoBuf,
-                                framData,
-                                nReadSize,
-                                avChannel?.playMode?.value ?: PlayMode.PLAY_LIVE.value
-                            )
-                            avChannel?.codeId = fram.codec_id.toInt()
+                                val fram = AVFrame(
+                                    pFrmNo[0].toLong(),
+                                    AVFrame.FRM_STATE_COMPLETE,
+                                    pFrmInfoBuf,
+                                    framData,
+                                    nReadSize,
+                                    avChannel?.playMode?.value ?: PlayMode.PLAY_LIVE.value
+                                )
+                                avChannel?.codeId = fram.codec_id.toInt()
 
-                            d(TAG, "camera video data nReadSize[$nReadSize],setSize[]")
+                                d(TAG, "camera video data nReadSize[$nReadSize],setSize[]")
 
 //                            if (avChannel?.recording == true && fram.isIFrame() && LocalRecordHelper.recording) {
-                            if (fram.isIFrame() && LocalRecordHelper.recording) {
-                                LocalRecordHelper.setParseBuffer(fram.frmData)
-                            }
-
-                            nCodecId = fram.codec_id.toInt()
-                            nOnlineNumber = fram.onlineNum.toInt()
-
-                            d(
-                                TAG,
-                                "camera video data mAVChannel.VideoFrameQueue[${avChannel?.VideoFrameQueue?.mSize}],nCodeId[$nCodecId],onlineNum[$nOnlineNumber]"
-                            )
-
-                            when {
-                                nCodecId == AVFrame.MEDIA_CODEC_VIDEO_H264
-                                        || nCodecId == AVFrame.MEDIA_CODEC_VIDEO_H265 -> {
-                                    if (fram.isIFrame()) {
-                                        mNoFramIndex = -1
-                                    }
-
-                                    if (fram.isIFrame() || pFrmNo[0].toLong() == nPrevFrmNo + 1) {
-                                        nPrevFrmNo = pFrmNo[0].toLong()
-
-                                        avChannel?.videoFPS = (avChannel?.videoFPS ?: 0) + 1
-                                        avChannel?.VideoFrameQueue?.addLast(fram)
-                                    }
-                                }
-                                nCodecId == AVFrame.MEDIA_CODEC_VIDEO_MPEG4 -> {
-                                    if (fram.isIFrame() && isFirstIFrame) {
-                                        avChannel?.IOCtrlQueue?.Enqueue(
-                                            4098, AVIOCTRLDEFs.receiveFirstIFrame(
-                                                avChannel.mChannel, 0
-                                            )
-                                        )
-                                        isFirstIFrame = false
-                                    }
-
-                                    if (fram.isIFrame() || (pFrmNo[0].toLong() == nPrevFrmNo + 1)) {
-                                        nPrevFrmNo = pFrmNo[0].toLong()
-
-                                        avChannel?.videoFPS = (avChannel?.videoFPS ?: 0) + 1
-                                        avChannel?.VideoFrameQueue?.addLast(fram)
-                                    }
+                                if (fram.isIFrame() && LocalRecordHelper.recording) {
+                                    LocalRecordHelper.setParseBuffer(fram.frmData)
                                 }
 
-                                nCodecId == AVFrame.MEDIA_CODEC_VIDEO_MJPEG -> {
-                                    try {
-                                        val bmp =
-                                            BitmapFactory.decodeByteArray(framData, 0, nReadSize)
-                                        emit(getFrameBitmapInfo(bmp))
-                                        avChannel?.lastFrame = bmp
-                                    } catch (e: Exception) {
-                                        e.printStackTrace()
+                                nCodecId = fram.codec_id.toInt()
+                                nOnlineNumber = fram.onlineNum.toInt()
+
+                                d(
+                                    TAG,
+                                    "camera video data mAVChannel.VideoFrameQueue[${avChannel?.VideoFrameQueue?.mSize}],nCodeId[$nCodecId],onlineNum[$nOnlineNumber]"
+                                )
+
+                                when (nCodecId) {
+                                    AVFrame.MEDIA_CODEC_VIDEO_H264,
+                                    AVFrame.MEDIA_CODEC_VIDEO_H265 -> {
+                                        if (fram.isIFrame()) {
+                                            mNoFramIndex = -1
+                                        }
+
+                                        if (fram.isIFrame() || pFrmNo[0].toLong() == nPrevFrmNo + 1) {
+                                            nPrevFrmNo = pFrmNo[0].toLong()
+
+                                            avChannel?.videoFPS = (avChannel?.videoFPS ?: 0) + 1
+                                            avChannel?.VideoFrameQueue?.addLast(fram)
+                                        }
                                     }
-                                    delay(32L)
-                                }
-                                nReadSize == AVAPIs.AV_ER_SESSION_CLOSE_BY_REMOTE
-                                        || nReadSize == AVAPIs.AV_ER_REMOTE_TIMEOUT_DISCONNECT -> {
-                                    d(TAG, "nReadSize=[$nReadSize]")
-                                }
-                                nReadSize == AVAPIs.AV_ER_DATA_NOREADY -> {
-                                    delay(32)
-                                    d(TAG, "AVAPIs.AV_ER_DATA_NOREADY mNoFramIndex[$mNoFramIndex]")
-                                    if (mNoFramIndex >= 0) {
-                                        mNoFramIndex++
-                                        if (mNoFramIndex >= 35) {
-                                            if (isRunning && isActive() && getAvIndex() >= 0 && mSID >= 0) {
-                                                //重新请求IFrame
-                                                avChannel?.IOCtrlQueue?.Enqueue(
-                                                    getAvIndex(), 511,
-                                                    Packet.intToByteArray_Little(0)
+                                    AVFrame.MEDIA_CODEC_VIDEO_MPEG4 -> {
+                                        if (fram.isIFrame() && isFirstIFrame) {
+                                            avChannel?.IOCtrlQueue?.Enqueue(
+                                                4098, AVIOCTRLDEFs.receiveFirstIFrame(
+                                                    avChannel.mChannel, 0
                                                 )
-                                                mNoFramIndex = 0
-                                            }
+                                            )
+                                            isFirstIFrame = false
+                                        }
+
+                                        if (fram.isIFrame() || (pFrmNo[0].toLong() == nPrevFrmNo + 1)) {
+                                            nPrevFrmNo = pFrmNo[0].toLong()
+
+                                            avChannel?.videoFPS = (avChannel?.videoFPS ?: 0) + 1
+                                            avChannel?.VideoFrameQueue?.addLast(fram)
+                                        }
+                                    }
+                                    AVFrame.MEDIA_CODEC_VIDEO_MJPEG -> {
+                                        try {
+                                            val bmp =
+                                                BitmapFactory.decodeByteArray(framData, 0, nReadSize)
+                                            emit(getFrameBitmapInfo(bmp))
+                                            avChannel?.lastFrame = bmp
+                                        } catch (e: Exception) {
+                                            e.printStackTrace()
+                                        }
+                                        delay(32L)
+                                    }
+                                }
+                            }
+                            nReadSize == AVAPIs.AV_ER_SESSION_CLOSE_BY_REMOTE
+                                    || nReadSize == AVAPIs.AV_ER_REMOTE_TIMEOUT_DISCONNECT -> {
+                                d(TAG, "nReadSize=[$nReadSize]")
+                            }
+                            nReadSize == AVAPIs.AV_ER_DATA_NOREADY -> {
+                                delay(32)
+                                d(TAG, "AVAPIs.AV_ER_DATA_NOREADY mNoFramIndex[$mNoFramIndex]")
+                                if (mNoFramIndex >= 0) {
+                                    mNoFramIndex++
+                                    if (mNoFramIndex >= 35) {
+                                        if (isRunning && isActive() && getAvIndex() >= 0 && mSID >= 0) {
+                                            //重新请求IFrame
+                                            avChannel?.IOCtrlQueue?.Enqueue(
+                                                getAvIndex(), 511,
+                                                Packet.intToByteArray_Little(0)
+                                            )
+                                            mNoFramIndex = 0
                                         }
                                     }
                                 }
-                                nReadSize == AVAPIs.AV_ER_MEM_INSUFF
-                                        || nReadSize == AVAPIs.AV_ER_LOSED_THIS_FRAME -> {
-                                    mNoFramIndex = 0
-                                    nFrmCount++
+                            }
+                            nReadSize == AVAPIs.AV_ER_MEM_INSUFF
+                                    || nReadSize == AVAPIs.AV_ER_LOSED_THIS_FRAME -> {
+                                mNoFramIndex = 0
+                                nFrmCount++
+                                nIncompleteFrmCount++
+                                nFlow_total_frame_count++
+                            }
+                            nReadSize == AVAPIs.AV_ER_INCOMPLETE_FRAME -> {
+                                d(TAG, "AVAPIs.AV_ER_INCOMPLETE_FRAME==========")
+                                mNoFramIndex = 0
+                                nFrmCount++
+                                nFlow_total_actual_frame_size += outBufSize[0]
+                                nFlow_total_expected_frame_size += outFrmSize[0]
+                                nFlow_total_frame_count++
+                                avChannel?.videoBPS = (avChannel?.videoBPS ?: 0) + outBufSize[0]
+
+                                if (outFrmInfoBufSize[0] == 0 || outFrmSize[0] != outBufSize[0] || pFrmInfoBuf[2] == 0) {
                                     nIncompleteFrmCount++
-                                    nFlow_total_frame_count++
-                                }
-                                nReadSize == AVAPIs.AV_ER_INCOMPLETE_FRAME -> {
-                                    d(TAG, "AVAPIs.AV_ER_INCOMPLETE_FRAME==========")
-                                    mNoFramIndex = 0
-                                    nFrmCount++
-                                    nFlow_total_actual_frame_size += outBufSize[0]
-                                    nFlow_total_expected_frame_size += outFrmSize[0]
-                                    nFlow_total_frame_count++
-                                    avChannel?.videoBPS = (avChannel?.videoBPS ?: 0) + outBufSize[0]
+                                } else {
+                                    val _framData = ByteArray(outFrmSize[0])
+                                    System.arraycopy(buf, 0, _framData, 0, outFrmSize[0])
+                                    nCodecId =
+                                        Packet.byteArrayToShort_Little(pFrmInfoBuf, 0).toInt()
 
-                                    if (outFrmInfoBufSize[0] == 0 || outFrmSize[0] != outBufSize[0] || pFrmInfoBuf[2] == 0) {
-                                        nIncompleteFrmCount++
-                                    } else {
-                                        val _framData = ByteArray(outFrmSize[0])
-                                        System.arraycopy(buf, 0, _framData, 0, outFrmSize[0])
-                                        nCodecId =
-                                            Packet.byteArrayToShort_Little(pFrmInfoBuf, 0).toInt()
-
-                                        when (nCodecId) {
-                                            AVFrame.MEDIA_CODEC_VIDEO_MJPEG,
-                                            AVFrame.MEDIA_CODEC_VIDEO_MPEG4 -> {
+                                    when (nCodecId) {
+                                        AVFrame.MEDIA_CODEC_VIDEO_MJPEG,
+                                        AVFrame.MEDIA_CODEC_VIDEO_MPEG4 -> {
+                                            nIncompleteFrmCount++
+                                        }
+                                        AVFrame.MEDIA_CODEC_VIDEO_H264,
+                                        AVFrame.MEDIA_CODEC_VIDEO_H265-> {
+                                            if (outFrmInfoBufSize[0] == 0 || outFrmSize[0] != outBufSize[0] || pFrmInfoBuf[2] == 0) {
                                                 nIncompleteFrmCount++
-                                            }
-                                            AVFrame.MEDIA_CODEC_VIDEO_H264 -> {
-                                                if (outFrmInfoBufSize[0] == 0 || outFrmSize[0] != outBufSize[0] || pFrmInfoBuf[2] == 0) {
-                                                    nIncompleteFrmCount++
+                                            } else {
+                                                val frame = AVFrame(
+                                                    pFrmNo[0].toLong(),
+                                                    AVFrame.FRM_STATE_COMPLETE,
+                                                    pFrmInfoBuf,
+                                                    _framData,
+                                                    outFrmSize[0],
+                                                    avChannel?.playMode?.value
+                                                        ?: PlayMode.PLAY_LIVE.value
+                                                )
+                                                if (frame.isIFrame() || pFrmNo[0].toLong() == nPrevFrmNo + 1) {
+                                                    nPrevFrmNo = pFrmNo[0].toLong()
+                                                    avChannel?.VideoFrameQueue?.addLast(frame)
+                                                    nFlow_total_actual_frame_size += outBufSize[0]
+                                                    nFlow_total_expected_frame_size += outFrmSize[0]
                                                 } else {
-                                                    val frame = AVFrame(
-                                                        pFrmNo[0].toLong(),
-                                                        AVFrame.FRM_STATE_COMPLETE,
-                                                        pFrmInfoBuf,
-                                                        _framData,
-                                                        outFrmSize[0],
-                                                        avChannel?.playMode?.value
-                                                            ?: PlayMode.PLAY_LIVE.value
-                                                    )
-                                                    if (fram.isIFrame() || pFrmNo[0].toLong() == nPrevFrmNo + 1) {
-                                                        nPrevFrmNo = pFrmNo[0].toLong()
-                                                        avChannel?.VideoFrameQueue?.addLast(frame)
-                                                        nFlow_total_actual_frame_size += outBufSize[0]
-                                                        nFlow_total_expected_frame_size += outFrmSize[0]
-                                                    } else {
-                                                        nIncompleteFrmCount++
-                                                    }
-                                                }
-                                            }
-                                            AVFrame.MEDIA_CODEC_VIDEO_H265 -> {
-                                                if (outFrmInfoBufSize[0] == 0 || outFrmSize[0] != outBufSize[0] || pFrmInfoBuf[2] == 0) {
                                                     nIncompleteFrmCount++
-                                                } else {
-                                                    val frame = AVFrame(
-                                                        pFrmNo[0].toLong(),
-                                                        AVFrame.FRM_STATE_COMPLETE,
-                                                        pFrmInfoBuf,
-                                                        _framData,
-                                                        outFrmSize[0],
-                                                        avChannel?.playMode?.value
-                                                            ?: PlayMode.PLAY_LIVE.value
-                                                    )
-                                                    if (fram.isIFrame() || pFrmNo[0].toLong() == nPrevFrmNo + 1) {
-                                                        nPrevFrmNo = pFrmNo[0].toLong()
-                                                        avChannel?.VideoFrameQueue?.addLast(frame)
-                                                        nFlow_total_actual_frame_size += outBufSize[0]
-                                                        nFlow_total_expected_frame_size += outFrmSize[0]
-                                                    } else {
-                                                        nIncompleteFrmCount++
-                                                    }
                                                 }
                                             }
                                         }
                                     }
-
                                 }
 
                             }
-
                         }
-
                     }
                 }
                 d(TAG, "recvvideo destroy [$mSID],[${getAvIndex()}]")
