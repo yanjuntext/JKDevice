@@ -142,7 +142,8 @@ class RecvVideoJob(
                             getAvIndex(), buf, buf.size, outBufSize, outFrmSize, pFrmInfoBuf,
                             pFrmInfoBuf.size, outFrmInfoBufSize, pFrmNo
                         )
-//                        d(TAG, "amera video data nReadSize=[$nReadSize],running[$isRunning]")
+                        d(TAG, "amera video data nReadSize=[$nReadSize],running[$isRunning]")
+                        d(TAG, "AVAPIs.AV_ER_INCOMPLETE_FRAME========== nReadSize=[$nReadSize],running[$isRunning]")
 
                         when{
                             nReadSize >= 0->{
@@ -162,7 +163,7 @@ class RecvVideoJob(
                                 )
                                 avChannel?.codeId = fram.codec_id.toInt()
 
-                                d(TAG, "camera video data nReadSize[$nReadSize],setSize[]")
+//                                d(TAG, "camera video data nReadSize[$nReadSize],setSize[]")
 
 //                            if (avChannel?.recording == true && fram.isIFrame() && LocalRecordHelper.recording) {
                                 if (fram.isIFrame() && LocalRecordHelper.recording) {
@@ -172,10 +173,10 @@ class RecvVideoJob(
                                 nCodecId = fram.codec_id.toInt()
                                 nOnlineNumber = fram.onlineNum.toInt()
 
-                                d(
-                                    TAG,
-                                    "camera video data mAVChannel.VideoFrameQueue[${avChannel?.VideoFrameQueue?.mSize}],nCodeId[$nCodecId],onlineNum[$nOnlineNumber]"
-                                )
+//                                d(
+//                                    TAG,
+//                                    "camera video data mAVChannel.VideoFrameQueue[${avChannel?.VideoFrameQueue?.mSize}],nCodeId[$nCodecId],onlineNum[$nOnlineNumber]"
+//                                )
 
                                 when (nCodecId) {
                                     AVFrame.MEDIA_CODEC_VIDEO_H264,
@@ -227,7 +228,7 @@ class RecvVideoJob(
                             }
                             nReadSize == AVAPIs.AV_ER_DATA_NOREADY -> {
                                 delay(32)
-                                d(TAG, "AVAPIs.AV_ER_DATA_NOREADY mNoFramIndex[$mNoFramIndex]")
+//                                d(TAG, "AVAPIs.AV_ER_DATA_NOREADY mNoFramIndex[$mNoFramIndex]")
                                 if (mNoFramIndex >= 0) {
                                     mNoFramIndex++
                                     if (mNoFramIndex >= 35) {
@@ -286,6 +287,7 @@ class RecvVideoJob(
                                                         ?: PlayMode.PLAY_LIVE.value
                                                 )
                                                 if (frame.isIFrame() || pFrmNo[0].toLong() == nPrevFrmNo + 1) {
+                                                    d(TAG, "AVAPIs.AV_ER_INCOMPLETE_FRAME========== addLast")
                                                     nPrevFrmNo = pFrmNo[0].toLong()
                                                     avChannel?.VideoFrameQueue?.addLast(frame)
                                                     nFlow_total_actual_frame_size += outBufSize[0]
