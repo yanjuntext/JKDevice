@@ -41,26 +41,69 @@
 #-renamesourcefileattribute SourceFile
 
 #-------------------------------------------定制化区域----------------------------------------------
--keep class com.tutk.utils.**
+-keepclassmembers class com.tutk.utils.**
+-dontwarn com.tutk.utils.**
 
--keep class com.tutk.io.ParseKt
--keep class com.tutk.io.SendKt
+-keepclassmembers class com.tutk.io.ParseKt
+-dontwarn class com.tutk.io.ParseKt
 
--keep class com.jkapp.android.media.*{*;}
+-keepclassmembers class com.tutk.io.SendKt
+-dontwarn class com.tutk.io.SendKt
 
--keep class com.tutk.IOTC.listener.**
+-keepclassmembers class com.jkapp.android.media.*{*;}
 
--keep class com.tutk.IOTC.Packet
--keep class com.tutk.IOTC.camera.AVChannel{
+-keepclassmembers class com.tutk.IOTC.listener.**
+
+-keepclassmembers class com.tutk.IOTC.Packet
+-keepclassmembers class com.tutk.IOTC.camera.AVChannel{
   #保持该类下所有的共有内容不被混淆
    public *;
 }
--keep class com.tutk.IOTC.audio.RecvAudioJob{
+-keepclassmembers class com.tutk.IOTC.audio.RecvAudioJob{
     #保持该类下所有的共有内容不被混淆
     public *;
-
 }
 
+-keepclassmembers class com.tutk.IOTC.Camera{
+     *;
+}
+
+-keepclassmembers class com.tutk.IOTC.camera.DownFileJob{
+     *;
+}
+
+-keepclassmembers class com.tutk.IOTC.camera.* {
+     *;
+}
+
+-keepclassmembers interface com.tutk.IOTC.listener.* {
+    *;
+}
+
+-keepclassmembers class com.tutk.IOTC.player.* {
+    public *;
+}
+
+-keepclassmembers class com.tutk.** {
+    public *;
+}
+-dontwarn com.tutk.**
+
+-keepclassmembers class com.tutk.IOTC.Camera{*;}
+-dontwarn com.decoder.**
+
+-keepclassmembers class com.decoder.**{*;}
+-dontwarn com.encoder.**
+
+-keepclassmembers class com.encoder.** {*;}
+
+-keepclassmembers class com.jkapp.** {*;}
+-dontwarn com.jkapp.**
+
+-keepclassmembers class com.tutk.IOTC.St_SInfoEx {
+    *;
+}
+-keep class com.tutk.IOTC.St_SInfoEx{*;}
 
 #---------------------------------1.实体类---------------------------------
 -keep class com.tutk.bean.TBean.*{*;}
@@ -155,3 +198,37 @@
 }
 
 -keepclassmembers interface *
+
+-keep class com.tutk.IOTC.Camera {
+    *;
+}
+
+-keep class com.decoder.*{*;}
+
+-keep class com.encoder.*{*;}
+
+-keep class com.jkapp.*{*;}
+
+#kotlin 相关
+-dontwarn kotlin.**
+-keep class kotlin.** { *; }
+-keep interface kotlin.** { *; }
+-keepclassmembers class kotlin.Metadata {
+    public <methods>;
+}
+-keepclasseswithmembers @kotlin.Metadata class * { *; }
+-keepclassmembers class **.WhenMappings {
+    <fields>;
+}
+-assumenosideeffects class kotlin.jvm.internal.Intrinsics {
+    static void checkParameterIsNotNull(java.lang.Object, java.lang.String);
+}
+
+-keep class kotlinx.** { *; }
+-keep interface kotlinx.** { *; }
+-dontwarn kotlinx.**
+-dontnote kotlinx.serialization.SerializationKt
+
+-keep class org.jetbrains.** { *; }
+-keep interface org.jetbrains.** { *; }
+-dontwarn org.jetbrains.**
