@@ -5,6 +5,7 @@ package com.tutk.IOTC;
  * @CreateDate: 2021/9/8
  * @Description:
  */
+
 public class TUTKGlobalAPIs {
     /** The function is performed successfully. */
     public static final int TUTK_ER_NoERROR = 0;

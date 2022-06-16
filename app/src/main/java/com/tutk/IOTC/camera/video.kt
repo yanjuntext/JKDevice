@@ -1,9 +1,9 @@
 package com.tutk.IOTC.camera
 
-import android.app.admin.DeviceAdminInfo
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import androidx.annotation.Keep
 import com.decoder.util.DecMpeg4
 import com.jkapp.android.media.VideoDecoder
 import com.tutk.IOTC.*
@@ -26,6 +26,7 @@ import java.nio.ByteBuffer
 private fun Int.dp() = 10
 
 /**视频数据*/
+@Keep
 data class RecvVideoInfo(
     val eventType: Int,
     val recvFrame: Int = 0,
@@ -108,6 +109,7 @@ class RecvVideoJob(
 
 
                 if (mSID >= 0 && getAvIndex() >= 0) {
+                    //清楚所有的IO命令
                     AVAPIs.avClientCleanBuf(getAvIndex())
                 }
 
@@ -143,10 +145,13 @@ class RecvVideoJob(
                             pFrmInfoBuf.size, outFrmInfoBufSize, pFrmNo
                         )
                         d(TAG, "amera video data nReadSize=[$nReadSize],running[$isRunning]")
-                        d(TAG, "AVAPIs.AV_ER_INCOMPLETE_FRAME========== nReadSize=[$nReadSize],running[$isRunning]")
+                        d(
+                            TAG,
+                            "AVAPIs.AV_ER_INCOMPLETE_FRAME========== nReadSize=[$nReadSize],running[$isRunning]"
+                        )
 
-                        when{
-                            nReadSize >= 0->{
+                        when {
+                            nReadSize >= 0 -> {
                                 avChannel?.videoBPS = (avChannel?.videoBPS ?: 0) + outBufSize[0]
                                 nFrmCount++
 
@@ -212,7 +217,11 @@ class RecvVideoJob(
                                     AVFrame.MEDIA_CODEC_VIDEO_MJPEG -> {
                                         try {
                                             val bmp =
-                                                BitmapFactory.decodeByteArray(framData, 0, nReadSize)
+                                                BitmapFactory.decodeByteArray(
+                                                    framData,
+                                                    0,
+                                                    nReadSize
+                                                )
                                             emit(getFrameBitmapInfo(bmp))
                                             avChannel?.lastFrame = bmp
                                         } catch (e: Exception) {
@@ -273,7 +282,7 @@ class RecvVideoJob(
                                             nIncompleteFrmCount++
                                         }
                                         AVFrame.MEDIA_CODEC_VIDEO_H264,
-                                        AVFrame.MEDIA_CODEC_VIDEO_H265-> {
+                                        AVFrame.MEDIA_CODEC_VIDEO_H265 -> {
                                             if (outFrmInfoBufSize[0] == 0 || outFrmSize[0] != outBufSize[0] || pFrmInfoBuf[2] == 0) {
                                                 nIncompleteFrmCount++
                                             } else {
@@ -287,7 +296,10 @@ class RecvVideoJob(
                                                         ?: PlayMode.PLAY_LIVE.value
                                                 )
                                                 if (frame.isIFrame() || pFrmNo[0].toLong() == nPrevFrmNo + 1) {
-                                                    d(TAG, "AVAPIs.AV_ER_INCOMPLETE_FRAME========== addLast")
+                                                    d(
+                                                        TAG,
+                                                        "AVAPIs.AV_ER_INCOMPLETE_FRAME========== addLast"
+                                                    )
                                                     nPrevFrmNo = pFrmNo[0].toLong()
                                                     avChannel?.VideoFrameQueue?.addLast(frame)
                                                     nFlow_total_actual_frame_size += outBufSize[0]
@@ -636,7 +648,12 @@ class DecodeVideoJob(
                                                 avChannel?.videoFPS = (avChannel?.videoFPS ?: 0) + 1
 //                                                emit(bmp)
 //                                                emit(avFrame.timestamp)
-                                                emit(DecoderVideoInfo(bmp,avFrame.deviceCurrentTime))
+                                                emit(
+                                                    DecoderVideoInfo(
+                                                        bmp,
+                                                        avFrame.deviceCurrentTime
+                                                    )
+                                                )
                                                 avChannel.lastFrame = bmp
                                                 if (System.currentTimeMillis() - lastUpdateDispFrmPreSec > 60000) {
                                                     lastUpdateDispFrmPreSec =
@@ -710,8 +727,15 @@ class DecodeVideoJob(
 
             }.flowOn(Dispatchers.IO)
                 .collect {
-                    iavChannelStatus?.onAVChannelReceiverFrameData(avChannel?.mChannel ?: -1, it.bitmap)
-                    iavChannelStatus?.onAVChannelReceiverFrameData(avChannel?.mChannel?:-1,it.bitmap,it.time)
+                    iavChannelStatus?.onAVChannelReceiverFrameData(
+                        avChannel?.mChannel ?: -1,
+                        it.bitmap
+                    )
+                    iavChannelStatus?.onAVChannelReceiverFrameData(
+                        avChannel?.mChannel ?: -1,
+                        it.bitmap,
+                        it.time
+                    )
                 }
         }
 
@@ -736,7 +760,8 @@ class DecodeVideoJob(
     }
 }
 
-internal class DecoderVideoInfo(val bitmap: Bitmap?,val time:Long)
+@Keep
+internal class DecoderVideoInfo(val bitmap: Bitmap?, val time: Long)
 
 /**录像帮助类*/
 internal object LocalRecordHelper {
